@@ -47,6 +47,14 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid 
 .geo b{color:var(--ac);font-weight:600}
 .start{background:var(--ac);color:#000;border-radius:16px;height:58px;font-size:22px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:12px}
 .start.run{background:#f2b705}
+.mchip{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--card2);border-radius:20px;padding:9px 14px;font-size:14px;color:#fff;width:100%;margin-bottom:8px}
+.mchip i,.pr i{width:12px;height:12px;border-radius:50%;flex:none;display:block}
+.ask{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom,0px));width:calc(100% - 24px);max-width:496px;background:#222;border:1px solid var(--ac);border-radius:18px;padding:14px;z-index:8;display:none;box-shadow:0 6px 24px #000a}
+.ask.on{display:block}.at{font-weight:700;font-size:17px}.ad{color:#bbb;font-size:14px;margin:4px 0 10px;line-height:1.4}
+.ask .opt.sug{outline:2px solid var(--ac)}
+.keep{width:100%;margin-top:10px;padding:12px;border-radius:22px;border:1px solid #555;font-weight:600}
+.pr{display:flex;align-items:center;gap:8px;font-size:14px;padding:6px 0;border-top:1px solid #2a2a2a}
+.pr span{flex:1}.pr b{color:var(--ac);font-weight:600}.pr em{color:#aaa;font-style:normal;min-width:70px;text-align:right}
 .ctl{display:flex;gap:10px}.ctl .start{flex:1}
 .stop{background:var(--red);color:#fff;border-radius:16px;height:58px;padding:0 20px;font-size:18px;font-weight:700;display:flex;align-items:center;gap:8px}
 .stop:disabled{opacity:.35;cursor:default}
@@ -124,6 +132,7 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid 
 
   <div class="geo"><span>Alt <b id="alt">--</b></span><span>Lat <b id="lat">--</b></span><span>Lon <b id="lon">--</b></span></div>
   <div class="side">
+    <button class="mchip" id="modeBtn"></button>
     <div class="cards">
       <div class="card max" id="cmax"><div class="t">Max Speed</div><div class="n"><span id="mx">0</span><small class="su">km/h</small></div></div>
       <div class="card"><div class="t">Distance</div><div class="n"><span id="ds">0.0</span><small class="du">km</small></div></div>
@@ -143,15 +152,18 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid 
   <button class="ibtn" id="back" aria-label="Back"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
   <h1>Settings</h1>
   <div class="box"><h2>Speed Units</h2><div class="opts" id="o-unit"><button class="opt" data-v="mph">Mph</button><button class="opt" data-v="kmh">Km/h</button><button class="opt" data-v="kn">Knot</button></div></div>
-  <div class="box"><h2>Select Your Mode</h2><div class="opts" id="o-mode"><button class="opt" data-v="car">Car/Bike</button><button class="opt" data-v="bike">Bicycle</button><button class="opt" data-v="walk">Walk</button><button class="opt" data-v="bus">Bus</button><button class="opt" data-v="train">Train</button></div></div>
+  <div class="box"><h2>Select Your Mode</h2><div class="opts" id="o-mode"><button class="opt" data-v="car">Car/Bike</button><button class="opt" data-v="bike">Bicycle</button><button class="opt" data-v="walk">Walk</button><button class="opt" data-v="rickshaw">Rickshaw</button><button class="opt" data-v="bus">Bus</button><button class="opt" data-v="train">Train</button></div></div>
   <div class="box">
     <div class="row"><span>Max Speed Limit Warn (km/h)</span><input type="number" id="limit" min="5" max="400" step="5"></div>
+    <div class="row"><span>Ask when mode looks wrong</span><button class="sw" id="s-ask" aria-label="Ask when mode looks wrong"></button></div>
     <div class="row"><span>Speed Alarm (beep)</span><button class="sw" id="s-alarm" aria-label="Speed alarm"></button></div>
     <div class="row"><span>Keep screen on</span><button class="sw" id="s-wake" aria-label="Keep screen on"></button></div>
     <div class="row"><span>Demo mode (no GPS)</span><button class="sw" id="s-demo" aria-label="Demo mode"></button></div>
   </div>
   <div class="box"><h2>Display Color</h2><div class="cols" id="colors"></div></div>
 </div></div>
+
+<div class="ask" id="ask" role="dialog" aria-live="polite"><div class="at" id="at"></div><div class="ad" id="ad"></div><div class="opts" id="ao"></div><button class="keep" id="akeep"></button></div>
 
 <div class="sheet" id="hist"><div class="in">
   <button class="ibtn" id="hback" aria-label="Back"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
@@ -166,13 +178,13 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid 
 "use strict";
 var $=function(i){return document.getElementById(i)};
 var UNITS={kmh:{f:3.6,s:"km/h",d:1,du:"km"},mph:{f:2.23694,s:"mph",d:0.000621371,du:"mi"},kn:{f:1.94384,s:"knot",d:0.000539957,du:"nmi"}};
-var MODEMAX={car:220,bike:60,walk:20,bus:140,train:300};
+var MODEMAX={car:160,bike:40,walk:20,rickshaw:30,bus:120,train:160};
 var COLORS=["#00ffff","#b57cff","#ffd400","#ff5a5a","#4dff88","#ffffff","#66ccff"];
-var S={unit:"kmh",mode:"car",limit:100,alarm:false,wake:false,demo:false,color:0,tab:"analog"};
+var S={unit:"kmh",mode:"car",limit:80,alarm:false,wake:false,demo:false,color:0,tab:"analog",ask:true};
 try{var sv=JSON.parse(localStorage.getItem("gpsSpeedo")||"null");if(sv)for(var k in sv)S[k]=sv[k]}catch(e){}
 function save(){try{localStorage.setItem("gpsSpeedo",JSON.stringify(S))}catch(e){}}
 
-var st={run:false,watch:null,sim:null,elapsed:0,t0:0,dist:0,max:0,speed:0,last:null,track:[],lastBeep:0,wl:null};
+var st={run:false,watch:null,sim:null,elapsed:0,t0:0,dist:0,max:0,speed:0,last:null,track:[],lastBeep:0,wl:null,win:[],askAfter:0,prompt:false,keepCool:60000,cd:0,mul:1};
 
 /* ---------- gauge ---------- */
 function gaugeMax(){var m=MODEMAX[S.mode]*UNITS[S.unit].f/3.6,steps=[1,2,5,10,20,25,50],i=0;
@@ -211,6 +223,7 @@ function render(){
  document.querySelectorAll(".du").forEach(function(e){e.textContent=U.du});
  $("timer").innerHTML=fmtTime(curElapsed())+"<small>s</small>";
  $("cmax").classList.toggle("warn",st.max*3.6>S.limit);
+ $("modeBtn").innerHTML='<i style="background:'+MCOL[S.mode]+'"></i>Mode: '+MODELBL[S.mode]+' (tap to change)';
  $("stop").disabled=!(st.run||st.elapsed>0||st.dist>0);
  drawMap()}
 
@@ -221,7 +234,7 @@ function initMap(){
  if(lm||!window.L)return;
  lm=L.map("map").setView([23.8103,90.4125],15);
  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"&copy; OpenStreetMap contributors"}).addTo(lm);
- line=L.polyline([],{color:"#2f7bf6",weight:6,opacity:.9}).addTo(lm);
+ line=L.layerGroup().addTo(lm);
  lm.on("dragstart",function(){follow=false});
  $("loc").onclick=function(){follow=true;if(st.last)lm.setView([st.last.lat,st.last.lon],Math.max(lm.getZoom(),16))}}
 function drawMap(){
@@ -231,7 +244,8 @@ function drawMap(){
  var T=st.track,cur=st.last;
  if(T.length===lastLen&&cur===lastSeen)return;
  lastLen=T.length;lastSeen=cur;
- line.setLatLngs(T.map(function(p){return[p.lat,p.lon]}));
+ line.clearLayers();
+ modeSegs(T.map(function(p){return[p.lat,p.lon,p.m]}),S.mode).forEach(function(g){L.polyline(g.pts,{color:MCOL[g.m]||"#3b82f6",weight:6,opacity:.9}).addTo(line)});
  if(mS){lm.removeLayer(mS);mS=null}
  if(T.length){mS=L.marker([T[0].lat,T[0].lon],{icon:dotIcon("#4cc93a")}).addTo(lm)}
  if(cur){var ll=[cur.lat,cur.lon];
@@ -252,9 +266,9 @@ function onPos(p){
   if(d<Math.max(2,(p.acc||0)*0.3)&&(sp==null||sp<0.6)){sp=0;d=0}}
  if(sp==null)sp=0;
  st.speed=sp;
- if(st.run){st.dist+=d;if(sp>st.max)st.max=sp;
-  if(!st.track.length||d>0)st.track.push(cur);
-  alarm()}
+ if(st.run){st.dist+=d;st.cd+=d;if(sp>st.max)st.max=sp;
+  if(!st.track.length||d>0){cur.m=S.mode;st.track.push(cur)}
+  alarm();checkMode()}
  st.last=cur;render()}
 
 function alarm(){
@@ -299,7 +313,7 @@ function setRun(on){
  render()}
 $("go").onclick=function(){setRun(!st.run)};
 $("reset").onclick=function(){
- var was=st.run;stopGPS();setRun(false);
+ var was=st.run;stopGPS();setRun(false);st.win=[];st.cd=0;st.mul=1;hideAsk(0);
  st.elapsed=0;st.dist=0;st.max=0;st.speed=0;st.last=null;st.track=[];
  $("gps").textContent="off";$("go").lastElementChild.textContent="Start";msg("");render()};
 
@@ -317,44 +331,86 @@ function applyColor(){document.documentElement.style.setProperty("--ac",COLORS[S
 function syncUI(){
  document.querySelectorAll("#o-unit .opt").forEach(function(b){b.classList.toggle("on",b.dataset.v===S.unit)});
  document.querySelectorAll("#o-mode .opt").forEach(function(b){b.classList.toggle("on",b.dataset.v===S.mode)});
- $("s-alarm").classList.toggle("on",S.alarm);$("s-wake").classList.toggle("on",S.wake);$("s-demo").classList.toggle("on",S.demo);
+ $("s-alarm").classList.toggle("on",S.alarm);$("s-ask").classList.toggle("on",S.ask);$("s-wake").classList.toggle("on",S.wake);$("s-demo").classList.toggle("on",S.demo);
  document.querySelectorAll(".dot").forEach(function(d,i){d.classList.toggle("on",i===S.color)});
  $("limit").value=S.limit}
 $("gear").onclick=function(){$("sheet").classList.add("on")};
 $("back").onclick=function(){$("sheet").classList.remove("on");save();buildTicks();render()};
 document.querySelectorAll("#o-unit .opt").forEach(function(b){b.onclick=function(){S.unit=b.dataset.v;syncUI();buildTicks();render();save()}});
-document.querySelectorAll("#o-mode .opt").forEach(function(b){b.onclick=function(){S.mode=b.dataset.v;syncUI();buildTicks();render();save()}});
+document.querySelectorAll("#o-mode .opt").forEach(function(b){b.onclick=function(){S.mode=b.dataset.v;st.cd=0;st.mul=1;syncUI();buildTicks();render();save()}});
 $("limit").onchange=function(){var n=parseFloat(this.value);if(n>0)S.limit=n;save();render()};
+$("s-ask").onclick=function(){S.ask=!S.ask;syncUI();save()};
 $("s-alarm").onclick=function(){S.alarm=!S.alarm;syncUI();save()};
 $("s-wake").onclick=function(){S.wake=!S.wake;syncUI();save();wake(st.run)};
 $("s-demo").onclick=function(){S.demo=!S.demo;stopGPS();st.last=null;if(st.run)startGPS();syncUI();save()};
 COLORS.forEach(function(c,i){var d=document.createElement("button");d.className="dot";d.style.background=c;d.setAttribute("aria-label","Color "+(i+1));
  d.onclick=function(){S.color=i;applyColor();syncUI();save()};$("colors").appendChild(d)});
 
-/* ---------- history ---------- */
-var MODELBL={car:"Car/Bike",bike:"Bicycle",walk:"Walk",bus:"Bus",train:"Train"};
+/* ---------- history & mode detection ---------- */
+var MODELBL={car:"Car/Bike",bike:"Bicycle",walk:"Walk",rickshaw:"Rickshaw",bus:"Bus",train:"Train"};
+var MCOL={walk:"#2ecc71",rickshaw:"#ff5ec8",bike:"#f1c40f",car:"#3b82f6",bus:"#ff8c42",train:"#a855f7"};
+var LOOK={walk:"walking",rickshaw:"a rickshaw ride",bike:"cycling",car:"a ride in a car, CNG or motorbike",bus:"a bus ride",train:"a train ride"};
+function showAsk(t,d,sug,kl,cool){
+ st.prompt=true;st.keepCool=cool;var sg=[].concat(sug||[]);$("at").textContent=t;$("ad").textContent=d;
+ var h="";["walk","rickshaw","bike","car","bus","train"].forEach(function(m){h+='<button class="opt'+(sg.indexOf(m)>-1?" sug":"")+(m===S.mode?" on":"")+'" data-v="'+m+'">'+MODELBL[m]+'</button>'});
+ $("ao").innerHTML=h;$("akeep").textContent=kl;$("ask").classList.add("on");
+ try{if(navigator.vibrate)navigator.vibrate([150,80,150])}catch(e){}}
+function hideAsk(cool){st.prompt=false;st.askAfter=Date.now()+cool;$("ask").classList.remove("on")}
+function changeMode(m){S.mode=m;save();syncUI();buildTicks();st.cd=0;st.mul=1;hideAsk(0);render()}
+$("ao").onclick=function(e){var b=e.target.closest?e.target.closest(".opt"):null;if(b)changeMode(b.dataset.v)};
+$("akeep").onclick=function(){if(st.keepCool>0)st.mul*=2;hideAsk(st.keepCool)};
+$("modeBtn").onclick=function(){showAsk("Which mode are you in?","The route is colored by mode and saved in History.",null,"Cancel",0)};
+/* Distance rules (km covered in the current mode). Change these numbers to tune. */
+var CAP={walk:1,rickshaw:7,bike:7,car:20,bus:20};
+var NEXT={walk:["rickshaw","bike","car","bus"],rickshaw:["car","bus"],bike:["car","bus"],car:["car","bus","train"],bus:["car","bus","train"]};
+function checkMode(){
+ if(!S.ask||!st.run||st.prompt||Date.now()<st.askAfter)return;
+ var m=S.mode,cap=CAP[m];if(!cap)return;
+ if(st.cd/1000<cap*st.mul)return;
+ var U=UNITS[S.unit],km=(st.cd*U.d).toFixed(1)+" "+U.du,t,d;
+ if(m==="walk"){t="That is a long walk. Still on foot?";d="You have covered "+km+" in Walk mode. If you are in a rickshaw, bicycle, bus or car now, choose it."}
+ else if(m==="rickshaw"||m==="bike"){t="Long ride. Still in "+MODELBL[m]+" mode?";d="You have covered "+km+" in "+MODELBL[m]+" mode. For this distance people usually take a car, CNG, motorbike or bus."}
+ else{t="Which vehicle are you in now?";d="You have covered "+km+" in "+MODELBL[m]+" mode. Pick Car/Bike, Bus or Train so each part of the trip is recorded correctly."}
+ showAsk(t,d,NEXT[m],"Keep "+MODELBL[m],60000)}
 function loadTrips(){try{return JSON.parse(localStorage.getItem("gpsTrips")||"[]")}catch(e){return[]}}
 function saveTrips(a){try{localStorage.setItem("gpsTrips",JSON.stringify(a))}catch(e){msg("Could not save history. Browser storage is full or blocked.")}}
-function thin(T,n){var o=[],k=T.length>n?(T.length-1)/(n-1):1,c=Math.min(n,T.length);
- for(var i=0;i<c;i++){var p=T[Math.round(i*k)];o.push([+p.lat.toFixed(5),+p.lon.toFixed(5)])}return o}
-function routeSvg(P){
+function thin(T,n){var keep={},N=T.length,k=N>n?(N-1)/(n-1):1,c=Math.min(n,N),i;
+ for(i=0;i<c;i++)keep[Math.round(i*k)]=1;
+ for(i=1;i<N;i++)if(T[i].m!==T[i-1].m){keep[i-1]=1;keep[i]=1}
+ return Object.keys(keep).map(Number).sort(function(x,y){return x-y}).map(function(j){var p=T[j];return[+p.lat.toFixed(5),+p.lon.toFixed(5),p.m]})}
+function modeSegs(A,dm){var out=[],cur=null;
+ for(var i=1;i<A.length;i++){var m=A[i][2]||dm;
+  if(!cur||cur.m!==m){cur={m:m,pts:[[A[i-1][0],A[i-1][1]]]};out.push(cur)}
+  cur.pts.push([A[i][0],A[i][1]])}
+ return out}
+function tripParts(T){var P={};
+ for(var i=1;i<T.length;i++){var m=T[i].m||"car",dt=Math.max(0,Math.min(T[i].t-T[i-1].t,120000)),q=P[m]||(P[m]={d:0,ms:0});q.d+=hav(T[i-1],T[i]);q.ms+=dt}
+ return P}
+function fmtDur(ms){if(ms<60000)return Math.round(ms/1000)+" s";var m=Math.round(ms/60000);return m<60?m+" min":Math.floor(m/60)+" h "+(m%60)+" min"}
+function routeSvg(P,dm){
  if(!P||P.length<2)return"";
  var la=P.map(function(p){return p[0]}),lo=P.map(function(p){return p[1]}),
  a0=Math.min.apply(0,la),a1=Math.max.apply(0,la),o0=Math.min.apply(0,lo),o1=Math.max.apply(0,lo),
  cl=Math.cos((a0+a1)/2*Math.PI/180),dx=Math.max((o1-o0)*cl,1e-5),dy=Math.max(a1-a0,1e-5),
  W=300,H=90,pd=10,k=Math.min((W-2*pd)/dx,(H-2*pd)/dy),ox=(W-dx*k)/2,oy=(H-dy*k)/2;
  function X(p){return(ox+(p[1]-o0)*cl*k).toFixed(1)}function Y(p){return(H-oy-(p[0]-a0)*k).toFixed(1)}
- var pts=P.map(function(p){return X(p)+","+Y(p)}).join(" "),a=P[0],b=P[P.length-1];
- return'<svg viewBox="0 0 300 90" aria-hidden="true"><polyline points="'+pts+'" fill="none" stroke="#2f7bf6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="'+X(a)+'" cy="'+Y(a)+'" r="5" fill="#4cc93a"/><circle cx="'+X(b)+'" cy="'+Y(b)+'" r="5" fill="#f0443a"/></svg>'}
+ var g=modeSegs(P,dm).map(function(s){return'<polyline points="'+s.pts.map(function(p){return X(p)+","+Y(p)}).join(" ")+'" fill="none" stroke="'+(MCOL[s.m]||"#3b82f6")+'" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>'}).join(""),
+ a=P[0],b=P[P.length-1];
+ return'<svg viewBox="0 0 300 90" aria-hidden="true">'+g+'<circle cx="'+X(a)+'" cy="'+Y(a)+'" r="5" fill="#fff" stroke="#000"/><circle cx="'+X(b)+'" cy="'+Y(b)+'" r="5" fill="#f0443a" stroke="#fff"/></svg>'}
 function renderHist(){
- var trips=loadTrips(),U=UNITS[S.unit],h="";
+ var trips=loadTrips(),U=UNITS[S.unit],h="",ORDER=["walk","rickshaw","bike","car","bus","train"];
  $("hclear").style.display=trips.length?"":"none";$("hclear").textContent="Clear all history";
  if(!trips.length)h='<div class="box empty">No trips yet.<br>Press Start, then Stop to save a trip here.</div>';
  trips.forEach(function(t){
-  var avg=t.ms>0?t.dist/(t.ms/1000):0,d=new Date(t.end).toLocaleString([],{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
+  var avg=t.ms>0?t.dist/(t.ms/1000):0,d=new Date(t.end).toLocaleString([],{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"}),P=t.parts;
+  if(!P){P={};P[t.mode]={d:t.dist,ms:t.ms}}
+  var keys=ORDER.filter(function(k){return P[k]&&(P[k].d>5||P[k].ms>5000)});
+  if(!keys.length)keys=[t.mode];
+  var rows=keys.map(function(k){var q=P[k]||{d:0,ms:0},v=q.d*U.d;return'<div class="pr"><i style="background:'+MCOL[k]+'"></i><span>'+MODELBL[k]+'</span><b>'+v.toFixed(v<1?2:1)+" "+U.du+'</b><em>'+fmtDur(q.ms)+'</em></div>'}).join("");
   h+='<div class="box trip"><div class="th"><b>'+d+'</b><button class="del" data-id="'+t.id+'" aria-label="Delete trip">\u2715</button></div>'
-   +'<div class="tm">'+(MODELBL[t.mode]||"Trip")+", "+fmtTime(t.ms)+'</div>'+routeSvg(t.pts)
-   +'<div class="ts"><div><span>Distance</span><b>'+(t.dist*U.d).toFixed(1)+" "+U.du+'</b></div><div><span>Max Speed</span><b>'+Math.round(t.max*U.f)+" "+U.s+'</b></div><div><span>Avg Speed</span><b>'+Math.round(avg*U.f)+" "+U.s+'</b></div></div></div>'});
+   +'<div class="tm">'+(keys.length>1?"Mixed trip":(MODELBL[keys[0]]||"Trip"))+", "+fmtTime(t.ms)+'</div>'+routeSvg(t.pts,t.mode)
+   +'<div class="ts"><div><span>Distance</span><b>'+(t.dist*U.d).toFixed(1)+" "+U.du+'</b></div><div><span>Max Speed</span><b>'+Math.round(t.max*U.f)+" "+U.s+'</b></div><div><span>Avg Speed</span><b>'+Math.round(avg*U.f)+" "+U.s+'</b></div></div>'
+   +'<div style="margin-top:10px">'+rows+'</div></div>'});
  $("hlist").innerHTML=h}
 function openHist(){renderHist();$("hist").classList.add("on")}
 function stopTrip(){
@@ -362,7 +418,7 @@ function stopTrip(){
  setRun(false);stopGPS();
  var ok=st.dist>=20||ms>=10000;
  if(ok){var tr=loadTrips();
-  tr.unshift({id:Date.now(),end:Date.now(),ms:ms,dist:st.dist,max:st.max,mode:S.mode,pts:thin(st.track,150)});
+  tr.unshift({id:Date.now(),end:Date.now(),ms:ms,dist:st.dist,max:st.max,mode:S.mode,parts:tripParts(st.track),pts:thin(st.track,150)});
   saveTrips(tr.slice(0,50))}
  $("reset").onclick();
  if(ok)openHist();else msg("Trip was too short to save.")}
