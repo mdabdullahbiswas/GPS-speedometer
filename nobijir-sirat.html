@@ -1,0 +1,1819 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>নবীজির সীরাত</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Serif+Bengali:wght@300;400;500;600;700&family=Tiro+Bangla:ital@0;1&display=swap">
+<style>
+:root{
+  /* Layout: a fixed WebGL desert stage sits behind scrolling glass panels; panels alternate sides and the camera shifts so the scene stays visible beside them. */
+  color-scheme: dark;
+  --night:#070b14;
+  --ink:#0c1220;
+  --gold:#d8b26a;
+  --gold-hi:#f1d796;
+  --emerald:#2fae83;
+  --parch:#efe7d6;
+  --mute:#aab3c6;
+  --line:rgba(216,178,106,.30);
+  --glass:rgba(9,14,26,.68);
+  --f-display:'Tiro Bangla','Noto Serif Bengali',serif;
+  --f-body:'Noto Serif Bengali','Tiro Bangla',serif;
+  --f-ar:'Amiri','Noto Naskh Arabic',serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--night);color:var(--parch);
+  font-family:var(--f-body);font-size:17px;line-height:1.95;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+.nogl body{background:linear-gradient(180deg,#03050d 0%,#14223f 55%,#215062 100%)}
+#stage{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block}
+.ctl{position:fixed;z-index:25;right:max(12px,env(safe-area-inset-right,0px));bottom:max(12px,env(safe-area-inset-bottom,0px));display:flex;gap:.4rem;flex-wrap:wrap;justify-content:flex-end;max-width:calc(100vw - 24px)}
+.ctl button{font:inherit;font-size:.82rem;line-height:1.3;padding:.45rem .85rem;border-radius:999px;border:1px solid rgba(241,215,150,.35);background:rgba(7,11,20,.74);color:var(--parch);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);cursor:pointer}
+.ctl button[aria-pressed=true]{background:var(--gold);color:#1a1405;border-color:var(--gold-hi)}
+.ctl button:focus-visible,.icard .x:focus-visible{outline:2px solid var(--gold-hi);outline-offset:2px}
+.gloff #stage{display:none}.gloff .need3d{display:none}
+.exp main,.exp main *{pointer-events:none!important}.exp main{opacity:0;transition:opacity .35s}.exp .dots{opacity:.25}
+.exp #stage{pointer-events:auto;touch-action:none;cursor:grab}
+.icard{position:fixed;z-index:30;left:50%;bottom:calc(60px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);width:min(30rem,calc(100vw - 32px));max-height:52svh;overflow:auto;background:rgba(7,11,20,.95);border:1px solid rgba(241,215,150,.4);border-radius:14px;padding:1rem 2.6rem 1rem 1.2rem;font-size:.95rem;line-height:1.8;color:var(--parch)}
+.icard h3{margin:0 0 .3rem;font-family:var(--f-display);font-weight:400;color:var(--gold-hi);font-size:1.3rem}.icard p{margin:.3rem 0}.icard .src{display:block;font-size:.8rem;color:var(--mute)}
+.icard .x{position:absolute;top:.35rem;right:.45rem;width:2rem;height:2rem;border:0;border-radius:50%;background:transparent;color:var(--parch);font-size:1.3rem;cursor:pointer}
+.veil{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(120% 95% at 50% 42%,transparent 52%,rgba(2,4,10,.58) 100%)}
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.07;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* header */
+.top{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  padding:calc(14px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 14px max(16px,env(safe-area-inset-left,0px));
+  background:linear-gradient(180deg,rgba(5,8,16,.62),rgba(5,8,16,0));pointer-events:none}
+.brand{pointer-events:auto;display:flex;align-items:center;gap:.6rem;font-family:var(--f-display);font-size:1.3rem;line-height:1.2;color:var(--parch);text-decoration:none}
+.brand svg{color:var(--gold-hi)}
+.chap{font-size:.9rem;color:var(--gold-hi);transition:opacity .35s ease,transform .35s ease;text-align:right;line-height:1.4}
+.chap.swap{opacity:0;transform:translateY(-6px)}
+.progress{position:absolute;left:0;right:0;bottom:0;height:2px}
+.progress i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-hi));transform-origin:left;transform:scaleX(var(--sp,0))}
+
+.dots{position:fixed;z-index:20;top:50%;right:max(14px,env(safe-area-inset-right,0px));transform:translateY(-50%);display:none;flex-direction:column;gap:14px}
+.dots a{position:relative;width:9px;height:9px;border-radius:50%;border:1px solid rgba(239,231,214,.55);background:transparent;display:block;transition:background .3s,transform .3s,border-color .3s}
+.dots a.on{background:var(--gold-hi);border-color:var(--gold-hi);transform:scale(1.35)}
+.dots a::before{content:attr(data-t);position:absolute;right:20px;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:.82rem;line-height:1.4;color:var(--parch);background:var(--glass);padding:.2rem .6rem;border:1px solid var(--line);border-radius:3px;opacity:0;pointer-events:none;transition:opacity .25s}
+.dots a:hover::before,.dots a:focus-visible::before{opacity:1}
+a:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px}
+@media (min-width:960px){.dots{display:flex}}
+
+.msgs{list-style:none;margin:1.2rem 0 1rem;padding:0;display:grid;gap:.7rem}
+.msgs li{padding:.7rem .95rem;border:1px solid var(--line);border-left:3px solid var(--gold);background:rgba(9,14,26,.55);border-radius:3px;line-height:1.8;font-size:.97rem}
+.msgs b{color:var(--gold-hi);font-weight:600}
+.msgs .src{display:block;margin-top:.25rem;font-size:.8rem;color:var(--mute);line-height:1.6}
+.msgs .src em{font-style:normal;color:var(--emerald)}
+.wind{display:flex;align-items:center;gap:.5rem;padding:.5rem .9rem;font:inherit;font-size:.85rem;line-height:1.4;color:var(--parch);background:var(--glass);border:1px solid var(--line);border-radius:999px;cursor:pointer;backdrop-filter:blur(6px)}
+.wind[aria-pressed="true"]{border-color:var(--gold-hi);color:var(--gold-hi)}
+.wind:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px}
+.wind .mood{display:none;font-size:.78rem;color:var(--mute);border-left:1px solid var(--line);padding-left:.5rem}.wind[aria-pressed="true"] .mood:not(:empty){display:inline}@media (max-width:600px){.wind[aria-pressed="true"] .mood:not(:empty){display:none}}
+.windbar{position:fixed;z-index:20;left:max(14px,env(safe-area-inset-left,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;align-items:flex-start;gap:.5rem;max-width:calc(100vw - 28px)}
+.windbar[hidden],.windpanel[hidden]{display:none}
+.windrow{display:flex;align-items:center;gap:.5rem}
+.windset{width:2.5rem;height:2.5rem;padding:0;display:inline-flex;align-items:center;justify-content:center;font:inherit;font-size:1.05rem;line-height:1;color:var(--parch);background:var(--glass);border:1px solid var(--line);border-radius:50%;cursor:pointer;backdrop-filter:blur(6px)}
+.windset[aria-expanded="true"]{border-color:var(--gold-hi);color:var(--gold-hi)}
+.windpanel{width:min(310px,calc(100vw - 28px));padding:.85rem .95rem;font-size:.85rem;line-height:1.5;color:var(--parch);background:var(--glass);border:1px solid var(--line);border-radius:16px;backdrop-filter:blur(8px)}
+.wv{display:flex;align-items:center;gap:.65rem}.wv input{flex:1;min-width:0;accent-color:var(--gold-hi)}.wv output{min-width:3.2ch;text-align:right;color:var(--mute);font-variant-numeric:tabular-nums}
+.wl{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.75rem}
+.wl button{font:inherit;font-size:.8rem;line-height:1.4;padding:.32rem .75rem;color:var(--mute);background:transparent;border:1px solid var(--line);border-radius:999px;cursor:pointer}
+.wl button[aria-pressed="true"]{border-color:var(--gold-hi);color:var(--gold-hi)}
+.wl button[aria-pressed="false"]{text-decoration:line-through;opacity:.7}
+.wh{margin:.65rem 0 0;font-size:.75rem;color:var(--mute)}
+.windset:focus-visible,.wl button:focus-visible,.wv input:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px}
+.mapbox{background:var(--glass);border:1px solid var(--line);border-radius:4px;padding:.4rem}
+.mapbox svg{display:block;width:100%;height:auto}
+.mapbox text{font-family:var(--f-body);font-size:15px;fill:var(--parch);paint-order:stroke;stroke:#070b14;stroke-width:3px}
+.mapbox .sm{font-size:12px;fill:var(--mute)}
+.mapbox .pt{cursor:pointer}
+.mapbox .pt circle{fill:var(--gold);stroke:#070b14;stroke-width:2;transition:r .2s,fill .2s}
+.mapbox .pt:hover circle,.mapbox .pt:focus-visible circle,.mapbox .pt.on circle{r:10;fill:var(--gold-hi)}
+.mapbox .pt.on circle{stroke:var(--emerald);stroke-width:3}
+.mapbox .pt:focus-visible{outline:none}
+.mapbox .pt:focus-visible circle{stroke:#fff}
+.mapbox .route{fill:none;stroke:var(--gold);stroke-width:3;stroke-linecap:round;stroke-dasharray:9 8}
+@media (prefers-reduced-motion:no-preference){.mapbox .route{animation:flow 2.4s linear infinite}@keyframes flow{to{stroke-dashoffset:-34}}}
+.minfo{margin-top:.6rem;padding:.8rem 1rem;border-left:3px solid var(--gold);background:rgba(9,14,26,.55);line-height:1.85;font-size:.97rem}
+.minfo h3{margin:0 0 .2rem;font-family:var(--f-display);font-weight:400;font-size:1.3rem;color:var(--gold-hi)}
+.minfo p{margin:.2rem 0}
+.minfo .src{display:block;margin-top:.3rem;font-size:.8rem;color:var(--mute);line-height:1.6}
+.tabs{display:flex;flex-wrap:wrap;gap:.4rem;margin:.9rem 0 .6rem}
+.tabs button{font:inherit;font-size:.9rem;line-height:1.4;padding:.4rem .9rem;color:var(--parch);background:var(--glass);border:1px solid var(--line);border-radius:999px;cursor:pointer}
+.tabs button[aria-pressed="true"]{color:#070b14;background:var(--gold-hi);border-color:var(--gold-hi)}
+.tabs button:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px}
+main{position:relative;z-index:2}
+.wrap{max-width:80rem;margin-inline:auto}
+
+/* hero */
+.hero{min-height:min(90svh,880px);display:flex;flex-direction:column;justify-content:center;padding-block:calc(12vh + env(safe-area-inset-top,0px)) 8vh}
+.hero .bism{font-family:var(--f-ar);font-size:clamp(1.3rem,3.2vw,2rem);color:var(--gold-hi);direction:rtl;text-align:left;line-height:1.8;opacity:0;animation:fadeBlur 1.6s .2s ease forwards}
+.hero h1{margin:.2rem 0 0;font-family:var(--f-display);font-weight:400;font-size:clamp(3.3rem,13vw,9.6rem);line-height:1.25}
+.hero .mask{display:block;overflow:hidden;padding-block:.06em}
+.hero .line{display:inline-block;transform:translateY(110%);animation:rise 1.5s .45s cubic-bezier(.16,.84,.24,1) forwards;
+  background:linear-gradient(100deg,var(--parch) 18%,var(--gold-hi) 42%,#fffaf0 50%,var(--gold-hi) 58%,var(--parch) 82%);background-size:260% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation-name:rise,shimmer;animation-duration:1.5s,9s;animation-delay:.45s,2s;animation-iteration-count:1,infinite;animation-timing-function:cubic-bezier(.16,.84,.24,1),linear;animation-fill-mode:forwards,none}
+.hero .sal{font-family:var(--f-ar);font-size:.55em;margin-left:.15em}
+.hero .sub{font-family:var(--f-display);font-size:clamp(1.3rem,3.4vw,2.2rem);color:var(--gold-hi);margin:.4rem 0 0;opacity:0;animation:fadeBlur 1.4s 1.2s ease forwards}
+.hero .lead{max-width:34rem;margin:1.6rem 0 0;color:var(--parch);opacity:0;animation:fadeBlur 1.4s 1.5s ease forwards;text-shadow:0 2px 18px rgba(0,0,0,.6)}
+.cue{margin-top:2.4rem;display:inline-flex;align-items:center;gap:.9rem;color:var(--mute);font-size:.92rem;opacity:0;animation:fadeBlur 1.2s 2s ease forwards}
+.cue i{display:block;width:1px;height:46px;background:linear-gradient(var(--gold-hi),transparent);transform-origin:top;animation:cue 2.4s ease-in-out infinite}
+@keyframes rise{to{transform:translateY(0)}}
+@keyframes shimmer{to{background-position:-260% 0}}
+@keyframes fadeBlur{from{opacity:0;filter:blur(8px);transform:translateY(10px)}to{opacity:1;filter:blur(0);transform:none}}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+
+/* sections and panels */
+.sec{min-height:100svh;display:grid;align-items:center;padding-block:12vh}
+.sec.l .panel{justify-self:start}
+.sec.r .panel{justify-self:end}
+.panel{position:relative;width:100%;max-width:36rem;padding:clamp(1.4rem,3.2vw,2.6rem);background:linear-gradient(180deg,rgba(11,17,31,.74),rgba(8,12,22,.62));
+  -webkit-backdrop-filter:blur(16px) saturate(1.15);backdrop-filter:blur(16px) saturate(1.15);
+  border:1px solid var(--line);border-radius:6px;
+  box-shadow:0 40px 90px -40px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,235,190,.08);overflow:hidden}
+.eb{display:flex;align-items:center;gap:.8rem;color:var(--gold);font-size:.92rem;line-height:1.5;margin:0 0 .6rem}
+.eb::before{content:"";width:2.2rem;height:1px;background:var(--gold);flex:none}
+.panel h2{font-family:var(--f-display);font-weight:400;font-size:clamp(1.9rem,4.6vw,3.1rem);line-height:1.3;margin:0 0 1rem;color:var(--parch);text-wrap:balance}
+.panel p{margin:0 0 1rem}
+.panel p.lead{color:var(--parch)}
+.small{font-size:.88rem;color:var(--mute);line-height:1.8}
+.ghost{position:absolute;right:1rem;top:-.6rem;font-family:var(--f-ar);font-size:clamp(5rem,12vw,8rem);line-height:1.3;color:var(--gold);opacity:.1;pointer-events:none;direction:rtl}
+
+.facts{margin:1.4rem 0 0}
+.facts div{display:grid;grid-template-columns:6.4rem minmax(0,1fr);gap:1rem;padding:.75rem 0;border-top:1px solid rgba(216,178,106,.16)}
+.facts dt{color:var(--mute);font-size:.9rem}
+.facts dd{margin:0;color:var(--parch)}
+@media (max-width:520px){.facts div{grid-template-columns:1fr;gap:.1rem}}
+
+.ev{list-style:none;margin:1.4rem 0 0;padding:0;display:grid;gap:0}
+.ev li{display:grid;grid-template-columns:5.4rem minmax(0,1fr);gap:1.1rem;padding:1rem 0;border-top:1px solid rgba(216,178,106,.16)}
+.chip{align-self:start;justify-self:start;font-size:.82rem;line-height:1.5;color:var(--gold-hi);border:1px solid var(--line);border-radius:3px;padding:.15rem .5rem;text-align:center;min-width:4.6rem}
+.ev h3{margin:0 0 .25rem;font-weight:600;font-size:1.1rem;line-height:1.6;color:var(--parch)}
+.ev p{margin:0;font-size:.97rem;line-height:1.9;color:#d9d3c5}
+@media (max-width:520px){.ev li{grid-template-columns:1fr;gap:.4rem}}
+
+.era{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1rem;margin:1.4rem 0 .4rem}
+.era b{display:block;font-family:var(--f-display);font-weight:400;font-size:clamp(1.8rem,4.6vw,2.6rem);line-height:1.3;color:var(--gold-hi)}
+.era span{display:block;font-size:.85rem;color:var(--mute)}
+.era em{font-style:normal;color:var(--gold);font-size:1.4rem}
+
+/* lineage chain */
+.chain{--p:0;list-style:none;margin:1.8rem 0 0;padding:0 0 0 2.2rem;position:relative}
+.chain::before{content:"";position:absolute;left:.55rem;top:.7rem;bottom:.7rem;width:1px;background:rgba(216,178,106,.2)}
+.chain::after{content:"";position:absolute;left:.55rem;top:.7rem;bottom:.7rem;width:2px;margin-left:-.5px;background:linear-gradient(var(--gold-hi),var(--gold));transform-origin:top;transform:scaleY(var(--p));box-shadow:0 0 10px rgba(241,215,150,.55)}
+.chain li{position:relative;padding:.3rem 0 .85rem}
+.chain li::before{content:"";position:absolute;left:-1.95rem;top:.95rem;width:9px;height:9px;border-radius:50%;background:var(--ink);border:1px solid rgba(216,178,106,.55);transition:background .5s,box-shadow .5s,border-color .5s}
+.chain li.on::before{background:var(--gold-hi);border-color:var(--gold-hi);box-shadow:0 0 12px 2px rgba(241,215,150,.7)}
+.nm{display:block;font-family:var(--f-display);font-size:1.3rem;line-height:1.55;color:var(--parch)}
+.nt{display:block;font-size:.88rem;line-height:1.7;color:var(--mute)}
+.chain .key .nm{color:var(--gold-hi)}
+.chain .gap .nm{font-family:var(--f-body);font-size:.95rem;color:var(--mute);font-style:italic}
+.chain .final .nm{font-size:2rem;color:var(--gold-hi)}
+.branch{margin-top:.7rem;padding:.8rem 1rem;border:1px dashed rgba(47,174,131,.55);border-radius:4px;font-size:.92rem;line-height:1.9;color:#cfd7e6}
+.branch b{color:var(--emerald);font-weight:600;display:block}
+.branch .st{white-space:nowrap}
+.branch .st+.st::before{content:"›";margin:0 .45rem;color:var(--emerald)}
+
+.notes{list-style:none;margin:1.2rem 0 1.4rem;padding:0;display:grid;gap:.2rem}
+.notes li{padding:.8rem 0;border-top:1px solid rgba(216,178,106,.16);font-size:.97rem;line-height:1.9;color:#d9d3c5}
+.notes b{color:var(--gold-hi);font-weight:600}
+
+.sign{font-family:var(--f-ar);direction:rtl;font-size:1.7rem;color:var(--gold-hi);text-align:center;line-height:2;margin:1.4rem 0 .2rem}
+.end{padding:8vh 0 calc(10vh + env(safe-area-inset-bottom,0px));text-align:center;color:var(--mute);font-size:.85rem;line-height:1.9}
+
+/* reveal */
+.rv{opacity:.55;transform:translateY(26px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .hero .bism,.hero .sub,.hero .lead,.cue{animation:none;opacity:1}
+  .hero .line{animation:none;transform:none}
+  .cue i{animation:none}
+}
+@media (max-width:900px){
+  .sec{align-items:end;padding-block:30vh 8vh}
+  .panel{max-width:none;background:linear-gradient(180deg,rgba(11,17,31,.82),rgba(8,12,22,.76))}
+  .hero{justify-content:flex-end}
+}
+
+/* timeline */
+.tlp{max-width:42rem}
+.tl-legend{display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;align-items:center;margin:1.2rem 0 .4rem;font-size:.88rem;line-height:1.6;color:var(--mute)}
+.lg{display:inline-flex;align-items:center;gap:.5rem}
+.lg-dot,.lg-dia{width:11px;height:11px;flex:none;display:inline-block}
+.lg-dot{border-radius:50%;background:var(--gold)}
+.lg-dia{transform:rotate(45deg) scale(.9);border:1.5px dashed var(--emerald)}
+.tl-filter{font:inherit;font-size:.85rem;line-height:1.4;color:var(--parch);background:rgba(9,14,26,.55);border:1px solid var(--line);border-radius:999px;padding:.5rem .95rem;min-height:44px;cursor:pointer}
+.tl-filter[aria-pressed="true"]{border-color:var(--emerald);color:var(--emerald)}
+.tl{--fill:0px;list-style:none;margin:1.6rem 0 0;padding:0 0 0 2.4rem;position:relative}
+.tl::before,.tl::after{content:"";position:absolute;left:.6rem;top:.4rem}
+.tl::before{bottom:.4rem;width:1px;background:rgba(216,178,106,.22)}
+.tl::after{width:2px;margin-left:-.5px;height:var(--fill);max-height:calc(100% - .8rem);background:linear-gradient(var(--gold-hi),var(--gold));box-shadow:0 0 10px rgba(241,215,150,.5);transition:height .6s ease}
+.tl-era{display:flex;align-items:baseline;flex-wrap:wrap;gap:.2rem .8rem;margin:1.6rem 0 .2rem;line-height:1.6}
+.tl-era b{font-family:var(--f-display);font-weight:400;font-size:1.15rem;color:var(--gold-hi)}
+.tl-era span{font-size:.82rem;color:var(--mute)}
+.tl-i{position:relative;border-top:1px solid rgba(216,178,106,.14);transition:opacity .3s}
+.tl-node{position:absolute;left:-1.8rem;top:1.15rem;width:11px;height:11px;margin-left:-5.5px;border-radius:50%;background:var(--ink);border:1px solid rgba(216,178,106,.6);transition:background .5s,box-shadow .5s,border-color .5s}
+.tl-i.dis .tl-node{width:10px;height:10px;border-radius:2px;transform:rotate(45deg);border:1.5px dashed var(--emerald)}
+.tl-i.open .tl-node{background:var(--gold-hi);border-color:var(--gold-hi);box-shadow:0 0 12px 2px rgba(241,215,150,.65)}
+.tl-i.dis.open .tl-node{background:var(--emerald);border-style:solid;border-color:#7be0bd;box-shadow:0 0 12px 2px rgba(47,174,131,.6)}
+.tl-h{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"w c" "t c";gap:.1rem .8rem;align-items:center;width:100%;min-height:44px;padding:.8rem 0;text-align:left;font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.tl-when{grid-area:w;font-size:.82rem;line-height:1.7;color:var(--gold)}
+.tl-flag{margin-left:.6rem;padding:.05rem .4rem;font-size:.75rem;color:var(--emerald);border:1px dashed rgba(47,174,131,.6);border-radius:3px;white-space:nowrap}
+.tl-t{grid-area:t;font-family:var(--f-display);font-size:1.25rem;line-height:1.5;color:var(--parch)}
+.tl-chev{grid-area:c;width:1.6rem;text-align:center;font-size:1.3rem;line-height:1;color:var(--gold);transition:transform .4s}
+.tl-i.open .tl-chev{transform:rotate(45deg)}
+.tl-i:not(.open) .tl-t{color:#c9c3b5}
+.tl-b{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s cubic-bezier(.2,.7,.2,1)}
+.tl-i.open .tl-b{grid-template-rows:1fr}
+.tl-bi{min-height:0;overflow:hidden;visibility:hidden;opacity:0;transition:opacity .5s ease .05s,visibility 0s .55s}
+.tl-i.open .tl-bi{visibility:visible;opacity:1;transition-delay:.05s,0s}
+.tl-bi p{margin:0 0 .7rem;font-size:.97rem;line-height:1.9;color:#d9d3c5}
+.tl-dis{margin:.2rem 0 .8rem;padding:.7rem .9rem;border:1px dashed rgba(47,174,131,.55);border-radius:4px;font-size:.92rem;line-height:1.85;color:#cfd7e6}
+.tl-dis b{display:block;color:var(--emerald);font-weight:600}
+.tl-more{display:inline-block;margin:0 0 .9rem;font-size:.88rem;color:var(--gold-hi);text-underline-offset:3px}
+.tl.hl .tl-i:not(.dis){opacity:.35}
+html:not(.tl-js) .tl-b{grid-template-rows:1fr}
+html:not(.tl-js) .tl-bi{visibility:visible;opacity:1}
+@media (prefers-reduced-motion:reduce){.tl-b,.tl-bi,.tl::after,.tl-chev{transition:none}}
+</style>
+
+<canvas id="stage" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<!-- অ্যাক্সেসিবিলিটি -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap">
+<style>
+html{font-size:calc(16px*var(--a-fs,1))}
+body{font-size:calc(17px*var(--a-fs,1))}
+html.a-lh main,html.a-lh main p,html.a-lh main li{line-height:2.35}
+html.a-font{--f-display:'Noto Sans Bengali','Hind Siliguri',system-ui,sans-serif;--f-body:'Noto Sans Bengali','Hind Siliguri',system-ui,sans-serif}
+html.a-hc{--night:#000;--ink:#000;--gold:#ffd24a;--gold-hi:#ffe27a;--parch:#fff;--mute:#f0f0f0;--emerald:#5df0b5;--line:rgba(255,226,122,.85);--glass:rgba(0,0,0,.94)}
+html.a-hc body{background:#000}
+html.a-hc .grain,html.a-hc .veil{display:none}
+html.a-hc .msgs li{background:#000}
+html.a-hc .ctl button,html.a-hc .wind{background:#000;border-color:var(--gold-hi)}
+html.a-ul a{text-decoration:underline!important;text-underline-offset:3px;text-decoration-thickness:2px}
+html.a-rm,html.a-rm *,html.a-rm *::before,html.a-rm *::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+.ctl{max-width:calc(100vw - 4.8rem)}
+.a11y-fab{position:fixed;z-index:26;left:max(12px,env(safe-area-inset-left,0px));bottom:max(12px,env(safe-area-inset-bottom,0px));width:3rem;height:3rem;padding:0;display:grid;place-items:center;border-radius:50%;border:1px solid rgba(241,215,150,.55);background:rgba(7,11,20,.82);color:var(--gold-hi);cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.a11y-fab:focus-visible,.a11y-p button:focus-visible{outline:2px solid var(--gold-hi);outline-offset:2px}
+.a11y-p{position:fixed;z-index:31;left:max(12px,env(safe-area-inset-left,0px));bottom:calc(3rem + 22px + env(safe-area-inset-bottom,0px));width:min(21rem,calc(100vw - 24px));max-height:calc(100svh - 110px);overflow:auto;background:rgba(7,11,20,.97);border:1px solid rgba(241,215,150,.4);border-radius:14px;padding:1rem 1.1rem 1.1rem;font-size:.95rem;line-height:1.6;color:var(--parch)}
+.a11y-p[hidden]{display:none}
+.a11y-p h2{margin:0 0 .7rem;font-family:var(--f-display);font-weight:400;font-size:1.2rem;color:var(--gold-hi);line-height:1.4}
+.a11y-row{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin:.55rem 0}
+.a11y-row>span{flex:1}
+.a11y-p button{font:inherit;font-size:.9rem;line-height:1.3;padding:.45rem .8rem;min-height:2.5rem;border-radius:999px;border:1px solid rgba(241,215,150,.35);background:rgba(255,255,255,.04);color:var(--parch);cursor:pointer}
+.a11y-p button[aria-pressed=true]{background:var(--gold);color:#1a1405;border-color:var(--gold-hi)}
+.a11y-fs{display:flex;align-items:center;gap:.4rem}
+.a11y-fs output{min-width:3.2rem;text-align:center;font-size:.9rem}
+.a11y-reset{width:100%;margin-top:.6rem}
+</style>
+<button type="button" class="a11y-fab" id="a11yBtn" aria-haspopup="dialog" aria-expanded="false" aria-controls="a11yP" aria-label="অ্যাক্সেসিবিলিটি সেটিংস" title="অ্যাক্সেসিবিলিটি">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4.6" r="1.9"/><path d="M4.5 8.6c4.6 1.3 10.4 1.3 15 0"/><path d="M12 8.9v5.1"/><path d="M12 14l-3.2 6"/><path d="M12 14l3.2 6"/></svg>
+</button>
+<div class="a11y-p" id="a11yP" role="dialog" aria-label="অ্যাক্সেসিবিলিটি সেটিংস" hidden>
+  <h2>পড়ার সুবিধা</h2>
+  <div class="a11y-row"><span id="a11yFsL">লেখার আকার</span>
+    <div class="a11y-fs" role="group" aria-labelledby="a11yFsL">
+      <button type="button" id="a11yMinus" aria-label="লেখা ছোট করুন">A−</button>
+      <output id="a11yFsV" aria-live="polite">১০০%</output>
+      <button type="button" id="a11yPlus" aria-label="লেখা বড় করুন">A+</button>
+    </div></div>
+  <div class="a11y-row"><span>লাইনের ফাঁক বাড়ান</span><button type="button" data-k="lh" aria-pressed="false">বন্ধ</button></div>
+  <div class="a11y-row"><span>সহজ সাদামাটা ফন্ট</span><button type="button" data-k="font" aria-pressed="false">বন্ধ</button></div>
+  <div class="a11y-row"><span>উচ্চ কনট্রাস্ট</span><button type="button" data-k="hc" aria-pressed="false">বন্ধ</button></div>
+  <div class="a11y-row"><span>লিংকে দাগ দিন</span><button type="button" data-k="ul" aria-pressed="false">বন্ধ</button></div>
+  <div class="a11y-row"><span>নড়াচড়া কমান</span><button type="button" data-k="rm" aria-pressed="false">বন্ধ</button></div>
+  <button type="button" class="a11y-reset" id="a11yReset">সব আগের মতো করুন</button>
+</div>
+<script>
+(function(){
+var root=document.documentElement,KEY='sirat-a11y',btn=document.getElementById('a11yBtn'),p=document.getElementById('a11yP');
+if(!btn||!p){return;}
+var S={fs:100,lh:0,font:0,hc:0,ul:0,rm:0},STEPS=[90,100,115,130,150,175,200];
+try{var o=JSON.parse(localStorage.getItem(KEY)||'{}')||{};for(var k in S){if(o[k]!==undefined){S[k]=o[k];}}}catch(e){}
+if(STEPS.indexOf(S.fs)<0){S.fs=100;}
+var bn=function(n){return String(n).replace(/\d/g,function(d){return '০১২৩৪৫৬৭৮৯'[d];});};
+function apply(){
+  root.style.setProperty('--a-fs',S.fs/100);
+  ['lh','font','hc','ul','rm'].forEach(function(k){root.classList.toggle('a-'+k,!!S[k]);var b=p.querySelector('[data-k="'+k+'"]');b.setAttribute('aria-pressed',S[k]?'true':'false');b.textContent=S[k]?'চালু':'বন্ধ';});
+  document.getElementById('a11yFsV').textContent=bn(S.fs)+'%';
+  document.getElementById('a11yMinus').disabled=S.fs<=STEPS[0];
+  document.getElementById('a11yPlus').disabled=S.fs>=STEPS[STEPS.length-1];
+  try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}
+  window.dispatchEvent(new Event('resize'));
+}
+function openP(o){p.hidden=!o;btn.setAttribute('aria-expanded',o?'true':'false');if(o){p.querySelector('button').focus();}}
+btn.addEventListener('click',function(){openP(p.hidden);});
+document.getElementById('a11yMinus').addEventListener('click',function(){var i=STEPS.indexOf(S.fs);if(i>0){S.fs=STEPS[i-1];apply();}});
+document.getElementById('a11yPlus').addEventListener('click',function(){var i=STEPS.indexOf(S.fs);if(i<STEPS.length-1){S.fs=STEPS[i+1];apply();}});
+p.querySelectorAll('[data-k]').forEach(function(b){b.addEventListener('click',function(){var k=b.dataset.k;S[k]=S[k]?0:1;apply();});});
+document.getElementById('a11yReset').addEventListener('click',function(){S={fs:100,lh:0,font:0,hc:0,ul:0,rm:0};apply();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!p.hidden){e.stopPropagation();openP(false);btn.focus();}},true);
+document.addEventListener('pointerdown',function(e){if(!p.hidden&&!e.target.closest('#a11yP,#a11yBtn')){openP(false);}});
+apply();
+})();
+</script>
+<div class="ctl" role="group" aria-label="ত্রিমাত্রিক দৃশ্যের নিয়ন্ত্রণ">
+  <button type="button" id="cExp" class="need3d" aria-pressed="false">৩ডি ঘুরিয়ে দেখুন</button>
+  <button type="button" id="cTime" class="need3d" aria-pressed="false" title="আকাশের সময় বদলান">আকাশ: স্বয়ংক্রিয়</button>
+  <button type="button" id="cWx" class="need3d" aria-pressed="false" title="মেঘ বা বালুঝড় চালান">আবহাওয়া: পরিষ্কার</button>
+  <button type="button" id="cLite" aria-pressed="false" title="বদলালে পেজ নতুন করে লোড হবে">হালকা মোড</button>
+  <button type="button" id="c3d" aria-pressed="false">৩ডি বন্ধ</button>
+</div>
+<div class="icard" id="icard" role="dialog" aria-live="polite" hidden></div>
+
+<header class="top">
+  <a class="brand" href="#hero" aria-label="শুরুতে ফিরুন">
+    <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 3.2A9 9 0 1 0 20.8 15 7.2 7.2 0 0 1 15.5 3.2Z" fill="currentColor"/></svg>
+    <span>সীরাত</span>
+  </a>
+  <span class="chap" id="chap">সীরাত</span>
+  <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+</header>
+<nav class="dots" id="dots" aria-label="অধ্যায়"></nav>
+
+<div class="windbar" id="windbar" hidden>
+  <div class="windpanel" id="windPanel" role="group" aria-label="পরিবেশের সুরের নিয়ন্ত্রণ" hidden>
+    <label class="wv"><span>শব্দের মাত্রা</span><input type="range" id="windVol" min="0" max="100" step="1" value="100"><output id="windVolOut" for="windVol">১০০%</output></label>
+    <div class="wl" id="windLayers">
+      <button type="button" data-l="w" aria-pressed="true">মরুর হাওয়া</button>
+      <button type="button" data-l="n" aria-pressed="true">রাতের নীরবতা</button>
+      <button type="button" data-l="c" aria-pressed="true">ঝিঁঝিঁ</button>
+      <button type="button" data-l="k" aria-pressed="true">ভিড়ের গুঞ্জন</button>
+    </div>
+    <p class="wh">বন্ধ করা সুর কোনো দৃশ্যেই বাজবে না।</p>
+  </div>
+  <div class="windrow">
+    <button type="button" class="wind" id="wind" aria-pressed="false"><span id="windIc" aria-hidden="true">🔇</span><span id="windTx">পরিবেশের সুর: বন্ধ</span><span id="windMood" class="mood" aria-live="polite"></span></button>
+    <button type="button" class="windset" id="windSet" aria-expanded="false" aria-controls="windPanel" aria-label="সুরের নিয়ন্ত্রণ" title="সুরের নিয়ন্ত্রণ"><span aria-hidden="true">⚙</span></button>
+  </div>
+</div>
+<main>
+<div class="wrap">
+
+<section class="hero" id="hero" data-scene="0" data-label="সীরাত">
+  <div class="bism" lang="ar" aria-label="বিসমিল্লাহির রাহমানির রাহিম">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+  <h1><span class="mask"><span class="line">রাসূলুল্লাহ <span class="sal" lang="ar">ﷺ</span></span></span></h1>
+  <p class="sub">জীবন ও বংশপরিচয়</p>
+  <p class="lead">মক্কার মরুরাত থেকে মদিনার সবুজ গম্বুজের ভোর পর্যন্ত একটি যাত্রা। নিচে নামুন, আর তাঁর জীবনের পথ ধরে এগিয়ে চলুন।</p>
+  <div class="cue"><i></i><span>নিচে নামুন</span></div>
+</section>
+
+<section class="sec l" id="parichoy" data-scene="1" data-label="পরিচয়">
+  <div class="panel rv">
+    <p class="eb">মূল পরিচিতি</p>
+    <h2>মুহাম্মদ ইবনে আবদুল্লাহ</h2>
+    <p class="lead">নবুয়তের আগেই কুরাইশরা তাঁকে ‘আল-আমিন’ বলে ডাকত, অর্থাৎ বিশ্বাসী।</p>
+    <dl class="facts">
+      <div><dt>পূর্ণ নাম</dt><dd>মুহাম্মদ ইবনে আবদুল্লাহ ইবনে আবদুল মুত্তালিব (হাশিমি, কুরাইশি)</dd></div>
+      <div><dt>উপাধি</dt><dd>আল-আমিন (বিশ্বাসী) ও আস-সাদিক (সত্যবাদী)</dd></div>
+      <div><dt>জন্ম</dt><dd>১২ রবিউল আউয়াল, হস্তী বছরের কাছাকাছি সময়ে; আনুমানিক ৫৭০ খ্রিস্টাব্দ *</dd></div>
+      <div><dt>জন্মস্থান</dt><dd>মক্কা নগরী, আরব উপদ্বীপ</dd></div>
+      <div><dt>ইন্তেকাল</dt><dd>১২ রবিউল আউয়াল, ১১ হিজরি (৬৩২ খ্রিস্টাব্দ); বয়স আনুমানিক ৬৩ বছর *</dd></div>
+      <div><dt>রওজা মুবারক</dt><dd>মসজিদে নববী, মদিনা মুনাওয়ারা</dd></div>
+    </dl>
+    <p class="small" style="margin:1rem 0 0">* তারিখ নিয়ে ঐতিহাসিকদের মধ্যে কিছু মতভেদ আছে। প্রসিদ্ধ মতটি এখানে দেওয়া হয়েছে; বিস্তারিত একেবারে নিচে।</p>
+  </div>
+</section>
+
+<section class="sec r" id="bongsho" data-scene="2" data-label="বংশধারা">
+  <div class="panel">
+    <p class="eb rv">বংশপরিচয়</p>
+    <h2 class="rv">পবিত্র বংশধারা</h2>
+    <p class="lead rv">ওপর থেকে নিচে নামুন। প্রতিটি নাম এক এক পুরুষ, সবশেষে মুহাম্মদ (সা.)।</p>
+    <p class="small rv">আদনান পর্যন্ত ধারাটি সর্বসম্মত। আদনান থেকে ইসমাইল (আ.) ও ইবরাহিম (আ.) পর্যন্ত নামের তালিকা নিয়ে মতভেদ থাকায় মাঝের নামগুলো বাদ রাখা হয়েছে।</p>
+    <ol class="chain" id="chain">
+      <li class="key"><span class="nm">ইবরাহিম (আ.)</span></li>
+      <li class="key"><span class="nm">ইসমাইল (আ.)</span><span class="nt">ইবরাহিম (আ.)-এর পুত্র</span></li>
+      <li class="gap"><span class="nm">মধ্যবর্তী কয়েক পুরুষ</span><span class="nt">নামের সংখ্যা ও ক্রমে ঐতিহাসিকদের মতভেদ আছে</span></li>
+      <li class="key"><span class="nm">আদনান</span><span class="nt">এখান থেকে নিচের ধারা সর্বসম্মত</span></li>
+      <li><span class="nm">মাআদ</span></li>
+      <li><span class="nm">নিযার</span></li>
+      <li><span class="nm">মুদার</span></li>
+      <li><span class="nm">ইলিয়াস</span></li>
+      <li><span class="nm">মুদরিকাহ</span></li>
+      <li><span class="nm">খুযাইমা</span></li>
+      <li><span class="nm">কিনানাহ</span></li>
+      <li><span class="nm">আন-নাদর</span></li>
+      <li><span class="nm">মালিক</span></li>
+      <li class="key"><span class="nm">ফিহর</span><span class="nt">‘কুরাইশ’ নামে পরিচিত; তাঁর বংশধররাই কুরাইশ গোত্র</span></li>
+      <li><span class="nm">গালিব</span></li>
+      <li><span class="nm">লুয়াই</span></li>
+      <li><span class="nm">কাব</span></li>
+      <li><span class="nm">মুররাহ</span></li>
+      <li class="key"><span class="nm">কিলাব</span><span class="nt">পিতা ও মাতা, দুজনের বংশধারা এখানে এসে মিলেছে</span>
+        <div class="branch"><b>মাতৃবংশ</b><span class="st">যুহরা</span><span class="st">আবদ মানাফ</span><span class="st">ওয়াহব</span><span class="st">আমিনা (রা.)</span></div>
+      </li>
+      <li><span class="nm">কুসাই</span></li>
+      <li><span class="nm">আবদ মানাফ</span></li>
+      <li class="key"><span class="nm">হাশিম</span><span class="nt">তাঁর নামেই ‘বনি হাশিম’ গোত্র</span></li>
+      <li class="key"><span class="nm">আবদুল মুত্তালিব</span><span class="nt">‘শায়বা’ নামেও পরিচিত</span></li>
+      <li class="key"><span class="nm">আবদুল্লাহ</span><span class="nt">রাসূলুল্লাহ (সা.)-এর জন্মের আগেই ইন্তেকাল করেন</span></li>
+      <li class="final"><span class="nm">মুহাম্মদ (সা.)</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec l" id="jonmo" data-scene="3" data-label="মক্কা · ৫৭০ খ্রি.">
+  <div class="panel">
+    <p class="eb rv">জন্ম ও শৈশব</p>
+    <h2 class="rv">মক্কার এতিম শিশু</h2>
+    <p class="lead rv">আনুমানিক ৫৭০ খ্রিস্টাব্দে, হস্তী বছরের কাছাকাছি সময়ে মক্কায় তাঁর জন্ম।</p>
+    <ol class="ev">
+      <li class="rv"><span class="chip">জন্মের আগে</span><div><h3>পিতৃহারা</h3><p>তিনি জন্ম নেওয়ার আগেই, মায়ের গর্ভকালীন সময়ে, পিতা আবদুল্লাহ ইন্তেকাল করেন।</p></div></li>
+      <li class="rv"><span class="chip">৪–৫ বছর</span><div><h3>দুধমাতার কোলে</h3><p>প্রথা অনুযায়ী তাঁকে মরুভূমির বনি সা‘দ গোত্রে দুধমাতা হালিমা সাদিয়া (রা.)-এর কাছে পাঠানো হয়। ৪–৫ বছর বয়স পর্যন্ত সেখানেই লালিত-পালিত হন।</p></div></li>
+      <li class="rv"><span class="chip">৬ বছর</span><div><h3>মাতৃবিয়োগ</h3><p>মা আমিনার সাথে মদিনা থেকে ফেরার পথে ‘আবওয়া’ নামক স্থানে মা ইন্তেকাল করেন।</p></div></li>
+      <li class="rv"><span class="chip">এরপর</span><div><h3>অভিভাবক</h3><p>প্রথমে দাদা আবদুল মুত্তালিব, তাঁর ইন্তেকালের পর চাচা আবু তালিব তাঁর লালন-পালনের দায়িত্ব নেন।</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec r" id="joubon" data-scene="4" data-label="মক্কা · যৌবন">
+  <div class="panel">
+    <div class="ghost" aria-hidden="true" lang="ar">ٱلْأَمِين</div>
+    <p class="eb rv">যুবক বয়স</p>
+    <h2 class="rv">আল-আমিন</h2>
+    <p class="lead rv">নবুয়তের আগের বছরগুলোতেও তাঁর সততা ও আমানতদারি মক্কার মানুষের মুখে মুখে ফিরত।</p>
+    <ol class="ev">
+      <li class="rv"><span class="chip">যৌবনে</span><div><h3>ব্যবসা ও সততা</h3><p>চাচা আবু তালিবের সাথে ব্যবসায় অংশ নেন। সত্যবাদিতা ও আমানতদারির কারণে কুরাইশরা তাঁকে ‘আল-আমিন’ উপাধিতে ভূষিত করে।</p></div></li>
+      <li class="rv"><span class="chip">যৌবনে</span><div><h3>হিলফুল ফুদুল</h3><p>সমাজে শান্তি-শৃঙ্খলা ও নির্যাতিতদের অধিকার রক্ষার জন্য গঠিত ঐতিহাসিক শান্তিচুক্তি ‘হিলফুল ফুদুল’-এ সক্রিয় ভূমিকা রাখেন।</p></div></li>
+      <li class="rv"><span class="chip">২৫ বছর</span><div><h3>বিবাহ</h3><p>তৎকালীন সম্ভ্রান্ত ও ধনাঢ্য ব্যবসায়ী নারী খাদিজা (রা.)-এর সাথে বিবাহবন্ধনে আবদ্ধ হন।</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec l" id="nobuyot" data-scene="5" data-label="হেরা · ৬১০ খ্রি.">
+  <div class="panel">
+    <div class="ghost" aria-hidden="true" lang="ar">ٱقْرَأْ</div>
+    <p class="eb rv">নবুয়ত · মক্কী জীবন</p>
+    <h2 class="rv">প্রথম ওহি</h2>
+    <p class="lead rv">৪০ বছর বয়সে, আনুমানিক ৬১০ খ্রিস্টাব্দে, হেরা গুহায়। আলোর পাহাড় বলে পরিচিত সেই পাহাড়ের ওপর নেমে আসে প্রথম বাণী।</p>
+    <p class="small rv">নিচের ‘বছর’ গণনা নবুয়ত প্রাপ্তির পর থেকে।</p>
+    <ol class="ev">
+      <li class="rv"><span class="chip">৪০ বছর</span><div><h3>প্রথম ওহি</h3><p>জিবরাইল (আ.)-এর মাধ্যমে পবিত্র কুরআনের সূরা আলাকের প্রথম ৫ আয়াত নাজিল হয়।</p></div></li>
+      <li class="rv"><span class="chip">প্রথম ৩ বছর</span><div><h3>গোপন দাওয়াত</h3><p>গোপনে আল্লাহর ইবাদত ও ইসলামের দাওয়াত প্রচার করেন।</p></div></li>
+      <li class="rv"><span class="chip">এরপর</span><div><h3>প্রকাশ্য দাওয়াত</h3><p>প্রকাশ্যে দাওয়াত শুরু হলে কুরাইশদের পক্ষ থেকে তীব্র বিরোধিতা ও নির্যাতন শুরু হয়।</p></div></li>
+      <li class="rv"><span class="chip">১০ম বছর</span><div><h3>আমুল হুজন (দুঃখের বছর)</h3><p>নবুয়তের দশম বছরে চাচা আবু তালিব এবং প্রিয় স্ত্রী খাদিজা (রা.) ইন্তেকাল করেন।</p></div></li>
+      <li class="rv"><span class="chip">১২ বা ১৩ বছর</span><div><h3>মিরাজ</h3><p>নবুয়তের দ্বাদশ বা ত্রয়োদশ বছরে অলৌকিক ঘটনা হিসেবে মিরাজ সংঘটিত হয় এবং সালাত ফরজ হয়।</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec r" id="miraj" data-scene="6" data-label="ইসরা ও মিরাজ">
+  <div class="panel">
+    <p class="eb rv">মক্কী যুগের শেষ দিক · তারিখ নিয়ে মতভেদ আছে</p>
+    <h2 class="rv">ইসরা ও মিরাজ</h2>
+    <p class="rv">রাতের আকাশের এই দৃশ্য কল্পিত। আলোর রেখা যাত্রার দিক বোঝায়, আর সাতটি পাতলা বলয় আসমানের স্তরের প্রতীক। এতে কোনো প্রতিকৃতি বা বাহনের ছবি নেই।</p>
+    <ul class="msgs">
+      <li class="rv"><b>কুরআনে ইসরা।</b> আল্লাহ তাঁর বান্দাকে রাতের একাংশে মসজিদুল হারাম থেকে মসজিদুল আকসায় ভ্রমণ করান।<span class="src">সূরা ইসরা ১৭:১ · সূরা নাজমে সিদরাতুল মুনতাহার কাছে দর্শনের উল্লেখ আছে (৫৩:১৩–১৮), তবে আয়াতগুলোর ব্যাখ্যায় মুফাসসিরদের কিছু ভিন্নতা আছে</span></li>
+      <li class="rv"><b>হাদিসে বিবরণ।</b> বুরাকে আরোহণ, বাইতুল মাকদিসে যাত্রা, উর্ধ্বলোকে যাত্রা এবং নবীদের সঙ্গে সাক্ষাতের কথা সহিহ হাদিসে আছে।<span class="src">সহিহ মুসলিম ১৬৪, ২৩৭৫ · সহিহ বুখারি ৩৪৯</span></li>
+      <li class="rv"><b>পাঁচ ওয়াক্ত নামাজ।</b> এই রাতে নামাজ ফরজ হয়, প্রথমে পঞ্চাশ ওয়াক্ত, পরে মুসা (আ.)-এর পরামর্শে কমে পাঁচ ওয়াক্ত। আলেমরা এ বিষয়ে একমত।<span class="src">সহিহ বুখারি ৩৪৯ · ঐকমত্যের তথ্য আল-আজহারের ফতোয়া কমিটির সাবেক প্রধানের বক্তব্য থেকে</span></li>
+    </ul>
+    <p class="small rv"><b>যেসব বিষয়ে মতভেদ আছে (তাই নির্দিষ্ট করে লিখিনি):</b><br>১. <b>তারিখ।</b> ইবনে হাজার ফাতহুল বারীতে দশের বেশি মত উল্লেখ করেছেন। যুহরি ও উরওয়া রবিউল আউয়াল, সুদ্দি যিলকদ, আর অনেকে ২৭ রজবের কথা বলেছেন। ২৭ রজব জনপ্রিয়, তবে একাধিক আলেম বলেছেন, নির্ভরযোগ্য বর্ণনায় এ তারিখ প্রমাণিত নয়।<br>২. <b>সময়কাল।</b> অধিকাংশ আলেম এটিকে নবুয়তের পরের ঘটনা ধরেন। একটি বর্ণনাভেদে নবুয়তের আগের কথা এসেছে।<br>৩. <b>শুরুর স্থান।</b> মুসলিমের বর্ণনায় কাবার কাছে, বুখারির বর্ণনায় ঘরের ছাদ খুলে জিবরাইল (আ.)-এর আগমনের কথা আছে।<br>৪. <b>দেহ ও রুহ।</b> ইবনে কাসির জানান, জমহুর আলেমের মত হলো দেহ ও রুহ উভয় সহ। ভিন্নমতও আছে।</p>
+  </div>
+</section>
+
+<section class="sec r" id="hijrat" data-scene="6" data-label="হিজরত · ৬২২ খ্রি.">
+  <div class="panel">
+    <p class="eb rv">হিজরত</p>
+    <h2 class="rv">মক্কা থেকে মদিনা</h2>
+    <p class="lead rv">আল্লাহর আদেশে তিনি মক্কা ছেড়ে মদিনায় (তৎকালীন ইয়াসরিব) হিজরত করেন। হিজরি সনের গণনা শুরু হয় এই ঘটনা থেকেই।</p>
+    <div class="era rv" role="group" aria-label="৬২২ খ্রিস্টাব্দ, ১ হিজরি">
+      <div><b>৬২২</b><span>খ্রিস্টাব্দ</span></div>
+      <em aria-hidden="true">=</em>
+      <div><b>১</b><span>হিজরি</span></div>
+    </div>
+    <p class="small rv">ওপরের সোনালি আলোর পথটি মক্কা থেকে মদিনার দিকে যাত্রাপথের প্রতীক।</p>
+  </div>
+</section>
+
+<section class="sec l" id="madina" data-scene="7" data-label="মদিনা · ১–১১ হি.">
+  <div class="panel">
+    <p class="eb rv">মাদানী জীবন</p>
+    <h2 class="rv">সবুজ গম্বুজের শহর</h2>
+    <p class="lead rv">মদিনায় গড়ে ওঠে একটি নতুন সমাজ ও রাষ্ট্র। এখানকার প্রধান ঘটনাগুলো এই:</p>
+    <ol class="ev">
+      <li class="rv"><span class="chip">হিজরতের পর</span><div><h3>মদিনা সনদ</h3><p>মদিনার বিভিন্ন গোত্র, ইহুদি ও মুসলমানদের মধ্যে শান্তিশৃঙ্খলা ও সহাবস্থানের জন্য প্রণীত। অনেকেই একে বিশ্বের প্রথম লিখিত সংবিধান বলে থাকেন।</p></div></li>
+      <li class="rv"><span class="chip">২ হিজরি</span><div><h3>বদরের যুদ্ধ</h3><p>মুসলিম রাষ্ট্র রক্ষা ও আত্মরক্ষার্থে সংঘটিত প্রথম প্রধান যুদ্ধ।</p></div></li>
+      <li class="rv"><span class="chip">৩ হিজরি</span><div><h3>ওহুদের যুদ্ধ</h3><p>আত্মরক্ষার জন্য সংঘটিত আরেকটি প্রধান যুদ্ধ।</p></div></li>
+      <li class="rv"><span class="chip">৫ হিজরি</span><div><h3>খন্দকের যুদ্ধ</h3><p>মদিনা রক্ষার জন্য সংঘটিত প্রতিরক্ষামূলক যুদ্ধ।</p></div></li>
+      <li class="rv"><span class="chip">৬ হিজরি</span><div><h3>হুদায়বিয়ার সন্ধি</h3><p>এই বছর হুদায়বিয়ার সন্ধি স্বাক্ষরিত হয়।</p></div></li>
+      <li class="rv"><span class="chip">৮ হিজরি</span><div><h3>মক্কা বিজয়</h3><p>রক্তপাতহীনভাবে মক্কা বিজয় অর্জিত হয়।</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec r" id="juddho" data-scene="8" data-label="যুদ্ধ ও সন্ধি · ২–৬ হি.">
+  <div class="panel">
+    <p class="eb rv">স্থান-চিত্র · মদিনা-পর্ব (২–৬ হিজরি) ও তায়েফ (১০ নবুয়ত)</p>
+    <h2 class="rv">বদর, উহুদ, খন্দক, হুদাইবিয়া ও তায়েফ</h2>
+    <p class="small rv" style="margin:0">একটি ঘটনা বেছে নিন। বাঁ পাশের দৃশ্য সেই ঘটনার স্থান-চিত্রে বদলাবে। দৃশ্যগুলো কল্পিত, বাহিনীর সংখ্যা বা অবস্থানের হুবহু চিত্র নয়।</p>
+    <div class="tabs rv" role="group" aria-label="ঘটনা বাছাই">
+      <button type="button" data-w="0" aria-pressed="true">বদর</button>
+      <button type="button" data-w="1" aria-pressed="false">উহুদ</button>
+      <button type="button" data-w="2" aria-pressed="false">খন্দক</button>
+      <button type="button" data-w="3" aria-pressed="false">হুদাইবিয়া</button>
+      <button type="button" data-w="4" aria-pressed="false">তায়েফ</button>
+    </div>
+    <div class="minfo" id="winfo" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="sec l" id="fath" data-scene="8" data-label="মক্কা বিজয় · ৮ হি.">
+  <div class="panel">
+    <p class="eb rv">মক্কা বিজয় · রমজান, ৮ হিজরি</p>
+    <h2 class="rv">কাবার সামনে বিজয় ও ক্ষমা</h2>
+    <p class="rv">হিজরতের আঠারো বছর পর মুসলিম বাহিনী মক্কায় প্রবেশ করে। দৃশ্যে কাবার চারপাশে ছোট পাথুরে স্তম্ভগুলো মূর্তির প্রতীক। স্ক্রল করলে সেগুলো নুয়ে পড়ে।</p>
+    <ul class="msgs">
+      <li class="rv"><b>নিরাপত্তার ঘোষণা।</b> যে আবু সুফিয়ানের ঘরে প্রবেশ করবে, অস্ত্র ফেলবে অথবা দরজা বন্ধ করবে, সে নিরাপদ।<span class="src">সহিহ মুসলিম ১৭৮০ (আবু হুরায়রা রা.)</span></li>
+      <li class="rv"><b>কাবার মূর্তি।</b> তখন কাবার চারপাশে তিনশো ষাটটি মূর্তি ছিল। নবী (সা.) হাতের লাঠি দিয়ে আঘাত করতে করতে পড়ছিলেন: “সত্য এসেছে, মিথ্যা বিলীন হয়েছে” (সূরা ইসরা ১৭:৮১)।<span class="src">সহিহ বুখারি ৪২৮৭ (ইবনে মাসউদ রা.)</span></li>
+      <li class="rv"><b>ক্ষমার ঘোষণা।</b> ইউসুফ (আ.)-এর ভাষায় সবাইকে বলেন: আজ তোমাদের ওপর কোনো তিরস্কার নেই, আল্লাহ তোমাদের ক্ষমা করুন (সূরা ইউসুফ ১২:৯২)।<span class="src">বিবরণটি নাসাই কুবরা ১১২৩৪-এ পেয়েছি, সনদের মান যাচাই করিনি</span></li>
+    </ul>
+    <p class="small rv"><b>সূত্র নিয়ে সতর্কতা:</b> “যাও, তোমরা মুক্ত” বাক্যটি অনেক জায়গায় চলে, কিন্তু এর সহিহ সনদ আমি পাইনি, তাই লিখিনি। কিছু সংঘর্ষের কথা সীরাত-সূত্রে আছে, তাই “সম্পূর্ণ রক্তপাতহীন” বলিনি। বিজয় সন্ধির মাধ্যমে না বলপ্রয়োগে, তা নিয়ে ব্যাখ্যাকারদের মতভেদ আছে।</p>
+  </div>
+</section>
+
+<section class="sec r" id="arafat" data-scene="8" data-label="আরাফাত · ৯ যিলহজ, ১০ হি.">
+  <div class="panel">
+    <p class="eb rv">বিদায় হজ · ৯ যিলহজ, ১০ হিজরি</p>
+    <h2 class="rv">আরাফাতের ভাষণ</h2>
+    <p class="rv">সহিহ মুসলিমে (১২১৮) জাবির (রা.) বলেন, সূর্য ঢলে পড়ার পর রাসূলুল্লাহ (সা.) আরাফাতের উপত্যকার নিচু অংশে এসে লোকদের উদ্দেশে ভাষণ দেন। এখানে মূল বাণীগুলো ভাবানুবাদে দেওয়া হলো। প্রতিটির সূত্র নিচে আছে।</p>
+    <ul class="msgs">
+      <li class="rv"><b>জান-মালের পবিত্রতা।</b> তোমাদের রক্ত ও সম্পদ একে অপরের জন্য পবিত্র, ঠিক এই দিন, এই মাস ও এই শহরের পবিত্রতার মতো।<span class="src">সহিহ মুসলিম ১২১৮ · <em>আরাফাত</em></span></li>
+      <li class="rv"><b>জাহিলি প্রথা বাতিল, রক্তের বদলাও।</b> প্রথম যে দাবি তিনি বাতিল করেন, তা নিজ বংশেরই: রাবিআ ইবনুল হারিসের পুত্রের রক্তের দাবি।<span class="src">সহিহ মুসলিম ১২১৮ · <em>আরাফাত</em></span></li>
+      <li class="rv"><b>সুদ বাতিল।</b> জাহিলি যুগের সুদ রহিত। প্রথম যে সুদ তিনি রহিত করেন, তা নিজ চাচা আব্বাস ইবনে আবদুল মুত্তালিবের পাওনা।<span class="src">সহিহ মুসলিম ১২১৮ · <em>আরাফাত</em></span></li>
+      <li class="rv"><b>নারীদের অধিকার।</b> নারীদের ব্যাপারে আল্লাহকে ভয় করো। তোমরা তাদের আল্লাহর আমানত হিসেবে গ্রহণ করেছ।<span class="src">সহিহ মুসলিম ১২১৮ · <em>আরাফাত</em></span></li>
+      <li class="rv"><b>আল্লাহর কিতাব আঁকড়ে ধরা।</b> তিনি এমন কিছু রেখে যাচ্ছেন, যা দৃঢ়ভাবে ধরলে তারা কখনো পথভ্রষ্ট হবে না: আল্লাহর কিতাব।<span class="src">সহিহ মুসলিম ১২১৮ · <em>আরাফাত</em></span></li>
+      <li class="rv"><b>বার্তা পৌঁছানোর সাক্ষ্য।</b> “আমার সম্পর্কে তোমাদের জিজ্ঞেস করা হবে, তোমরা কী বলবে?” সবাই সাক্ষ্য দিল, তিনি বার্তা পৌঁছে দিয়েছেন ও দায়িত্ব পালন করেছেন।<span class="src">সহিহ মুসলিম ১২১৮ · <em>আরাফাত</em></span></li>
+      <li class="rv"><b>সব মানুষ সমান, শ্রেষ্ঠত্ব কেবল তাকওয়ায়।</b> আরবের ওপর অনারবের, অনারবের ওপর আরবের, সাদার ওপর কালোর বা কালোর ওপর সাদার কোনো শ্রেষ্ঠত্ব নেই, তাকওয়া ছাড়া।<span class="src">মুসনাদে আহমাদ ২৩৪৮৯ · সনদ সহিহ (শুআইব আরনাউত, আলবানি) · <em>মিনা, আইয়ামে তাশরীকের মাঝের দিন</em></span></li>
+      <li class="rv"><b>উপস্থিতরা অনুপস্থিতদের কাছে পৌঁছে দিক।</b> জান, মাল ও সম্মান পবিত্র। আমার পরে একে অপরের গলা কেটে কুফরির দিকে ফিরে যেয়ো না।<span class="src">সহিহ বুখারি ৬৭, ১৭৪১ · <em>মিনা, কুরবানির দিন</em></span></li>
+    </ul>
+    <p class="small rv"><b>সূত্র নিয়ে সতর্কতা:</b> পূর্ণ ভাষণ কোনো একটি বর্ণনায় নেই, বিভিন্ন সাহাবির বর্ণনায় টুকরো টুকরো এসেছে। শেষ দুটি বাণী আরাফাতে নয়, মিনায় বলা, তাই সূত্রের পাশে স্থান আলাদা করে দেওয়া হলো। “কিতাব ও সুন্নাহ” শব্দে প্রচলিত বর্ণনাটি আমি যাচাই করতে পারিনি, তাই নিইনি। মুসলিমের এই বর্ণনায় শুধু “আল্লাহর কিতাব” আছে। ভাষণ উপত্যকার নিচু অংশে হয়েছিল। পরে তিনি পাথরগুলোর কাছে অবস্থান করে বলেন, গোটা আরাফাতই অবস্থানের জায়গা।</p>
+  </div>
+</section>
+
+<section class="sec l" id="bidai" data-scene="8" data-label="বিদায় হজ · ১০ হি.">
+  <div class="panel">
+    <p class="eb rv">ইন্তেকাল</p>
+    <h2 class="rv">ইন্তেকাল ও রওজা</h2>
+    <ol class="ev">
+            <li class="rv"><span class="chip">১১ হিজরি</span><div><h3>ইন্তেকাল</h3><p>মদিনায় ফিরে আসার পর অসুস্থ হয়ে ১২ রবিউল আউয়াল (৬৩২ খ্রিস্টাব্দ) মহান রবের সান্নিধ্যে গমন করেন। বয়স আনুমানিক ৬৩ বছর।</p></div></li>
+      <li class="rv"><span class="chip">রওজা</span><div><h3>মসজিদে নববী</h3><p>মদিনা মুনাওয়ারার মসজিদে নববীতে তাঁর রওজা মুবারক। মসজিদের সবুজ গম্বুজ সেই স্থানের পরিচয় বহন করে।</p></div></li>
+    </ol>
+    <p class="sign rv" lang="ar">إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ</p>
+    <p class="small rv" style="text-align:center;margin:0">আমরা আল্লাহরই, আর তাঁর কাছেই ফিরে যাব।</p>
+  </div>
+</section>
+
+<section class="sec l" id="somoyrekha" data-scene="12" data-label="সময়রেখা · ৫৭০–৬৩২ খ্রি.">
+  <div class="panel tlp">
+    <p class="eb rv">এক নজরে পুরো জীবন</p>
+    <h2 class="rv">জন্ম থেকে ইন্তেকাল</h2>
+    <p class="lead rv">স্ক্রল করে নামলে একটি একটি করে ঘটনা খুলবে। যে কোনো ঘটনার ওপর চাপ দিয়েও খোলা বা বন্ধ করা যায়। ঘটনা খুললে পেছনের ত্রিমাত্রিক মানচিত্রে সেই স্থানটি জ্বলে উঠবে।</p>
+    <div class="tl-legend rv">
+      <span class="lg"><i class="lg-dot"></i>সময় প্রসিদ্ধ (আনুমানিক হলে ‘আনু.’ লেখা)</span>
+      <span class="lg"><i class="lg-dia"></i>তারিখ বা সময় নিয়ে মতভেদ আছে</span>
+      <button type="button" class="tl-filter" id="tlHl" aria-pressed="false">◇ মতভেদের ঘটনাগুলো হাইলাইট করুন</button>
+    </div>
+    <ol class="tl" id="tl">
+<li class="tl-era"><b>শৈশব ও যৌবন</b><span>আনু. ৫৭০–৬১০ খ্রি.</span></li>
+<li data-loc="makka" class="tl-i dis"><span class="tl-node" aria-hidden="true"></span><button type="button" class="tl-h" id="tlh0" aria-expanded="false" aria-controls="tlb0"><span class="tl-when">আনু. ৫৭০ খ্রি.<span class="tl-flag">◇ মতভেদ</span></span><span class="tl-t">জন্ম</span><span class="tl-chev" aria-hidden="true">+</span></button><div class="tl-b" id="tlb0" role="region" aria-labelledby="tlh0"><div class="tl-bi"><p>মক্কায়, হস্তী বছরের কাছাকাছি সময়ে, সোমবার। প্রসিদ্ধ মত অনুযায়ী তারিখ ১২ রবিউল আউয়াল।</p><div class="tl-dis"><b>◇ মতভেদ</b>১২ রবিউল আউয়াল সবচেয়ে প্রসিদ্ধ, তবে ৮ ও ৯ রবিউল আউয়ালসহ ভিন্ন মত আছে। সালও আনুমানিক; কেউ কেউ ৫৭১ বলেছেন।</div><a class="tl-more" href="#jonmo">বিস্তারিত অধ্যায়ে যান</a></div></div></li>
+<li data-loc="makka" class="tl-i dis"><span class="tl-node" aria-hidden="true"></span><button type="button" class="tl-h" id="tlh1" aria-expanded="false" aria-controls="tlb1"><span class="tl-when">জন্মের আগে থেকে ~৮ বছর<span class="tl-flag">◇ মতভেদ</span></span><span class="tl-t">এতিম শৈশব</span><span class="tl-chev" aria-hidden="true">+</span></button><div class="tl-b" id="tlb1" role="region" aria-labelledby="tlh1"><div class="tl-bi"><p>প্রসিদ্ধ বর্ণনায় জন্মের আগেই পিতা আবদুল্লাহ ইন্তেকাল করেন। ৬ বছর বয়সে ‘আবওয়া’য় মা আমিনার ইন্তেকাল হয়। এরপর দাদা আবদুল মুত্তালিব ও পরে চাচা আবু তালিব তাঁকে লালন-পালন করেন।</p><div class="tl-dis"><b>◇ মতভেদ</b>পিতার ইন্তেকাল জন্মের আগে না কিছুকাল পরে, আর দাদার ইন্তেকালের সময় তাঁর বয়স কত ছিল, এ নিয়ে সীরাত-বর্ণনায় ভিন্নতা আছে।</div><a class="tl-more" href="#jonmo">বিস্তারিত অধ্যায়ে যান</a></div></div></li>
+<li class="tl-era"><b>নবুয়ত ও মক্কী জীবন</b><span>আনু. ৬১০–৬২২ খ্রি.</span></li>
+<li data-loc="makka" class="tl-i"><span class="tl-node" aria-hidden="true"></span><button type="button" class="tl-h" id="tlh2" aria-expanded="false" aria-controls="tlb2"><span class="tl-when">২৫ বছর · আনু. ৫৯৫ খ্রি.</span><span class="tl-t">খাদিজা (রা.)-এর সঙ্গে বিবাহ</span><span class="tl-chev" aria-hidden="true">+</span></button><div class="tl-b" id="tlb2" role="region" aria-labelledby="tlh2"><div class="tl-bi"><p>সততার কারণে তিনি ‘আল-আমিন’ নামে পরিচিত ছিলেন। সম্ভ্রান্ত ব্যবসায়ী নারী খাদিজা (রা.)-এর সঙ্গে বিবাহবন্ধনে আবদ্ধ হন।</p><a class="tl-more" href="#joubon">বিস্তারিত অধ্যায়ে যান</a></div></div></li>
+<li data-loc="makka" class="tl-i"><span class="tl-node" aria-hidden="true"></span><button type="button" class="tl-h" id="tlh15" aria-expanded="false" aria-controls="tlb15"><span class="tl-when">আনু. ৩৫ বছর বয়সে</span><span class="tl-t">কাবা পুনর্নির্মাণ ও হাজরে আসওয়াদ</span><span class="tl-chev" aria-hidden="true">+</span></button><div class="tl-b" id="tlb15" role="region" aria-labelledby="tlh15"><div class="tl-bi"><p>সীরাত-সূত্রে প্রসিদ্ধ বিবরণ অনুযায়ী, কাবা পুনর্নির্মাণের সময় হাজরে আসওয়াদ কে বসাবে, তা নিয়ে কুরাইশ গোত্রগুলোর মধ্যে বিবাদ বাধে। তাঁর সালিশিতে একটি চাদরে পাথর রেখে সব গোত্র মিলে তা তোলে, আর তিনি নিজ হাতে স্থাপন করেন। বয়স আনুমানিক।</p></div></div></li>
+<li data-loc="makka" class="tl-i dis"><span class="tl-node" aria-hidden="true"></span><button type="button" class="tl-h" id="tlh3" aria-expanded="false" aria-controls="tlb3"><span class="tl-when">আনু. ৪০ বছর · ৬১০ খ্রি.<span class="tl-flag">◇ মতভেদ</span></span><span class="tl-t">প্রথম ওহি</span><span class="tl-chev" aria-hidden="true">+</span></button><div class="tl-b" id="tlb3" role="region" aria-labelledby="tlh3"><div class="tl-bi"><p>চল্লিশ বছর বয়সে হেরা গুহায় জিবরাইল (আ.)-এর মাধ্যমে সূরা আলাকের প্রথম আয়াতগুলো নাজিল হয়।</p><div class="tl-dis"><b>◇ মতভেদ</b>রমজান মাস প্রসিদ্ধ মত। রমজানের কোন তারিখে, তা নিয়ে একাধিক মত আছে।</div><a class="tl-more" href="#nobuyot">বিস্তারিত অধ্যায়ে যান</a></div></div></li>
+<li data-loc="makka" class="tl-i"><span class="tl-node" aria-hidden="true"></span><button type="button" class="tl-h" id="tlh4" aria-expanded="false" aria-controls="tlb4"><span class="tl-when">প্রথম ৩ বছরের পর</span><span class="tl-t">প্রকাশ্য দাওয়াত</span><span class="tl-chev" aria-hidden="true">+</span></button><div class="tl-b" id="tlb4" role="region" aria-labelledby="tlh4"><div class="tl-bi"><p>প্রথমে গোপনে দাওয়াত চলে। প্রকাশ্য দাওয়াত শুরু হলে কুরাইশদের বিরোধিতা ও নির্যাতন তীব্র হয়।</p><a class="tl-more" href="#nobuyot">বিস্তারিত অধ্যায়ে যান</a></div></div></li>
+<li data-loc="habasha" class="tl-i"><span class="tl-node" aria-hidden="true"></span><button type="button" class="tl-h" id="tlh16" aria-expanded="false" aria-controls="tlb16"><span class="tl-when">আনু. ৫ম নবুয়ত বছর · ৬১৫ খ্রি.</span><span class="tl-t">আবিসিনিয়ায় হিজরত</span><span class="tl-chev" aria-hidden="true">+</span></button><div class="tl-b" id="tlb16" role="region" aria-labelledby="tlh16"><div class="tl-bi"><p>নির্যাতন বাড়লে কিছু সাহাবি আবিসিনিয়ায় (হাবশা) আশ্রয় নেন। সেখানকার শাসক নাজাশি তাঁদের আশ্রয় দেন।</p></div></div></li>
+<li data-loc="makka" class="tl-i dis"><span class="tl-node" aria-hidden="true"></span><button type="button" class="tl-h" id="tlh5" aria-expanded="false" aria-controls="tlb5"><span class="tl-when">আনু. ৭ম–১০ম নবুয়ত বছর<span class="tl-flag">◇ মতভেদ</span></span><span class="tl-t">শি‘বে আবি তালিবে অবরোধ</span><span class="tl-chev" aria-hidden="true">+</span></button><div class="tl-b" id="tlb5" role="region" aria-labelledby="tlh5"><div class="tl-bi"><p>কুরাইশরা বনু হাশিম ও বনু মুত্তালিবের সঙ্গে লেনদেন ও বিবাহ বন্ধ করে দেয়। তাঁরা মক্কার একটি গিরিপথে কঠিন সময় কাটান।</p><div class="tl-dis"><b>◇ মতভেদ</b>অবরোধের শুরু ও সময়কাল নিয়ে বর্ণনাভেদ আছে; দুই থেকে তিন বছরের কথা পাওয়া যায়।</div></div></div></li>
+<li data-loc="makka" class="tl-i dis"><span class="tl-node" aria-hidden="true"></span><button type="button" class="tl-h" id="tlh6" aria-expanded="false" aria-controls="tlb6"><span class="tl-when">১০ম নবুয়ত বছর · আনু. ৬১৯ খ্রি.<span class="tl-flag">◇ মতভেদ</span></span><span class="tl-t">আমুল হুজন (দুঃখের বছর)</span><span class="tl-chev" aria-hidden="true">+</span></button><div class="tl-b" id="tlb6" role="region" aria-labelledby="tlh6"><div class="tl-bi"><p>চাচা আবু তালিব এবং প্রিয় স্ত্রী খাদিজা (রা.) ইন্তেকাল করেন।</p><div class="tl-dis"><b>◇ মতভেদ</b>দুজনের ইন্তেকালের আগে-পরে ও ব্যবধান নিয়ে বর্ণনাভেদ আছে।</div><a class="tl-more" href="#nobuyot">বিস্তারিত অধ্যায়ে যান</a></div></div></li>
+<li data-loc="taif" class="tl-i"><span class="tl-node" aria-hidden="true"></span><button type="button" class="tl-h" id="tlh17" aria-expanded="false" aria-controls="tlb17"><span class="tl-when">আনু. ১০ম নবুয়ত বছর</span><span class="tl-t">তায়েফ সফর</span><span class="tl-chev" aria-hidden="true">+</span></button><div class="tl-b" id="tlb17" role="region" aria-labelledby="tlh17"><div class="tl-bi"><p>দাওয়াত নিয়ে তায়েফে গেলে সেখানকার নেতারা তাঁকে প্রত্যাখ্যান করে এবং তাঁর ওপর নির্যাতন চালায়। সহিহ বুখারিতে এ ঘটনার উল্লেখ আছে।</p><a class="tl-more" href="#charitro">বিস্তারিত অধ্যায়ে যান</a></div></div></li>
+<li data-loc="makka" class="tl-i dis"><span class="tl-node" aria-hidden="true"></span><button type="button" class="tl-h" id="tlh7" aria-expanded="false" aria-controls="tlb7"><span class="tl-when">১২ বা ১৩ নবুয়ত বছর<span class="tl-flag">◇ মতভেদ</span></span><span class="tl-t">ইসরা ও মিরাজ</span><span class="tl-chev" aria-hidden="true">+</span></button><div class="tl-b" id="tlb7" role="region" aria-labelledby="tlh7"><div class="tl-bi"><p>রাতে মসজিদুল হারাম থেকে মসজিদুল আকসা ও সেখান থেকে ঊর্ধ্বলোকে যাত্রা। এই ঘটনায় পাঁচ ওয়াক্ত নামাজ ফরজ হয়।</p><div class="tl-dis"><b>◇ মতভেদ</b>তারিখ নিয়ে দশের বেশি মত আছে। ২৭ রজব জনপ্রিয়, তবে একাধিক আলেম বলেছেন নির্ভরযোগ্য সূত্রে তা প্রমাণিত নয়। নবুয়তের ১২ না ১৩ বছর, তা নিয়েও মতভেদ।</div><a class="tl-more" href="#miraj">বিস্তারিত অধ্যায়ে যান</a></div></div></li>
+<li class="tl-era"><b>মাদানী জীবন</b><span>১–১১ হিজরি · ৬২২–৬৩২ খ্রি.</span></li>
+<li data-loc="makka" class="tl-i dis"><span class="tl-node" aria-hidden="true"></span><button type="button" class="tl-h" id="tlh18" aria-expanded="false" aria-controls="tlb18"><span class="tl-when">১১–১৩ নবুয়ত বছর · হজের মৌসুম<span class="tl-flag">◇ মতভেদ</span></span><span class="tl-t">আকাবার বাইয়াত</span><span class="tl-chev" aria-hidden="true">+</span></button><div class="tl-b" id="tlb18" role="region" aria-labelledby="tlh18"><div class="tl-bi"><p>মদিনা থেকে আসা হজযাত্রীদের একটি অংশ ইসলাম গ্রহণ করে এবং একাধিক দফায় তাঁর প্রতি আনুগত্য ও সহযোগিতার প্রতিশ্রুতি দেয়। এতে মদিনায় হিজরতের পথ তৈরি হয়।</p><div class="tl-dis"><b>◇ মতভেদ</b>বাইয়াত কয়টি এবং কোনটি কোন বছরে, সীরাত-বর্ণনায় তা নিয়ে ভিন্নতা আছে।</div></div></div></li>
+<li data-loc="hijra" class="tl-i dis"><span class="tl-node" aria-hidden="true"></span><button type="button" class="tl-h" id="tlh8" aria-expanded="false" aria-controls="tlb8"><span class="tl-when">১ হিজরি · ৬২২ খ্রি.<span class="tl-flag">◇ মতভেদ</span></span><span class="tl-t">হিজরত</span><span class="tl-chev" aria-hidden="true">+</span></button><div class="tl-b" id="tlb8" role="region" aria-labelledby="tlh8"><div class="tl-bi"><p>সাওর গুহায় আশ্রয় নিয়ে আবু বকর (রা.)-এর সঙ্গে মক্কা থেকে মদিনার পথে যাত্রা। কুবা হয়ে মদিনায় পৌঁছান। হিজরি সনের গণনা এই ঘটনা থেকেই।</p><div class="tl-dis"><b>◇ মতভেদ</b>রবিউল আউয়ালে পৌঁছানো প্রসিদ্ধ; ৮ না ১২ তারিখ, তা নিয়ে মতভেদ আছে।</div><a class="tl-more" href="#hijrat">বিস্তারিত অধ্যায়ে যান</a></div></div></li>
+<li data-loc="madina" class="tl-i"><span class="tl-node" aria-hidden="true"></span><button type="button" class="tl-h" id="tlh19" aria-expanded="false" aria-controls="tlb19"><span class="tl-when">হিজরতের পর</span><span class="tl-t">মদিনা সনদ</span><span class="tl-chev" aria-hidden="true">+</span></button><div class="tl-b" id="tlb19" role="region" aria-labelledby="tlh19"><div class="tl-bi"><p>মদিনার বিভিন্ন গোত্র, ইহুদি ও মুসলমানদের মধ্যে শান্তিশৃঙ্খলা ও সহাবস্থানের জন্য প্রণীত। অনেকে একে বিশ্বের প্রথম লিখিত সংবিধান বলেন।</p><a class="tl-more" href="#madina">বিস্তারিত অধ্যায়ে যান</a></div></div></li>
+<li data-loc="madina" class="tl-i"><span class="tl-node" aria-hidden="true"></span><button type="button" class="tl-h" id="tlh20" aria-expanded="false" aria-controls="tlb20"><span class="tl-when">হিজরতের পর</span><span class="tl-t">মুহাজির-আনসারের ভ্রাতৃত্ব</span><span class="tl-chev" aria-hidden="true">+</span></button><div class="tl-b" id="tlb20" role="region" aria-labelledby="tlh20"><div class="tl-bi"><p>খালি হাতে আসা মুহাজিরদের সঙ্গে আনসারদের ভ্রাতৃত্বের বন্ধন গড়ে ওঠে। সহিহ বুখারিতে আবদুর রহমান ইবনে আওফ ও সা‘দ ইবনে রবী‘ (রা.)-এর ভ্রাতৃত্বের বিবরণ আছে।</p></div></div></li>
+<li data-loc="madina" class="tl-i dis"><span class="tl-node" aria-hidden="true"></span><button type="button" class="tl-h" id="tlh21" aria-expanded="false" aria-controls="tlb21"><span class="tl-when">২ হিজরি · আনু. ৬২৪ খ্রি.<span class="tl-flag">◇ মতভেদ</span></span><span class="tl-t">কিবলা পরিবর্তন</span><span class="tl-chev" aria-hidden="true">+</span></button><div class="tl-b" id="tlb21" role="region" aria-labelledby="tlh21"><div class="tl-bi"><p>নামাজের কিবলা বাইতুল মাকদিস থেকে কাবার দিকে ঘুরিয়ে দেওয়া হয় (সূরা বাকারা ২:১৪৪)।</p><div class="tl-dis"><b>◇ মতভেদ</b>হিজরতের কত মাস পর, তা নিয়ে ভিন্ন বর্ণনা আছে; ষোলো বা সতেরো মাসের কথা পাওয়া যায়।</div></div></div></li>
+<li data-loc="badr" class="tl-i dis"><span class="tl-node" aria-hidden="true"></span><button type="button" class="tl-h" id="tlh9" aria-expanded="false" aria-controls="tlb9"><span class="tl-when">২ হিজরি · আনু. ৬২৪ খ্রি.<span class="tl-flag">◇ মতভেদ</span></span><span class="tl-t">বদরের যুদ্ধ</span><span class="tl-chev" aria-hidden="true">+</span></button><div class="tl-b" id="tlb9" role="region" aria-labelledby="tlh9"><div class="tl-bi"><p>মুসলিম রাষ্ট্র রক্ষার্থে সংঘটিত প্রথম প্রধান যুদ্ধ। মুসলিমরা সংখ্যায় অনেক কম ছিলেন।</p><div class="tl-dis"><b>◇ মতভেদ</b>প্রসিদ্ধ মত ১৭ রমজান; ভিন্ন তারিখের বর্ণনাও আছে।</div><a class="tl-more" href="#juddho">বিস্তারিত অধ্যায়ে যান</a></div></div></li>
+<li data-loc="madina" class="tl-i"><span class="tl-node" aria-hidden="true"></span><button type="button" class="tl-h" id="tlh10" aria-expanded="false" aria-controls="tlb10"><span class="tl-when">৩ হিজরি · শাওয়াল · আনু. ৬২৫ খ্রি.</span><span class="tl-t">উহুদের যুদ্ধ</span><span class="tl-chev" aria-hidden="true">+</span></button><div class="tl-b" id="tlb10" role="region" aria-labelledby="tlh10"><div class="tl-bi"><p>মদিনার উত্তরে উহুদ পাহাড়ের পাদদেশে সংঘটিত। এই যুদ্ধে সত্তরজন সাহাবি শহীদ হন।</p><a class="tl-more" href="#juddho">বিস্তারিত অধ্যায়ে যান</a></div></div></li>
+<li data-loc="madina" class="tl-i dis"><span class="tl-node" aria-hidden="true"></span><button type="button" class="tl-h" id="tlh11" aria-expanded="false" aria-controls="tlb11"><span class="tl-when">৫ হিজরি · আনু. ৬২৭ খ্রি.<span class="tl-flag">◇ মতভেদ</span></span><span class="tl-t">খন্দকের যুদ্ধ</span><span class="tl-chev" aria-hidden="true">+</span></button><div class="tl-b" id="tlb11" role="region" aria-labelledby="tlh11"><div class="tl-bi"><p>কুরাইশ ও মিত্রদের জোট মদিনা ঘিরে ফেললে শহরের খোলা দিকে পরিখা খোঁড়া হয়।</p><div class="tl-dis"><b>◇ মতভেদ</b>প্রসিদ্ধ মত ৫ হিজরি; কারও কারও মতে ৪ হিজরি। মাস নিয়েও ভিন্ন মত আছে।</div><a class="tl-more" href="#juddho">বিস্তারিত অধ্যায়ে যান</a></div></div></li>
+<li data-loc="makka" class="tl-i"><span class="tl-node" aria-hidden="true"></span><button type="button" class="tl-h" id="tlh12" aria-expanded="false" aria-controls="tlb12"><span class="tl-when">৬ হিজরি · যিলকদ · আনু. ৬২৮ খ্রি.</span><span class="tl-t">হুদাইবিয়ার সন্ধি</span><span class="tl-chev" aria-hidden="true">+</span></button><div class="tl-b" id="tlb12" role="region" aria-labelledby="tlh12"><div class="tl-bi"><p>উমরার উদ্দেশ্যে যাত্রা করলে মক্কার কাছে কুরাইশদের সঙ্গে সন্ধি হয়। সেবার উমরা না করেই ফিরে যেতে হয়।</p><a class="tl-more" href="#juddho">বিস্তারিত অধ্যায়ে যান</a></div></div></li>
+<li data-loc="khaybar" class="tl-i dis"><span class="tl-node" aria-hidden="true"></span><button type="button" class="tl-h" id="tlh22" aria-expanded="false" aria-controls="tlb22"><span class="tl-when">৭ হিজরি · আনু. ৬২৮ খ্রি.<span class="tl-flag">◇ মতভেদ</span></span><span class="tl-t">খায়বার অভিযান</span><span class="tl-chev" aria-hidden="true">+</span></button><div class="tl-b" id="tlb22" role="region" aria-labelledby="tlh22"><div class="tl-bi"><p>মদিনার উত্তরে ইহুদি বসতি খায়বারের দুর্গগুলো মুসলিমরা জয় করে।</p><div class="tl-dis"><b>◇ মতভেদ</b>প্রসিদ্ধ মত ৭ হিজরি; কারও কারও মতে ৬ হিজরি।</div></div></div></li>
+<li data-loc="makka" class="tl-i dis"><span class="tl-node" aria-hidden="true"></span><button type="button" class="tl-h" id="tlh13" aria-expanded="false" aria-controls="tlb13"><span class="tl-when">৮ হিজরি · রমজান · আনু. ৬৩০ খ্রি.<span class="tl-flag">◇ মতভেদ</span></span><span class="tl-t">মক্কা বিজয়</span><span class="tl-chev" aria-hidden="true">+</span></button><div class="tl-b" id="tlb13" role="region" aria-labelledby="tlh13"><div class="tl-bi"><p>মুসলিম বাহিনী মক্কায় প্রবেশ করে। কাবা মূর্তিমুক্ত হয় এবং নিরাপত্তা ও ক্ষমার ঘোষণা দেওয়া হয়।</p><div class="tl-dis"><b>◇ মতভেদ</b>রমজানের কোন তারিখে প্রবেশ, তা নিয়ে একাধিক মত আছে।</div><a class="tl-more" href="#fath">বিস্তারিত অধ্যায়ে যান</a></div></div></li>
+<li data-loc="makka" class="tl-i"><span class="tl-node" aria-hidden="true"></span><button type="button" class="tl-h" id="tlh23" aria-expanded="false" aria-controls="tlb23"><span class="tl-when">৮ হিজরি · শাওয়াল · আনু. ৬৩০ খ্রি.</span><span class="tl-t">হুনাইনের যুদ্ধ</span><span class="tl-chev" aria-hidden="true">+</span></button><div class="tl-b" id="tlb23" role="region" aria-labelledby="tlh23"><div class="tl-bi"><p>মক্কা বিজয়ের পরপরই হাওয়াজিন ও সাকিফ গোত্রের সঙ্গে হুনাইনে যুদ্ধ হয়। কুরআনে এই যুদ্ধের উল্লেখ আছে (সূরা তাওবা ৯:২৫)।</p></div></div></li>
+<li data-loc="tabuk" class="tl-i"><span class="tl-node" aria-hidden="true"></span><button type="button" class="tl-h" id="tlh24" aria-expanded="false" aria-controls="tlb24"><span class="tl-when">৯ হিজরি · আনু. ৬৩০ খ্রি.</span><span class="tl-t">তাবুক অভিযান</span><span class="tl-chev" aria-hidden="true">+</span></button><div class="tl-b" id="tlb24" role="region" aria-labelledby="tlh24"><div class="tl-bi"><p>রোমান সীমান্তের দিকে কঠিন পরিস্থিতিতে তিনি মদিনা থেকে তাবুকে যান। সেখানে সংঘর্ষ হয়নি।</p></div></div></li>
+<li data-loc="makka" class="tl-i"><span class="tl-node" aria-hidden="true"></span><button type="button" class="tl-h" id="tlh14" aria-expanded="false" aria-controls="tlb14"><span class="tl-when">১০ হিজরি · ৯ যিলহজ · আনু. ৬৩২ খ্রি.</span><span class="tl-t">বিদায় হজ ও আরাফাতের ভাষণ</span><span class="tl-chev" aria-hidden="true">+</span></button><div class="tl-b" id="tlb14" role="region" aria-labelledby="tlh14"><div class="tl-bi"><p>আরাফাতের উপত্যকায় ভাষণে তিনি জান-মালের পবিত্রতা, সুদ ও জাহিলি প্রথা বাতিল, নারীদের অধিকার এবং আল্লাহর কিতাব আঁকড়ে ধরার কথা বলেন।</p><a class="tl-more" href="#arafat">বিস্তারিত অধ্যায়ে যান</a></div></div></li>
+<li data-loc="madina" class="tl-i dis"><span class="tl-node" aria-hidden="true"></span><button type="button" class="tl-h" id="tlh25" aria-expanded="false" aria-controls="tlb25"><span class="tl-when">১১ হিজরি · রবিউল আউয়াল · ৬৩২ খ্রি.<span class="tl-flag">◇ মতভেদ</span></span><span class="tl-t">ইন্তেকাল</span><span class="tl-chev" aria-hidden="true">+</span></button><div class="tl-b" id="tlb25" role="region" aria-labelledby="tlh25"><div class="tl-bi"><p>অসুস্থ হয়ে সোমবার মদিনায় ইন্তেকাল করেন। মসজিদে নববীতে তাঁর রওজা মুবারক।</p><div class="tl-dis"><b>◇ মতভেদ</b>১২ রবিউল আউয়াল প্রসিদ্ধ, তবে তারিখ নিয়ে ভিন্ন মত আছে। বয়স ৬৩ বছর প্রসিদ্ধ; ৬০ ও ৬৫ বছরের বর্ণনাও আছে।</div><a class="tl-more" href="#bidai">বিস্তারিত অধ্যায়ে যান</a></div></div></li>
+    </ol>
+    <p class="small rv" style="margin:1.2rem 0 0">এটি সংক্ষিপ্ত সারাংশ। খ্রিস্টাব্দের সাল হিজরি সনের সঙ্গে মিলিয়ে আনুমানিক। ◇ চিহ্নিত ঘটনার মত ও সূত্রের জন্য সংশ্লিষ্ট অধ্যায় এবং সীরাতগ্রন্থ দেখুন। মানচিত্রে স্থানের অবস্থান আনুমানিক, স্কেল অনুযায়ী নয়।</p>
+  </div>
+</section>
+
+<section class="sec r" id="poribar" data-scene="10" data-label="পরিবার">
+  <div class="panel">
+    <p class="eb rv">উম্মুল মুমিনিন ও সন্তান</p>
+    <h2 class="rv">নবীজির পরিবার</h2>
+    <p class="rv">কুরআনে নবীর স্ত্রীদের মুমিনদের মা বলা হয়েছে (সূরা আহযাব ৩৩:৬)। নিচের তালিকা সীরাতগ্রন্থ-নির্ভর প্রচলিত তালিকা।</p>
+    <ul class="msgs">
+      <li class="rv"><b>খাদিজা বিনতে খুওয়াইলিদ (রা.)</b> ছিলেন প্রথম স্ত্রী। ইব্রাহিম ছাড়া সব সন্তানের মা। হিজরতের আগেই ইন্তেকাল করেন।</li>
+      <li class="rv"><b>সাওদা বিনতে যামআ, আয়েশা বিনতে আবু বকর ও হাফসা বিনতে উমর (রা.)।</b> আয়েশা ও হাফসা প্রধান দুই সাহাবির কন্যা।</li>
+      <li class="rv"><b>বাকি স্ত্রীগণ:</b> যয়নব বিনতে খুযায়মা (উম্মুল মাসাকিন নামে পরিচিত), উম্মে সালামা, যয়নব বিনতে জাহশ, জুওয়াইরিয়া, উম্মে হাবিবা, সাফিয়্যা ও মাইমুনা (রা.)।</li>
+      <li class="rv"><b>সন্তান:</b> খাদিজা (রা.)-এর গর্ভে দুই পুত্র কাসিম ও আবদুল্লাহ (দুজনই শৈশবে গত হন) এবং চার কন্যা যয়নব, রুকাইয়্যা, উম্মে কুলসুম ও ফাতিমা। মারিয়া কিবতিয়্যার গর্ভে পুত্র ইব্রাহিম, তিনিও শিশুকালে গত হন।</li>
+    </ul>
+    <p class="small rv"><b>যাচাইয়ের সীমা:</b> স্ত্রীদের সংখ্যা ও ক্রম নিয়ে মতভেদ আছে। ইবনে হিশাম ১৩ জন ধরেছেন। মারিয়াকে কেউ স্ত্রী, কেউ দাসী বলেছেন। “তাইয়িব ও তাহির” আবদুল্লাহর উপাধি, নাকি আলাদা পুত্র, তা নিয়েও মতভেদ। তাই সাল দিইনি। এই তথ্য সীরাত ও ইতিহাস-সূত্রের, সহিহ হাদিসের নির্দিষ্ট সনদে আলাদা যাচাই করা হয়নি।</p>
+  </div>
+</section>
+
+<section class="sec l" id="sahabi" data-scene="11" data-label="সাহাবিগণ">
+  <div class="panel">
+    <p class="eb rv">প্রধান সাহাবি</p>
+    <h2 class="rv">জান্নাতের সুসংবাদপ্রাপ্ত দশজন</h2>
+    <ul class="msgs">
+      <li class="rv"><b>চার খলিফা:</b> আবু বকর সিদ্দিক (আনু. ৫৭৩–৬৩৪), উমর ইবনুল খাত্তাব (৫৮৪–৬৪৪), উসমান ইবনে আফফান (৫৭৬–৬৫৬) ও আলী ইবনে আবি তালিব (৬০১–৬৬১)।</li>
+      <li class="rv"><b>বাকি ছয়জন:</b> তালহা ইবনে উবাইদুল্লাহ, যুবাইর ইবনুল আওয়াম, আবদুর রহমান ইবনে আওফ, সা’দ ইবনে আবি ওয়াক্কাস, সাঈদ ইবনে যায়েদ ও আবু উবাইদা ইবনুল জাররাহ (রা.)।<span class="src">জামে তিরমিজি ৩৭৪৭ (আলবানির মতে সহিহ) · সুনানে আবু দাউদ ৪৬৪৯ (আলবানির মতে সহিহ)</span></li>
+    </ul>
+    <p class="small rv">জন্ম-মৃত্যুর সাল আনুমানিক, উৎসভেদে সামান্য ফারাক আছে। এই দশজনই একমাত্র সাহাবি নন। এখানে শুধু তাঁদেরই রাখা হয়েছে, যাঁদের সম্পর্কে সূত্রসহ হাদিস যাচাই করেছি।</p>
+  </div>
+</section>
+
+<section class="sec r" id="charitro" data-scene="12" data-label="নবীজির চরিত্র">
+  <div class="panel">
+    <p class="eb rv">চরিত্র · সহিহ হাদিস থেকে নির্বাচিত</p>
+    <h2 class="rv">দয়া, ধৈর্য ও ক্ষমা</h2>
+    <p class="lead rv">নিচের বিবরণগুলো ভাবানুবাদে দেওয়া। প্রতিটির সূত্র পাশে আছে।</p>
+    <ul class="msgs">
+      <li class="rv"><b>ঘরের কাজে সঙ্গ।</b> আয়েশা (রা.) বলেন, তিনি পরিবারের কাজে সহায়তা করতেন। নামাজের সময় হলে নামাজে বেরিয়ে যেতেন।<span class="src">সহিহ বুখারি ৬৭৬ (আয়েশা রা.)</span></li>
+      <li class="rv"><b>হাত তোলেননি।</b> আয়েশা (রা.) বলেন, আল্লাহর পথে জিহাদ ছাড়া তিনি কখনো নিজ হাতে কোনো খাদেম বা নারীকে আঘাত করেননি।<span class="src">সহিহ মুসলিম ২৩২৮ (আয়েশা রা.)</span></li>
+      <li class="rv"><b>সহজটাই বেছে নিতেন।</b> দুটি বিষয়ের একটি বেছে নিতে হলে, গুনাহ না হলে তিনি সহজটিই নিতেন।<span class="src">সহিহ বুখারি ৩৫৬০ (আয়েশা রা.)</span></li>
+      <li class="rv"><b>খাদেমের সঙ্গে আচরণ।</b> আনাস (রা.) দশ বছর তাঁর সেবা করেছেন। বলেন, তিনি কখনো তাঁকে “উফ” পর্যন্ত বলেননি।<span class="src">সহিহ বুখারি ৬০৩৮ (আনাস রা.)</span></li>
+      <li class="rv"><b>শিশুর প্রতি স্নেহ।</b> তিনি হাসান (রা.)-কে চুমু দিলে আকরা ইবনে হাবিস বলেন, তাঁর দশটি সন্তান, কাউকে চুমু দেননি। নবী (সা.) বলেন, যে দয়া করে না, তাকে দয়া করা হয় না।<span class="src">সহিহ বুখারি ৫৯৯৭ (আবু হুরায়রা রা.)</span></li>
+      <li class="rv"><b>মসজিদে বেদুইন।</b> এক বেদুইন মসজিদে প্রস্রাব করলে সাহাবিরা তাকে ধমক দেন। তিনি তাদের থামিয়ে দেন এবং প্রস্রাবের জায়গায় পানি ঢালতে বলেন।<span class="src">সহিহ বুখারি ২২০ (আনাস রা.)</span></li>
+      <li class="rv"><b>তায়েফের পর।</b> তায়েফে নির্যাতনের পর পাহাড়ের ফেরেশতা শাস্তির প্রস্তাব দিলে তিনি বলেন, আশা করি আল্লাহ তাদের বংশ থেকে এমন মানুষ বের করবেন যারা এক আল্লাহর ইবাদত করবে।<span class="src">সহিহ বুখারি ৩২৩১ (আয়েশা রা.)</span></li>
+    </ul>
+    <p class="small rv">এগুলো বাছাই করা কয়েকটি বর্ণনা, পূর্ণ তালিকা নয়। হাদিস নম্বর প্রচলিত গণনা অনুযায়ী, সংস্করণভেদে সামান্য ভিন্ন হতে পারে।</p>
+  </div>
+</section>
+
+<section class="sec l" id="nari" data-scene="12" data-label="নারী সাহাবি">
+  <div class="panel">
+    <p class="eb rv">নারী সাহাবি</p>
+    <h2 class="rv">ধৈর্য ও সাহসের দুই নাম</h2>
+    <p class="lead rv">প্রথম যুগের দুজন নারী সাহাবির সংক্ষিপ্ত পরিচয়।</p>
+    <ul class="msgs">
+      <li class="rv"><b>সুমাইয়া বিনতে খুব্বাত (রা.)।</b> ইয়াসির (রা.)-এর স্ত্রী ও আম্মার (রা.)-এর মা। ইসলাম গ্রহণ প্রকাশ করার প্রথম দিকের সাতজনের একজন বলে বর্ণিত।<span class="src">সুনানে ইবনে মাজাহ ১৫০ (আলবানির মতে হাসান)</span></li>
+      <li class="rv"><b>প্রথম শহীদ।</b> সীরাতের প্রসিদ্ধ বিবরণে মক্কার নির্যাতনে তিনি শহীদ হন এবং ইসলামের প্রথম শহীদ বলে পরিচিত। শাহাদাতের বিস্তারিত বিবরণ সীরাত-সূত্রের, সহিহ হাদিসে আলাদা যাচাই করিনি।<span class="src">সীরাত-সূত্র</span></li>
+      <li class="rv"><b>আসমা বিনতে আবু বকর (রা.)।</b> আয়েশা (রা.)-এর বৈমাত্রেয় বোন ও যুবাইর ইবনুল আওয়াম (রা.)-এর স্ত্রী। হিজরতের সময় তিনি পথের খাবার গুছিয়ে দেন এবং কোমরবন্ধ ছিঁড়ে দুই ভাগ করে ব্যবহার করেন, তাই ‘জাতুন নিতাকাইন’ নামে পরিচিত।<span class="src">সহিহ বুখারি (হিজরতের দীর্ঘ বর্ণনা)</span></li>
+      <li class="rv"><b>কঠিন জীবন।</b> তিনি যুবাইরের জমি থেকে মাথায় করে খেজুরের আঁটি বয়ে আনতেন।<span class="src">সহিহ বুখারি ৫২২৪ (আসমা রা.)</span></li>
+      <li class="rv"><b>হিজরতের পরের প্রথম সন্তান।</b> গর্ভবতী অবস্থায় হিজরত করেন। মদিনায় আবদুল্লাহ ইবনে যুবাইরের জন্ম হয়, হিজরতের পর মুহাজিরদের প্রথম সন্তান।<span class="src">সহিহ বুখারি ৩৯০৯</span></li>
+    </ul>
+    <p class="small rv">সুমাইয়া (রা.)-এর শাহাদাতের সময়, আসমা (রা.)-এর বয়স ও ইন্তেকালের সাল নিয়ে উৎসভেদ আছে, তাই সাল দিইনি। এঁরা ছাড়াও বহু নারী সাহাবি ইসলামের ইতিহাসে ভূমিকা রেখেছেন।</p>
+  </div>
+</section>
+
+<section class="sec r" id="ahl" data-scene="12" data-label="আহলে বাইত">
+  <div class="panel">
+    <p class="eb rv">নবীজির পরিবার · আহলে বাইত</p>
+    <h2 class="rv">ফাতিমা, হাসান ও হুসাইন (রা.)</h2>
+    <p class="lead rv">কুরআনে আহলে বাইত শব্দ এসেছে (সূরা আহযাব ৩৩:৩৩)।</p>
+    <ul class="msgs">
+      <li class="rv"><b>ফাতিমা (রা.)।</b> নবী (সা.) ও খাদিজা (রা.)-এর কন্যা, আলী (রা.)-এর স্ত্রী। নবী (সা.) বলেন, ফাতিমা আমার অংশ; যে তাকে কষ্ট দেয়, সে আমাকে কষ্ট দেয়।<span class="src">সহিহ বুখারি ৩৭১৪ (মিসওয়ার রা.)</span></li>
+      <li class="rv"><b>জান্নাতি নারীদের নেত্রী।</b> অন্তিম অসুস্থতায় তিনি ফাতিমা (রা.)-কে বলেন, তুমি কি চাও না জান্নাতবাসী নারীদের নেত্রী হতে? ফাতিমা (রা.) নবীজির পর ছয় মাস বেঁচে ছিলেন।<span class="src">সহিহ বুখারি ৩৬২৪, ৪২৪০ (আয়েশা রা.)</span></li>
+      <li class="rv"><b>হাসান ও হুসাইন (রা.)।</b> আলী ও ফাতিমা (রা.)-এর দুই পুত্র। নবী (সা.) তাঁদের দুনিয়ার “দুই ফুল” বলেছেন। আরও বলেছেন, তাঁরা জান্নাতি যুবকদের নেতা।<span class="src">সহিহ বুখারি ৩৭৫৩ (ইবনে উমর রা.) · জামে তিরমিজি ৩৭৬৮ (আলবানির মতে সহিহ)</span></li>
+      <li class="rv"><b>হাসানের সন্ধি।</b> নবী (সা.) হাসান (রা.)-কে সায়্যিদ বলে ভবিষ্যদ্বাণী করেন যে, আল্লাহ তাঁর মাধ্যমে মুসলমানদের দুই দলের মধ্যে মীমাংসা করাবেন।<span class="src">সহিহ বুখারি ২৭০৪ (আবু বাকরা রা.)</span></li>
+      <li class="rv"><b>চাদরের হাদিস।</b> নবী (সা.) আলী, ফাতিমা, হাসান ও হুসাইন (রা.)-কে চাদরে ঢেকে দোয়া করেন, আর সূরা আহযাবের ৩৩ নম্বর আয়াত পড়েন।<span class="src">সহিহ মুসলিম ২৪২৪ (আয়েশা রা.)</span></li>
+      <li class="rv"><b>হুসাইনের শাহাদাত।</b> ৬১ হিজরিতে কারবালায় হুসাইন (রা.) শহীদ হন। তারিখ ১০ মুহাররম বলে প্রসিদ্ধ।<span class="src">ইতিহাস-সূত্র</span></li>
+    </ul>
+    <p class="small rv"><b>মতভেদের জায়গা:</b> আহলে বাইতের পরিধি নিয়ে মতভেদ আছে, যেমন নবীর স্ত্রীগণ অন্তর্ভুক্ত কি না। হাসান (রা.)-এর ইন্তেকালের সাল ও কারণ নিয়েও ভিন্ন বর্ণনা আছে। কারবালার বিস্তারিত বিবরণ ঐতিহাসিক সূত্রের, এখানে সংক্ষেপে দেওয়া।</p>
+  </div>
+</section>
+
+<section class="sec" id="manchitro" data-scene="12" data-label="মানচিত্র">
+  <div class="panel" style="justify-self:center;width:min(56rem,100%)">
+    <p class="eb rv">মক্কা · হেরা · হিজরত · মদিনা</p>
+    <h2 class="rv">মানচিত্রে সীরাত</h2>
+    <p class="small rv" style="margin:0 0 .6rem">যে কোনো স্থানে চাপ দিন, সেখানকার ঘটনা খুলবে। মানচিত্রটি স্কেল অনুযায়ী নয়, শুধু অবস্থান ও পথের দিক বোঝাতে আঁকা। পথের খুঁটিনাটি আনুমানিক।</p>
+    <div class="mapbox rv">
+      <svg viewBox="0 0 600 520" role="group" aria-label="মক্কা থেকে মদিনা পর্যন্ত হিজরতের পথের আনুমানিক মানচিত্র">
+        <path d="M0 0H150C175 140 120 300 190 520H0Z" fill="#12304a" opacity=".55"/>
+        <text x="14" y="255" class="sm">লোহিত সাগর</text>
+        <path d="M470 420C440 330 430 200 410 80" fill="none" stroke="#aab3c6" stroke-width="2" stroke-dasharray="2 7" stroke-linecap="round"/>
+        <text x="432" y="262" class="sm" text-anchor="end">সরাসরি পথ (এ পথে যাননি)</text>
+        <path class="route" d="M490 470C400 500 300 470 250 380C200 300 215 200 300 150C350 120 395 112 405 100L410 70"/>
+        <g class="pt" data-k="makka" role="button" tabindex="0" aria-pressed="false"><circle cx="470" cy="420" r="8"/><text x="458" y="425" text-anchor="end">মক্কা</text></g>
+        <g class="pt" data-k="hera" role="button" tabindex="0" aria-pressed="false"><circle cx="505" cy="372" r="8"/><text x="518" y="377">হেরা</text></g>
+        <g class="pt" data-k="thawr" role="button" tabindex="0" aria-pressed="false"><circle cx="490" cy="470" r="8"/><text x="503" y="475">সাওর গুহা</text></g>
+        <g class="pt" data-k="mabad" role="button" tabindex="0" aria-pressed="false"><circle cx="250" cy="380" r="8"/><text x="262" y="372">উম্মে মাবাদের তাঁবু</text></g>
+        <g class="pt" data-k="quba" role="button" tabindex="0" aria-pressed="false"><circle cx="405" cy="100" r="8"/><text x="418" y="112">কুবা</text></g>
+        <g class="pt" data-k="madina" role="button" tabindex="0" aria-pressed="false"><circle cx="410" cy="70" r="8"/><text x="423" y="68">মদিনা</text></g>
+      </svg>
+    </div>
+    <div class="minfo" id="minfo" aria-live="polite"><p style="margin:0">একটি স্থান বেছে নিন।</p></div>
+  </div>
+</section>
+
+<section class="sec l" id="shobdokosh" data-scene="12" data-label="শব্দকোষ">
+  <div class="panel">
+    <p class="eb rv">শব্দকোষ</p>
+    <h2 class="rv">কয়েকটি শব্দের অর্থ</h2>
+    <p class="lead rv">পেজে ব্যবহৃত কিছু পরিভাষার সংক্ষিপ্ত ব্যাখ্যা।</p>
+    <dl class="facts">
+      <div class="rv"><dt>হস্তী বছর</dt><dd>ইয়েমেনের শাসক আবরাহা হাতিসহ বাহিনী নিয়ে কাবা ধ্বংস করতে এসেছিল। সেই বছরকে বলা হয় হস্তী বছর (আমুল ফিল)। ঘটনাটি সূরা ফিলে আছে। নবীজির জন্ম এর কাছাকাছি সময়ে।</dd></div>
+      <div class="rv"><dt>হিলফুল ফুদুল</dt><dd>মক্কায় নির্যাতিত ও বিদেশি ব্যবসায়ীদের অধিকার রক্ষার জন্য কয়েকটি গোত্রের শান্তিচুক্তি। নবীজি যৌবনে এতে অংশ নেন।</dd></div>
+      <div class="rv"><dt>আল-আমিন</dt><dd>“বিশ্বস্ত”। সততা ও আমানতদারির কারণে মক্কার মানুষ তাঁকে এই উপাধি দেয়।</dd></div>
+      <div class="rv"><dt>ওহি</dt><dd>আল্লাহর পক্ষ থেকে নবীর কাছে পাঠানো বাণী। প্রথম ওহি আসে হেরা গুহায়।</dd></div>
+      <div class="rv"><dt>নবুয়ত</dt><dd>নবী হিসেবে আল্লাহর মনোনয়ন। এই পেজে নবুয়তের “বছর” গণনা প্রথম ওহির পর থেকে।</dd></div>
+      <div class="rv"><dt>আমুল হুজন</dt><dd>“দুঃখের বছর”। নবুয়তের দশম বছরে চাচা আবু তালিব ও স্ত্রী খাদিজা (রা.)-এর ইন্তেকালের বছর।</dd></div>
+      <div class="rv"><dt>ইসরা ও মিরাজ</dt><dd>ইসরা হলো রাতে মসজিদুল হারাম থেকে মসজিদুল আকসায় যাত্রা। মিরাজ হলো সেখান থেকে ঊর্ধ্বলোকে যাত্রা। এই ঘটনায় পাঁচ ওয়াক্ত নামাজ ফরজ হয়।</dd></div>
+      <div class="rv"><dt>বাইয়াত</dt><dd>আনুগত্য ও সহযোগিতার শপথ। আকাবার বাইয়াত মদিনার প্রথম দিকের মুসলমানদের শপথ।</dd></div>
+      <div class="rv"><dt>হিজরত</dt><dd>আল্লাহর জন্য স্বদেশ ছেড়ে অন্যত্র চলে যাওয়া। এখানে বিশেষভাবে মক্কা থেকে মদিনায় যাত্রা।</dd></div>
+      <div class="rv"><dt>হিজরি সন</dt><dd>চান্দ্র মাসের বছর, হিজরতের ঘটনা থেকে গণনা শুরু। প্রথম মাস মুহাররম। চান্দ্র বছর সৌর বছরের চেয়ে ছোট, তাই খ্রিস্টাব্দের সঙ্গে মিল আনুমানিক।</dd></div>
+      <div class="rv"><dt>মুহাজির</dt><dd>যাঁরা ঈমানের কারণে মক্কা ছেড়ে মদিনায় হিজরত করেন।</dd></div>
+      <div class="rv"><dt>আনসার</dt><dd>“সাহায্যকারী”। মদিনার যে মুসলমানরা মুহাজিরদের আশ্রয় ও সাহায্য দেন।</dd></div>
+      <div class="rv"><dt>সাহাবি</dt><dd>যিনি ঈমানসহ নবী (সা.)-এর সাক্ষাৎ পেয়েছেন এবং ঈমানের ওপর মৃত্যুবরণ করেছেন।</dd></div>
+      <div class="rv"><dt>গাযওয়া ও সারিয়্যা</dt><dd>যে অভিযানে নবীজি নিজে ছিলেন, তাকে গাযওয়া বলে। তাঁর অনুপস্থিতিতে পাঠানো দলের অভিযানকে বলে সারিয়্যা।</dd></div>
+      <div class="rv"><dt>কিবলা</dt><dd>নামাজে যে দিকে মুখ করা হয়। প্রথমে বাইতুল মাকদিস, পরে কাবা।</dd></div>
+      <div class="rv"><dt>আহলে বাইত</dt><dd>“ঘরের লোক”, অর্থাৎ নবীজির পরিবার (সূরা আহযাব ৩৩:৩৩)। এর পরিধি নিয়ে মতভেদ আছে।</dd></div>
+      <div class="rv"><dt>উম্মুল মুমিনিন</dt><dd>“মুমিনদের মা”। নবীজির স্ত্রীদের এই উপাধি (সূরা আহযাব ৩৩:৬)।</dd></div>
+      <div class="rv"><dt>সহিহ ও হাসান</dt><dd>হাদিসের মান। সহিহ হলো সনদ ও বিষয়বস্তুর সব শর্ত পূরণকারী। হাসান তার চেয়ে সামান্য নিচের স্তরের গ্রহণযোগ্য হাদিস।</dd></div>
+      <div class="rv"><dt>(রা.) (সা.) (আ.)</dt><dd>(রা.) রাদিয়াল্লাহু আনহু: সাহাবির নামের পর। (সা.) সাল্লাল্লাহু আলাইহি ওয়া সাল্লাম: নবীজির নামের পর। (আ.) আলাইহিস সালাম: অন্য নবী ও ফেরেশতার নামের পর।</dd></div>
+    </dl>
+    <p class="small rv" style="margin:1.2rem 0 0">ব্যাখ্যাগুলো সংক্ষিপ্ত পরিচিতির জন্য। বিস্তারিত ও সূত্রের জন্য সীরাত ও হাদিসের কিতাব দেখুন।</p>
+  </div>
+</section>
+
+<section class="sec r" id="tothyo" data-scene="9" data-label="তথ্য প্রসঙ্গে">
+  <div class="panel">
+    <p class="eb rv">তথ্য প্রসঙ্গে</p>
+    <h2 class="rv">মতভেদের জায়গাগুলো</h2>
+    <p class="lead rv">সীরাতের কিছু বিষয়ে ঐতিহাসিকদের মধ্যে ভিন্ন মত আছে। এই পাতায় প্রসিদ্ধ মতটি রাখা হয়েছে, আর ভিন্নতার জায়গাগুলো এখানে স্পষ্ট করে বলা হলো।</p>
+    <ul class="notes">
+      <li class="rv"><b>জন্ম:</b> প্রসিদ্ধ মত ১২ রবিউল আউয়াল, আনুমানিক ৫৭০ খ্রিস্টাব্দ। কোনো কোনো ঐতিহাসিক অন্য তারিখ ও ৫৭১ খ্রিস্টাব্দের কথাও বলেছেন।</li>
+      <li class="rv"><b>ইন্তেকাল:</b> ১২ রবিউল আউয়াল, ১১ হিজরি প্রসিদ্ধ। তারিখ নিয়ে ভিন্ন মতও রয়েছে।</li>
+      <li class="rv"><b>বংশধারা:</b> আদনান পর্যন্ত সর্বসম্মত। আদনান থেকে ইসমাইল (আ.) পর্যন্ত মাঝের নামের সংখ্যা ও ক্রম নিয়ে মতভেদ আছে।</li>
+      <li class="rv"><b>মিরাজ:</b> নবুয়তের দ্বাদশ না ত্রয়োদশ বছরে, এ নিয়ে মতভেদ রয়েছে।</li>
+    </ul>
+    <p class="small rv" style="margin:0">এটি একটি সংক্ষিপ্ত সারাংশ। বিস্তারিত জানতে ইবনে হিশামের সীরাত ও আর-রাহীকুল মাখতুমের মতো সীরাতগ্রন্থ এবং বিজ্ঞ আলেমের সাহায্য নিন।</p>
+  </div>
+</section>
+
+<footer class="end">
+  <div class="sign" lang="ar">صَلَّى ٱللَّهُ عَلَيْهِ وَسَلَّمَ</div>
+  <p style="margin:0">এই পাতার ত্রিমাত্রিক দৃশ্য কেবল স্থান ও পরিবেশের কল্পিত রূপ। রাসূলুল্লাহ (সা.)-এর কোনো প্রতিকৃতি আঁকা হয়নি।</p>
+</footer>
+
+</div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+'use strict';
+var REDUCE=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+function clamp(x,a,b){return Math.min(b,Math.max(a,x));}
+function sstep(a,b,x){x=clamp((x-a)/(b-a),0,1);return x*x*(3-2*x);}
+
+/* ---------- page UI ---------- */
+var secs=[].slice.call(document.querySelectorAll('[data-scene]'));
+var tops=[];
+function measure(){tops=secs.map(function(s){return s.getBoundingClientRect().top+window.scrollY;});}
+function sceneF(){
+  var y=window.scrollY+window.innerHeight*0.45,i=0,k;
+  for(k=0;k<tops.length;k++){if(y>=tops[k]){i=k;}}
+  var last=(i>=tops.length-1);
+  var end=last?document.documentElement.scrollHeight:tops[i+1];
+  var s=clamp((y-tops[i])/Math.max(1,end-tops[i]),0,1);
+  var t=last?0:sstep(0.45,1,s);
+  return {i:i,t:t,f:i+t};
+}
+
+var chap=document.getElementById('chap'),bar=document.getElementById('bar'),dotsEl=document.getElementById('dots');
+var chain=document.getElementById('chain'),nodes=chain?[].slice.call(chain.children):[];
+secs.forEach(function(s){
+  var a=document.createElement('a');
+  a.href='#'+s.id;a.setAttribute('data-t',s.getAttribute('data-label'));a.setAttribute('aria-label',s.getAttribute('data-label'));
+  dotsEl.appendChild(a);
+});
+var dotLinks=[].slice.call(dotsEl.children);
+var curChap=-1,ticking=false;
+function onScroll(){
+  var H=document.documentElement.scrollHeight-window.innerHeight;
+  bar.style.setProperty('--sp',H>0?clamp(window.scrollY/H,0,1):0);
+  var i=sceneF().i;
+  if(i!==curChap){
+    curChap=i;
+    chap.classList.add('swap');
+    setTimeout(function(){chap.textContent=secs[i].getAttribute('data-label');chap.classList.remove('swap');},180);
+    dotLinks.forEach(function(d,k){d.classList.toggle('on',k===i);});
+  }
+  if(chain){
+    var r=chain.getBoundingClientRect();
+    chain.style.setProperty('--p',clamp((window.innerHeight*0.62-r.top)/r.height,0,1));
+    var lim=window.innerHeight*0.64;
+    nodes.forEach(function(n){var b=n.getBoundingClientRect();n.classList.toggle('on',b.top+22<lim);});
+  }
+  ticking=false;
+}
+function req(){if(!ticking){ticking=true;requestAnimationFrame(onScroll);}}
+window.addEventListener('scroll',req,{passive:true});
+window.addEventListener('resize',function(){measure();req();});
+measure();onScroll();
+window.addEventListener('load',function(){measure();onScroll();});
+
+/* battle tabs */
+(function(){
+  var D=[
+    ['বদর · ১৭ রমজান, ২ হিজরি (প্রসিদ্ধ মত)','মদিনার দক্ষিণ-পশ্চিমে বদরের কূপ-এলাকা (অবস্থান আনুমানিক)','কুরাইশ বাহিনীর সঙ্গে মুসলিমদের প্রথম বড় সম্মুখ যুদ্ধ। মুসলিমরা সংখ্যায় অনেক কম ছিলেন। কুরআনে বদরে আল্লাহর সাহায্যের উল্লেখ আছে। বুখারির ভাষ্যে বলা হয়েছে, কুরাইশের ৭০ জন নিহত ও ৭০ জন বন্দি হয়।','কুরআন ৩:১২৩ · সহিহ বুখারি ৩৯৮৬-এর ভাষ্য · তারিখ ও খুঁটিনাটি সীরাতসূত্র','সবুজ বৃত্ত: মুসলিম বাহিনী, প্রসিদ্ধ বর্ণনায় প্রায় ৩১৩ জন। লালচে বৃত্ত: কুরাইশ বাহিনী, প্রায় এক হাজার জন। বিন্দুর অনুপাত আনুমানিক ১:৩। গাঢ় গোল চিহ্ন: কূপ, মুসলিমরা কূপের কাছে অবস্থান নেন। মাঝের নিচু উঁচুভূমি: বালির টিলা, যার ওপারে ছিল কুরাইশ। অবস্থান ও দূরত্ব সরল করা, হুবহু নয়।'],
+    ['উহুদ · শাওয়াল, ৩ হিজরি','মদিনার উত্তরে উহুদ পাহাড়ের পাদদেশ','নবী (সা.) আবদুল্লাহ ইবনে জুবাইর (রা.)-কে সেনাপতি করে একদল তীরন্দাজকে নির্দিষ্ট স্থানে বসান ও সেই স্থান না ছাড়তে বলেন। পরে মুসলিমদের ক্ষতি হয় ও সত্তরজন শহীদ হন।','সহিহ বুখারি ৪০৪৩, ৩৯৮৬ (বারা ইবনে আযিব রা.)','সবুজ বৃত্ত: মুসলিম বাহিনী, প্রায় ৭০০ জন, পাহাড়কে পেছনে রেখে। লালচে বৃত্ত: কুরাইশ বাহিনী, প্রায় ৩,০০০ জন, সামনের সমতলে। বিন্দুর অনুপাত আনুমানিক ১:৪। বাঁ পাশের ছোট টিলায় প্রায় ৫০ জন তীরন্দাজ (উজ্জ্বল সবুজ বিন্দু)। সংখ্যা সীরাতসূত্রের প্রসিদ্ধ বর্ণনা, অবস্থান সরল করা।'],
+    ['খন্দক · ৫ হিজরি (মাস নিয়ে মতভেদ আছে)','মদিনার উত্তর সীমান্ত, যেদিক খোলা ছিল','কুরাইশ ও মিত্রদের জোট মদিনা ঘিরে ফেললে মুহাজির ও আনসাররা শহরের চারপাশে পরিখা খোঁড়েন। কনকনে ঠান্ডা ও ক্ষুধার মধ্যে তাঁরা কাজ করেন। জাবির (রা.) একটি শক্ত পাথরের কথা বলেন, যা পরিখায় বাধা হয়ে দাঁড়ায়। সালমান ফারসি (রা.)-এর পরামর্শে পরিখা খোঁড়া হয়, এটি সীরাতের বর্ণনা।','সহিহ বুখারি ৪০৯৭, ৪০৯৯, ৪১০১ · পরামর্শ ও জোটের সংখ্যা (প্রায় ১০ হাজার) সীরাতসূত্র','বাঁ-ডানে লম্বা গাঢ় রেখা: পরিখা, স্ক্রল করলে খোঁড়া এগোয়। সামনে সবুজ বৃত্ত: মুসলিম শিবির, সীরাতসূত্র অনুযায়ী সালআ পাহাড়কে পেছনে রেখে। ওপারে লালচে বৃত্ত: কুরাইশ ও মিত্র জোট। মদিনার অন্য দিকের অবস্থা এখানে দেখানো হয়নি। অবস্থান সরল করা।'],
+    ['হুদাইবিয়া · যিলকদ, ৬ হিজরি','মক্কার অদূরে হুদাইবিয়া','ওমরার উদ্দেশে বের হলে কুরাইশ বাধা দেয়। সাহাবিরা গাছের নিচে নবীর হাতে বাইআত করেন; কুরআনে এই বাইআতে আল্লাহর সন্তুষ্টির কথা আছে। এরপর কুরাইশের প্রতিনিধি সুহাইলের সঙ্গে সন্ধি হয়। শর্তগুলো সাহাবিদের কাছে কঠিন ঠেকেছিল। সন্ধির শর্তের পূর্ণ বিবরণ আমি এখানে মিলিয়ে লিখিনি।','কুরআন ৪৮:১৮ · সহিহ বুখারি ২৭৩১-২৭৩২','মাঝের গাছ: বাইআতের গাছ। সাদা বিন্দু: ইহরামে সাহাবিগণ। গাঢ় তাঁবুগুলো প্রতীকী। কুরাইশের পক্ষ এখানে আঁকা হয়নি। অবস্থান সরল করা।'],
+    ['তায়েফ · দশম নবুয়ত বছর (আনুমানিক)','মক্কার পূর্বে পাহাড়ি শহর (অবস্থান আনুমানিক)','আবু তালিব ও খাদিজা (রা.)-র মৃত্যুর পর নবী (সা.) দাওয়াত নিয়ে তায়েফে যান। সাকিফের নেতারা প্রত্যাখ্যান করে ও লোক লেলিয়ে দেয়। সীরাতে আছে, তাঁকে আঘাত করা হয় এবং তিনি একটি আঙুরবাগানে আশ্রয় নেন। ফেরার পথে কারনুস সাআলিবে পাহাড়ের ফেরেশতা এসে দুই পাহাড় চাপিয়ে দেওয়ার প্রস্তাব দেন। নবী (সা.) তা চাননি; আশা করেন, তাদের বংশধরদের মধ্যে এমন লোক আসবে যারা এক আল্লাহর ইবাদত করবে।','সহিহ বুখারি ৩২৩১ (আয়েশা রা.) · আঙুরবাগান ও আঘাতের খুঁটিনাটি ইবনে হিশামের সীরাত','মাঝের বৃত্তাকার দেয়াল: তায়েফ শহর, প্রতীকী। গাঢ় বিন্দু: সাকিফ গোত্রের লোক। বাঁয়ে সবুজ গাছ: আঙুরবাগান। ডানের টিলা: কারনুস সাআলিব। দূরত্ব ও আকার কল্পিত। কোনো মানুষের আকার আঁকা হয়নি।']
+  ],
+  btns=[].slice.call(document.querySelectorAll('.tabs button')),box=document.getElementById('winfo');
+  function show(k){
+    var d=D[k];warSel=k;
+    btns.forEach(function(b,j){b.setAttribute('aria-pressed',j===k?'true':'false');});
+    box.innerHTML='<h3>'+d[0]+'</h3><p><b>স্থান:</b> '+d[1]+'</p><p>'+d[2]+'</p>'+(d[4]?'<p class="small"><b>দৃশ্যের চিহ্ন:</b> '+d[4]+'</p>':'')+'<span class="src">সূত্র: '+d[3]+'</span>';
+  }
+  btns.forEach(function(b,j){b.addEventListener('click',function(){show(j);});});
+  if(box){show(0);}
+})();
+
+/* interactive map */
+(function(){
+  var D={
+    makka:['মক্কা','<p>প্রসিদ্ধ মতে আনুমানিক ৫৭০ খ্রিস্টাব্দে এখানে জন্ম। নবুয়ত পাওয়ার পর প্রায় তেরো বছর এখানে দাওয়াত দেন। কুরাইশের বাধার মুখে হিজরতের রাতে শহর ছেড়ে যান।</p>','সীরাতগ্রন্থের প্রসিদ্ধ বর্ণনা; তারিখে মতভেদ আছে (তথ্যপ্রসঙ্গে দেখুন)'],
+    hera:['হেরা গুহা (জাবালুন নুর)','<p>এখানে প্রথম ওহি আসে, ফেরেশতা জিবরাইল (আ.) প্রথম সরাসরি “পড়ো” বলে সূরা আলাকের প্রথম আয়াতগুলো প্রতিবন্দি হন।</p>','সহিহ বুখারি ৩ (আয়েশা রা.)'],
+    thawr:['সাওর গুহা','<p>আবু বকর (রা.)-কে সঙ্গে নিয়ে তিন রাত এখানে আত্মগোপন করেন। তিন রাত পর পথপ্রদর্শক আবদুল্লাহ ইবনে উরাইকিত উট নিয়ে আসেন ও সাগরপথ ধরে যাত্রা শুরু হয়। কুরআনেও এ ঘটনার ইঙ্গিত আছে (সূরা তাওবা ৯:৪০)।</p>','সহিহ বুখারি ৩২০৫ (আয়েশা রা.)'],
+    mabad:['উম্মে মাবাদের তাঁবু (কুদাইদ ওয়াদির কাছে)','<p>উপকূলের পথে যাওয়ার সময় উম্মে মাবাদের তাঁবুতে থামেন। সীরাতে আছে, দুর্ভিক্ষের সময় শীর্ণ ছাগলের দুধ দোয়ানো হয়, সবাই তৃপ্ত হন।</p>','সীরাতসূত্রে বর্ণিত; সনদগত মান এখানে যাচাই করা হয়নি। স্থানটি আনুমানিক বসানো'],
+    quba:['কুবা','<p>হিজরতের পথে মদিনার কাছে কুবায় পৌঁছান রবিউল আউয়ালের সোমবার। তারিখ নিয়ে মতভেদ আছে (৮ বা ১২)। এখানে মসজিদে কুবা নির্মাণের কথা বলা হয়।</p>','সীরাতসূত্রে বর্ণিত; তারিখে মতভেদ আছে'],
+    madina:['মদিনা (ইয়াসরিব)','<p>হিজরতের শেষ গন্তব্য। এখানে মসজিদে নববী গড়ে ওঠে ও মুসলিম সমাজ গড়ে ওঠে। ১১ হিজরিতে এখানেই ইন্তেকাল করেন ও মসজিদে নববীর রওজায় সমাহিত হন।</p>','সীরাতগ্রন্থের প্রসিদ্ধ বর্ণনা']
+  };
+  var pts=[].slice.call(document.querySelectorAll('.mapbox .pt')),box=document.getElementById('minfo');
+  function pick(g){
+    var d=D[g.getAttribute('data-k')];if(!d||!box){return;}
+    pts.forEach(function(p){var on=p===g;p.classList.toggle('on',on);p.setAttribute('aria-pressed',on?'true':'false');});
+    box.innerHTML='<h3>'+d[0]+'</h3>'+d[1]+'<span class="src">সূত্র: '+d[2]+'</span>';
+  }
+  pts.forEach(function(g){
+    g.addEventListener('click',function(){pick(g);});
+    g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(g);}});
+  });
+})();
+
+/* optional scene-aware ambience: silent until the button is pressed.
+   layers: desert wind, night hush, crickets, distant crowd murmur — crossfaded by the section in view */
+(function(){
+  var btn=document.getElementById('wind'),bar=document.getElementById('windbar'),AC=window.AudioContext||window.webkitAudioContext;
+  if(!btn||!bar||!AC){return;}
+  bar.hidden=false;
+  var ac=null,master=null,on=false,timer=0,sched=0,cur='',L={},nextCk=[],ckBus=null,MASTER=0.16;
+  /* mix per section id: w=wind, n=night hush, c=crickets, k=crowd (0–1). atmosphere only, not a claim about the sources */
+  var MIX={
+    hero:{w:.8},parichoy:{w:.6},bongsho:{w:.5},
+    jonmo:{w:.5,k:.15},joubon:{w:.3,k:.55},
+    nobuyot:{w:.2,n:.9},miraj:{w:.1,n:1,c:.25},hijrat:{w:.45,n:.6,c:.7},
+    madina:{w:.35,k:.6},juddho:{w:.8,k:.2},fath:{w:.3,k:.8},arafat:{w:.25,k:.9},bidai:{w:.2,n:.8},
+    somoyrekha:{w:.5},poribar:{w:.3,k:.2},sahabi:{w:.4,k:.3},charitro:{w:.4},nari:{w:.4},
+    ahl:{w:.3,n:.3},manchitro:{w:.6},shobdokosh:{w:.4},tothyo:{w:.3,n:.4}
+  };
+  var DEF={w:.5};
+  var NAME={w:'মরুর হাওয়া',n:'রাতের নীরবতা',c:'ঝিঁঝিঁ',k:'ভিড়ের গুঞ্জন'};
+  /* the listener's own settings: overall volume and which layers may play at all (remembered in this browser) */
+  var KEY='seerat-ambience',vol=1,LON={w:true,n:true,c:true,k:true};
+  try{var sv=JSON.parse(localStorage.getItem(KEY)||'null');if(sv){if(typeof sv.v==='number'){vol=clamp(sv.v,0,1);}['w','n','c','k'].forEach(function(k){if(sv.l&&sv.l[k]===false){LON[k]=false;}});}}catch(e){}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify({v:vol,l:LON}));}catch(e){}}
+  function lvl(){return MASTER*vol*vol;}
+  function noiseBuf(n,kind){
+    var b=ac.createBuffer(1,n,ac.sampleRate),d=b.getChannelData(0),last=0,k,w;
+    for(k=0;k<n;k++){w=Math.random()*2-1;
+      if(kind==='brown'){last=(last+0.02*w)/1.02;d[k]=last*3.5;}else{d[k]=w*0.5;}
+    }
+    return b;
+  }
+  function loop(buf){var s=ac.createBufferSource();s.buffer=buf;s.loop=true;return s;}
+  function lfo(freq,amt,target){var o=ac.createOscillator(),g=ac.createGain();o.frequency.value=freq;g.gain.value=amt;o.connect(g);g.connect(target);o.start();return o;}
+  function layerGain(){var g=ac.createGain();g.gain.value=0;g.connect(master);return g;}
+  function build(){
+    ac=new AC();
+    master=ac.createGain();master.gain.value=0;master.connect(ac.destination);
+    /* wind (as before) */
+    L.w=layerGain();
+    var src=loop(noiseBuf(ac.sampleRate*4,'brown'));
+    var bp=ac.createBiquadFilter();bp.type='bandpass';bp.frequency.value=520;bp.Q.value=0.7;
+    lfo(0.11,230,bp.frequency);
+    var swell=ac.createGain();swell.gain.value=0.7;lfo(0.07,0.3,swell.gain);
+    src.connect(bp);bp.connect(swell);swell.connect(L.w);src.start();
+    /* night hush: very low, soft air — mostly silence */
+    L.n=layerGain();
+    var ns=loop(noiseBuf(ac.sampleRate*4,'brown'));
+    var lp=ac.createBiquadFilter();lp.type='lowpass';lp.frequency.value=140;lp.Q.value=0.4;
+    var ng=ac.createGain();ng.gain.value=0.5;lfo(0.05,0.15,ng.gain);
+    ns.connect(lp);lp.connect(ng);ng.connect(L.n);ns.start();
+    /* crowd murmur: broadband noise through slowly drifting speech-range bands, no words */
+    L.k=layerGain();
+    var cb=noiseBuf(ac.sampleRate*5,'white'),f=[[260,.9,.5,.13],[520,1.1,.4,.09],[900,1.3,.25,.17],[1500,1.5,.12,.11]];
+    f.forEach(function(x){
+      var s=loop(cb);s.loopStart=Math.random()*2;
+      var b=ac.createBiquadFilter();b.type='bandpass';b.frequency.value=x[0];b.Q.value=x[1];
+      lfo(x[3]*0.6,x[0]*0.12,b.frequency);
+      var g=ac.createGain();g.gain.value=x[2]*0.5;lfo(x[3],x[2]*0.3,g.gain);
+      s.connect(b);b.connect(g);g.connect(L.k);s.start(0,Math.random()*3);
+    });
+    /* crickets: sparse chirp trains scheduled ahead of time */
+    L.c=layerGain();
+    ckBus=ac.createGain();ckBus.gain.value=0.35;ckBus.connect(L.c);
+    nextCk=[[4300,1.1],[4700,1.6],[5100,2.2],[3900,2.9]].map(function(x){return {f:x[0],gap:x[1],t:ac.currentTime+Math.random()*x[1]};});
+  }
+  function chirp(c,t){
+    var n=3,i,o,g,at;
+    for(i=0;i<n;i++){
+      at=t+i*0.075;
+      o=ac.createOscillator();g=ac.createGain();o.type='sine';o.frequency.value=c.f;
+      g.gain.setValueAtTime(0,at);g.gain.linearRampToValueAtTime(0.5,at+0.012);g.gain.linearRampToValueAtTime(0,at+0.05);
+      o.connect(g);g.connect(ckBus);o.start(at);o.stop(at+0.07);
+    }
+  }
+  function tick(){
+    if(!ac||!on){return;}
+    var m=MIX[cur]||DEF,lim=ac.currentTime+0.9;
+    if(!m.c||!LON.c||!vol){return;}
+    nextCk.forEach(function(c){
+      while(c.t<lim){
+        if(c.t>=ac.currentTime){chirp(c,c.t);}
+        c.t+=c.gap*(0.8+Math.random()*0.6);
+      }
+    });
+  }
+  function names(m){var a=[];['w','n','c','k'].forEach(function(k){if(m[k]>=0.25&&LON[k]){a.push(NAME[k]);}});return a.join(' · ');}
+  function apply(force){
+    if(!ac){return;}
+    var i=sceneF().i,id=secs[i]?secs[i].id:'';
+    if(!force&&id===cur){return;}
+    cur=id;
+    var m=MIX[id]||DEF,t=ac.currentTime,txt=names(m);
+    /* crossfade over ~1.5 s; the on/off master stays separate */
+    ['w','n','c','k'].forEach(function(k){L[k].gain.setTargetAtTime(on&&LON[k]?(m[k]||0):0,t,0.7);});
+    document.getElementById('windMood').textContent=txt;
+    btn.title=btn.getAttribute('aria-pressed')==='true'&&txt?('এখন: '+txt):'';
+  }
+  function set(v){
+    on=v;btn.setAttribute('aria-pressed',v?'true':'false');
+    document.getElementById('windIc').textContent=v?'🔊':'🔇';
+    document.getElementById('windTx').textContent=v?'পরিবেশের সুর: চালু':'পরিবেশের সুর: বন্ধ';
+    if(!v){document.getElementById('windMood').textContent='';btn.title='';}
+  }
+  var pend=0;
+  window.addEventListener('scroll',function(){
+    if(!on||pend){return;}
+    pend=setTimeout(function(){pend=0;apply(false);},180);
+  },{passive:true});
+  btn.addEventListener('click',function(){
+    try{
+      if(!ac){build();}
+      clearTimeout(timer);
+      if(!on){
+        ac.resume();set(true);apply(true);
+        master.gain.setTargetAtTime(lvl(),ac.currentTime,0.8);
+        clearInterval(sched);sched=setInterval(tick,400);tick();
+      }else{
+        master.gain.setTargetAtTime(0,ac.currentTime,0.4);
+        clearInterval(sched);set(false);
+        timer=setTimeout(function(){if(!on){ac.suspend();}},1800);
+      }
+    }catch(e){bar.hidden=true;}
+  });
+
+  /* settings panel: volume slider and one switch per layer */
+  var setBtn=document.getElementById('windSet'),panel=document.getElementById('windPanel'),volEl=document.getElementById('windVol'),volOut=document.getElementById('windVolOut'),lyBtns=[].slice.call(document.querySelectorAll('#windLayers button'));
+  function bn(x){return String(x).replace(/\d/g,function(d){return '০১২৩৪৫৬৭৮৯'.charAt(+d);});}
+  function showVol(){var p=Math.round(vol*100);volEl.value=p;volOut.textContent=bn(p)+'%';volEl.setAttribute('aria-valuetext',bn(p)+' শতাংশ');}
+  function closePanel(){panel.hidden=true;setBtn.setAttribute('aria-expanded','false');}
+  lyBtns.forEach(function(b){
+    var k=b.getAttribute('data-l');b.setAttribute('aria-pressed',LON[k]?'true':'false');
+    b.addEventListener('click',function(){LON[k]=!LON[k];b.setAttribute('aria-pressed',LON[k]?'true':'false');save();apply(true);if(on){tick();}});
+  });
+  volEl.addEventListener('input',function(){vol=clamp(volEl.value/100,0,1);showVol();if(ac&&on){master.gain.setTargetAtTime(lvl(),ac.currentTime,0.05);}});
+  volEl.addEventListener('change',save);
+  setBtn.addEventListener('click',function(){var opening=panel.hidden;panel.hidden=!opening;setBtn.setAttribute('aria-expanded',opening?'true':'false');});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!panel.hidden){closePanel();setBtn.focus();}});
+  document.addEventListener('pointerdown',function(e){if(!panel.hidden&&!bar.contains(e.target)){closePanel();}});
+  showVol();
+  document.addEventListener('visibilitychange',function(){
+    if(!ac||!on){return;}
+    if(document.hidden){ac.suspend();clearInterval(sched);}
+    else{ac.resume().then(function(){nextCk.forEach(function(c){c.t=Math.max(c.t,ac.currentTime);});});clearInterval(sched);sched=setInterval(tick,400);}
+  });
+})();
+
+var rvs=[].slice.call(document.querySelectorAll('.rv'));
+if('IntersectionObserver' in window&&!REDUCE){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.08,rootMargin:'0px 0px -4% 0px'});
+  rvs.forEach(function(el,k){el.style.setProperty('--d',((k%3)*0.08)+'s');io.observe(el);});
+}else{rvs.forEach(function(el){el.classList.add('in');});}
+
+var warSel=0;
+/* ---------- 3D scene ---------- */
+function hash(x,y){var s=Math.sin(x*127.1+y*311.7)*43758.5453;return s-Math.floor(s);}
+function noise(x,y){
+  var xi=Math.floor(x),yi=Math.floor(y),xf=x-xi,yf=y-yi;
+  var u=xf*xf*(3-2*xf),v=yf*yf*(3-2*yf);
+  var a=hash(xi,yi),b=hash(xi+1,yi),c=hash(xi,yi+1),d=hash(xi+1,yi+1);
+  return a+(b-a)*u+(c-a)*v+(a-b-c+d)*u*v;
+}
+function baseH(x,z){
+  var wx=x+noise(x*0.01,z*0.01)*40,wz=z+noise(x*0.01+9,z*0.01+3)*40;
+  var h=0,amp=1,f=0.012,o,n;
+  for(o=0;o<4;o++){n=1-Math.abs(noise(wx*f+o*7.3,wz*f*1.6+o*3.1)*2-1);h+=n*n*amp;amp*=0.5;f*=2.1;}
+  return h*9;
+}
+var SITES=[[0,45,14,60],[0,-60,55,110],[-110,-165,50,100],[62,-335,90,150],[-70,-520,70,130],[130,-440,80,140]];
+function heightAt(x,z){
+  var m=1,k,s;
+  for(k=0;k<SITES.length;k++){s=SITES[k];m*=sstep(s[2],s[3],Math.hypot(x-s[0],z-s[1]));}
+  return baseH(x,z)*m;
+}
+
+function initScene(){
+  var S3=window.__s3;
+  if(!window.THREE){return false;}
+  var canvas=document.getElementById('stage'),renderer;
+  try{renderer=new THREE.WebGLRenderer({canvas:canvas,antialias:!Q.lite,powerPreference:Q.lite?'low-power':'high-performance'});}catch(e){return false;}
+  var small=Math.min(window.innerWidth,window.innerHeight)<700||!!Q.lite;
+  renderer.setPixelRatio(Q.lite?1:Math.min(window.devicePixelRatio||1,small?1.5:2));
+  renderer.setSize(window.innerWidth,window.innerHeight,false);
+
+  var scene=new THREE.Scene();
+  scene.fog=new THREE.FogExp2(0x101a30,0.004);
+  var camera=new THREE.PerspectiveCamera(52,window.innerWidth/window.innerHeight,0.5,3200);
+
+  /* textures */
+  function canvasTex(size,draw){var c=document.createElement('canvas');c.width=c.height=size;draw(c.getContext('2d'),size);return new THREE.CanvasTexture(c);}
+  var dotTex=canvasTex(64,function(g,s){var r=g.createRadialGradient(s/2,s/2,0,s/2,s/2,s/2);r.addColorStop(0,'rgba(255,255,255,1)');r.addColorStop(0.35,'rgba(255,255,255,0.55)');r.addColorStop(1,'rgba(255,255,255,0)');g.fillStyle=r;g.fillRect(0,0,s,s);});
+  var moonTex=canvasTex(256,function(g,s){
+    g.save();g.beginPath();g.arc(s/2,s/2,s*0.46,0,Math.PI*2);g.clip();
+    var r=g.createRadialGradient(s*0.42,s*0.4,s*0.05,s/2,s/2,s*0.5);r.addColorStop(0,'#fffdf2');r.addColorStop(1,'#cdd5ea');g.fillStyle=r;g.fillRect(0,0,s,s);
+    for(var i=0;i<26;i++){g.globalAlpha=0.07+Math.random()*0.08;g.fillStyle='#7f8bad';g.beginPath();g.arc(s*(0.2+Math.random()*0.6),s*(0.2+Math.random()*0.6),s*(0.02+Math.random()*0.07),0,Math.PI*2);g.fill();}
+    g.restore();
+  });
+
+  /* sky dome, stars, moon, sun (all follow the camera) */
+  var sky=new THREE.Group();scene.add(sky);
+  var skyMat=new THREE.ShaderMaterial({
+    side:THREE.BackSide,depthWrite:false,fog:false,
+    uniforms:{uZen:{value:new THREE.Color(0x03050d)},uHor:{value:new THREE.Color(0x101a30)},uGlow:{value:new THREE.Color(0xff9a55)},uSunDir:{value:new THREE.Vector3(0.5,0.05,-0.85)},uSun:{value:0}},
+    vertexShader:'varying vec3 vP;void main(){vP=position;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}',
+    fragmentShader:'uniform vec3 uZen;uniform vec3 uHor;uniform vec3 uGlow;uniform vec3 uSunDir;uniform float uSun;varying vec3 vP;'+
+      'void main(){vec3 d=normalize(vP);float h=clamp(d.y,0.0,1.0);float t=pow(h,0.55);vec3 col=mix(uHor,uZen,t);'+
+      'float s=max(dot(d,normalize(uSunDir)),0.0);col+=uGlow*(pow(s,6.0)*0.4+pow(s,48.0)*0.9)*uSun;'+
+      'if(d.y<0.0){col=uHor;}gl_FragColor=vec4(col,1.0);}'
+  });
+  var skyMesh=new THREE.Mesh(new THREE.SphereGeometry(1500,32,16),skyMat);skyMesh.renderOrder=-10;skyMesh.frustumCulled=false;sky.add(skyMesh);
+
+  var NS=small?3500:6500,sp=new Float32Array(NS*3),sz=new Float32Array(NS),ph=new Float32Array(NS),scl=new Float32Array(NS*3);
+  var band=new THREE.Vector3(0.35,0.75,-0.55).normalize(),v=new THREE.Vector3(),i,u,a,r,w,br;
+  for(i=0;i<NS;i++){
+    u=Math.random()*2-1;a=Math.random()*Math.PI*2;r=Math.sqrt(1-u*u);
+    v.set(r*Math.cos(a),Math.abs(u),r*Math.sin(a));
+    var inBand=i<NS*0.4;
+    if(inBand){v.addScaledVector(band,-v.dot(band)*0.9);}
+    v.normalize();if(v.y<0.02){v.y=Math.abs(v.y)+0.02;v.normalize();}
+    sp[i*3]=v.x*1400;sp[i*3+1]=v.y*1400;sp[i*3+2]=v.z*1400;
+    sz[i]=inBand?0.8+Math.random()*1.2:0.9+Math.pow(Math.random(),3)*3.2;
+    ph[i]=Math.random();
+    w=Math.random();br=0.5+Math.random()*0.5;
+    if(w<0.2){scl[i*3]=1*br;scl[i*3+1]=0.88*br;scl[i*3+2]=0.72*br;}
+    else if(w<0.5){scl[i*3]=0.8*br;scl[i*3+1]=0.88*br;scl[i*3+2]=1*br;}
+    else{scl[i*3]=br;scl[i*3+1]=br;scl[i*3+2]=br;}
+  }
+  var sg=new THREE.BufferGeometry();
+  sg.setAttribute('position',new THREE.BufferAttribute(sp,3));sg.setAttribute('aSize',new THREE.BufferAttribute(sz,1));
+  sg.setAttribute('aPhase',new THREE.BufferAttribute(ph,1));sg.setAttribute('aColor',new THREE.BufferAttribute(scl,3));
+  var starMat=new THREE.ShaderMaterial({
+    transparent:true,depthWrite:false,fog:false,
+    uniforms:{uTime:{value:0},uPx:{value:renderer.getPixelRatio()},uAlpha:{value:1}},
+    vertexShader:'attribute float aSize;attribute float aPhase;attribute vec3 aColor;uniform float uTime;uniform float uPx;varying vec3 vC;varying float vT;'+
+      'void main(){vC=aColor;vT=0.65+0.35*sin(uTime*(0.6+aPhase)+aPhase*40.0);vec4 mv=modelViewMatrix*vec4(position,1.0);gl_PointSize=aSize*uPx*1.6*(0.8+0.4*vT);gl_Position=projectionMatrix*mv;}',
+    fragmentShader:'uniform float uAlpha;varying vec3 vC;varying float vT;'+
+      'void main(){float d=length(gl_PointCoord-0.5);float a=smoothstep(0.5,0.0,d);a*=a;gl_FragColor=vec4(vC,a*vT*uAlpha);}'
+  });
+  var stars=new THREE.Points(sg,starMat);stars.frustumCulled=false;sky.add(stars);
+
+  function glowSprite(map,color,size,opacity,fog){
+    var m=new THREE.SpriteMaterial({map:map,color:color,transparent:true,opacity:opacity,blending:THREE.AdditiveBlending,depthWrite:false,fog:!!fog});
+    var s=new THREE.Sprite(m);s.scale.set(size,size,1);return s;
+  }
+  var moonDir=new THREE.Vector3(0.28,0.19,-0.94).normalize();
+  var moonDisk=new THREE.Sprite(new THREE.SpriteMaterial({map:moonTex,transparent:true,depthWrite:false,fog:false}));
+  moonDisk.scale.set(110,110,1);moonDisk.position.copy(moonDir).multiplyScalar(1300);sky.add(moonDisk);
+  var moonGlow=glowSprite(dotTex,0x9fb4ff,520,0.5,false);moonGlow.position.copy(moonDir).multiplyScalar(1299);sky.add(moonGlow);
+  var sunDir=new THREE.Vector3(0.52,0.05,-0.85).normalize();
+  var sunDisk=glowSprite(dotTex,0xfff0c8,170,1,false);sky.add(sunDisk);
+  var sunGlow=glowSprite(dotTex,0xffb26a,760,0.7,false);sky.add(sunGlow);
+
+  /* surface textures (procedural): sand ripples, rock cracks, kiswa weave, gold belt with script */
+  var TS=small?128:256;
+  function wrapTex(t,rx,ry){t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(rx,ry);t.anisotropy=small?1:4;return t;}
+  var sandTex=wrapTex(canvasTex(TS,function(g,s){g.fillStyle='#d9d4c8';g.fillRect(0,0,s,s);var k,r,i2,y;
+    for(k=0;k<=s;k+=s/16){g.beginPath();for(r=0;r<=s;r+=4){y=k+Math.sin(r/s*6.2832*3)*s*0.012+Math.sin(r/s*6.2832*7+k)*s*0.006;if(r===0){g.moveTo(r,y);}else{g.lineTo(r,y);}}g.strokeStyle='rgba(70,55,35,0.22)';g.lineWidth=s/42;g.stroke();g.translate(0,s/42);g.strokeStyle='rgba(255,248,230,0.16)';g.lineWidth=s/90;g.stroke();g.translate(0,-s/42);}
+    for(i2=0;i2<s*s/18;i2++){g.fillStyle='rgba('+(i2%2?'255,250,235':'60,45,30')+',0.07)';g.fillRect(Math.random()*s,Math.random()*s,1.5,1.5);}}),42,52);
+  var rockTex=wrapTex(canvasTex(TS,function(g,s){g.fillStyle='#cfc9bf';g.fillRect(0,0,s,s);var n2,j,a,len,px,py,pts,ox,oy;
+    for(n2=0;n2<s/6;n2++){px=Math.random()*s;py=Math.random()*s;a=Math.random()*6.28;len=s*(0.1+Math.random()*0.22);pts=[[px,py]];for(j=0;j<5;j++){a+=(Math.random()-0.5)*1.1;px+=Math.cos(a)*len/5;py+=Math.sin(a)*len/5;pts.push([px,py]);}
+      g.strokeStyle='rgba(30,24,18,'+(0.25+Math.random()*0.3)+')';g.lineWidth=0.8+Math.random()*1.6;
+      for(ox=-1;ox<=1;ox++){for(oy=-1;oy<=1;oy++){g.beginPath();pts.forEach(function(p,q){if(q===0){g.moveTo(p[0]+ox*s,p[1]+oy*s);}else{g.lineTo(p[0]+ox*s,p[1]+oy*s);}});g.stroke();}}}
+    for(j=0;j<s*s/10;j++){g.fillStyle='rgba(0,0,0,'+Math.random()*0.08+')';g.fillRect(Math.random()*s,Math.random()*s,2,2);}}),3,3);
+  var fabTex=wrapTex(canvasTex(128,function(g,s){g.fillStyle='#5a5a60';g.fillRect(0,0,s,s);var p;for(p=0;p<s;p+=4){g.fillStyle='rgba(255,255,255,0.10)';g.fillRect(p,0,2,s);g.fillStyle='rgba(0,0,0,0.25)';g.fillRect(0,p,s,2);}}),3,3);
+  var bandC=document.createElement('canvas');bandC.width=1024;bandC.height=128;var bandTex=new THREE.CanvasTexture(bandC);bandTex.anisotropy=small?1:4;
+  function drawBand(){var g=bandC.getContext('2d'),i3;g.fillStyle='#0b0a08';g.fillRect(0,0,1024,128);g.strokeStyle='#d8b26a';g.lineWidth=3;g.strokeRect(6,6,1012,116);g.lineWidth=1.5;g.strokeRect(14,14,996,100);
+    g.fillStyle='#d8b26a';g.textAlign='center';g.textBaseline='middle';g.font='700 62px Amiri,"Noto Naskh Arabic","Traditional Arabic",serif';
+    for(i3=0;i3<3;i3++){g.fillText('لا إله إلا الله',171+i3*341,68);}
+    for(i3=0;i3<4;i3++){g.beginPath();g.arc(i3*341,64,0,0,6.2832);g.fill();}
+    [341,683].forEach(function(cx){g.beginPath();g.arc(cx,64,11,0,6.2832);g.fill();g.fillStyle='#0b0a08';g.beginPath();g.arc(cx,64,5,0,6.2832);g.fill();g.fillStyle='#d8b26a';});
+    bandTex.needsUpdate=true;}
+  drawBand();if(document.fonts&&document.fonts.load){document.fonts.load('700 62px Amiri').then(drawBand).catch(function(){});}
+  var bandMat=new THREE.MeshStandardMaterial({map:bandTex,roughness:0.45,metalness:0.55,emissive:0x6a4a14,emissiveMap:bandTex,emissiveIntensity:0.5});
+
+  /* terrain */
+  var SX=small?120:200,SZ=small?150:250;
+  var tg=new THREE.PlaneGeometry(900,1100,SX,SZ);tg.rotateX(-Math.PI/2);tg.translate(0,0,-380);
+  var tp=tg.attributes.position,tc=new Float32Array(tp.count*3);
+  var cLow=new THREE.Color(0x5b4a34),cHigh=new THREE.Color(0xb39666),tmp=new THREE.Color();
+  for(i=0;i<tp.count;i++){
+    var x=tp.getX(i),z=tp.getZ(i),h=heightAt(x,z);
+    tp.setY(i,h);
+    tmp.copy(cLow).lerp(cHigh,clamp(h/14,0,1)*0.9+noise(x*0.07,z*0.07)*0.15);
+    tc[i*3]=tmp.r;tc[i*3+1]=tmp.g;tc[i*3+2]=tmp.b;
+  }
+  tg.setAttribute('color',new THREE.BufferAttribute(tc,3));tg.computeVertexNormals();
+  var tm0={vertexColors:true,roughness:1,metalness:0,map:sandTex};if(!small){tm0.bumpMap=sandTex;tm0.bumpScale=1.0;}scene.add(new THREE.Mesh(tg,new THREE.MeshStandardMaterial(tm0)));
+
+  /* lights */
+  var hemi=new THREE.HemisphereLight(0x2b3a66,0x2a2118,0.4);scene.add(hemi);
+  var key=new THREE.DirectionalLight(0x86a0e0,0.95);scene.add(key);
+  var kaabaLight=new THREE.PointLight(0xffcf8a,1.4,110);kaabaLight.position.set(0,26,-60);scene.add(kaabaLight);
+  var madLight=new THREE.PointLight(0x34d399,0,170);madLight.position.set(80,34,-320);scene.add(madLight);
+
+  /* Kaaba and the circling ring of pilgrims */
+  var kaaba=new THREE.Group();kaaba.position.set(0,0,-60);kaaba.scale.setScalar(1.4);scene.add(kaaba);
+  var kBody=new THREE.Mesh(new THREE.BoxGeometry(9,12,10.5),new THREE.MeshStandardMaterial({color:0x24242a,map:fabTex,roughness:0.6,metalness:0.1,emissive:0x050507,emissiveIntensity:0.5}));
+  kBody.position.y=6;kaaba.add(kBody);
+  var goldMat=new THREE.MeshStandardMaterial({color:0xd8b26a,roughness:0.3,metalness:0.85,emissive:0x3a2a08,emissiveIntensity:0.6});
+  var kBand=new THREE.Mesh(new THREE.BoxGeometry(9.15,1.1,10.65),bandMat);kBand.position.y=9.2;kaaba.add(kBand);
+  var kDoor=new THREE.Mesh(new THREE.PlaneGeometry(2.2,3.6),goldMat);kDoor.position.set(4.54,3.2,-1.5);kDoor.rotation.y=Math.PI/2;kaaba.add(kDoor);
+  var ringGeo=new THREE.RingGeometry(20,50,96);ringGeo.rotateX(-Math.PI/2);
+  var mataf=new THREE.Mesh(ringGeo,new THREE.MeshStandardMaterial({color:0xcfc8b8,roughness:0.9,emissive:0x2a2618,emissiveIntensity:0.45}));
+  mataf.position.set(0,0.08,-60);scene.add(mataf);
+  var kGlow=glowSprite(dotTex,0xffd9a0,90,0.35,true);kGlow.position.set(0,10,-60);scene.add(kGlow);
+  var tawaf=new THREE.Group();tawaf.position.set(0,0,-60);scene.add(tawaf);
+  var NT=small?350:650,tpos=new Float32Array(NT*3);
+  for(i=0;i<NT;i++){var ang=Math.random()*Math.PI*2,rad=22+Math.pow(Math.random(),0.8)*24;tpos[i*3]=Math.cos(ang)*rad;tpos[i*3+1]=0.5+Math.random()*1.1;tpos[i*3+2]=Math.sin(ang)*rad;}
+  var tgm=new THREE.BufferGeometry();tgm.setAttribute('position',new THREE.BufferAttribute(tpos,3));
+  tawaf.add(new THREE.Points(tgm,new THREE.PointsMaterial({map:dotTex,size:1.4,color:0xfff1c9,transparent:true,opacity:0.85,depthWrite:false,blending:THREE.AdditiveBlending})));
+
+  /* Mountain of Light (Hira) with a beam */
+  var mg=new THREE.IcosahedronGeometry(1,5),mp=mg.attributes.position,mcol=new Float32Array(mp.count*3);
+  var rockLo=new THREE.Color(0x3f372f),rockHi=new THREE.Color(0x8d8070);
+  for(i=0;i<mp.count;i++){
+    var px=mp.getX(i),py=mp.getY(i),pz=mp.getZ(i);
+    var n=noise(px*2.3+5,pz*2.3+py*2.0)*0.5+noise(px*6+1,pz*6+py*4)*0.28+noise(px*13,pz*13+py*9)*0.12;
+    var rr=1+(n-0.45)*0.6;px*=rr;py*=rr;pz*=rr;
+    var taper=1-0.62*clamp(py,0,1);
+    px*=62*taper;pz*=54*taper;py=py>0?py*74:py*10;
+    mp.setXYZ(i,px,py,pz);
+    tmp.copy(rockLo).lerp(rockHi,clamp(py/74,0,1)*0.8+n*0.25);
+    mcol[i*3]=tmp.r;mcol[i*3+1]=tmp.g;mcol[i*3+2]=tmp.b;
+  }
+  mg.setAttribute('color',new THREE.BufferAttribute(mcol,3));mg.computeVertexNormals();
+  var mMt={vertexColors:true,roughness:1,flatShading:true,map:rockTex};if(!small){mMt.bumpMap=rockTex;mMt.bumpScale=1.2;}var mount=new THREE.Mesh(mg,new THREE.MeshStandardMaterial(mMt));
+  mount.position.set(-110,-1,-165);scene.add(mount);
+  var beamMat=new THREE.ShaderMaterial({
+    transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,side:THREE.DoubleSide,
+    uniforms:{uTime:{value:0},uInt:{value:0},uCol:{value:new THREE.Color(0xffe2a0)}},
+    vertexShader:'varying vec2 vUv;varying vec3 vN;varying vec3 vV;void main(){vUv=uv;vN=normalMatrix*normal;vec4 mv=modelViewMatrix*vec4(position,1.0);vV=mv.xyz;gl_Position=projectionMatrix*mv;}',
+    fragmentShader:'uniform float uTime;uniform float uInt;uniform vec3 uCol;varying vec2 vUv;varying vec3 vN;varying vec3 vV;'+
+      'void main(){float fade=pow(1.0-vUv.y,1.4);float f=abs(dot(normalize(vN),normalize(-vV)));float sh=0.78+0.22*sin(vUv.x*40.0+uTime*1.4+vUv.y*6.0);'+
+      'float al=fade*pow(f,1.4)*uInt*sh*0.85;gl_FragColor=vec4(uCol,al);}'
+  });
+  var beam=new THREE.Mesh(new THREE.CylinderGeometry(10,3,300,40,1,true),beamMat);beam.position.set(-110,226,-165);beam.frustumCulled=false;scene.add(beam);
+  var halo=glowSprite(dotTex,0xffe2a0,110,0,true);halo.position.set(-110,78,-165);scene.add(halo);
+  var NE=small?90:170,ep=new Float32Array(NE*3),ea=new Float32Array(NE),ev=new Float32Array(NE),er=new Float32Array(NE);
+  for(i=0;i<NE;i++){ea[i]=Math.random()*Math.PI*2;ev[i]=10+Math.random()*22;er[i]=Math.random();ep[i*3+1]=Math.random()*240;}
+  var egeo=new THREE.BufferGeometry();egeo.setAttribute('position',new THREE.BufferAttribute(ep,3));
+  var emat=new THREE.PointsMaterial({map:dotTex,size:2.2,color:0xffe2a0,transparent:true,opacity:0,depthWrite:false,blending:THREE.AdditiveBlending});
+  var embers=new THREE.Points(egeo,emat);embers.position.set(-110,76,-165);embers.frustumCulled=false;scene.add(embers);
+
+  /* Hijrah path of light */
+  var curve=new THREE.CatmullRomCurve3([[0,-112],[-14,-135],[-6,-165],[14,-198],[30,-228],[44,-252]].map(function(p){return new THREE.Vector3(p[0],0,p[1]);}));
+  var NP=900,pts=curve.getPoints(NP),pp=new Float32Array((NP+1)*3),pt=new Float32Array(NP+1);
+  for(i=0;i<=NP;i++){pp[i*3]=pts[i].x;pp[i*3+1]=heightAt(pts[i].x,pts[i].z)+0.45;pp[i*3+2]=pts[i].z;pt[i]=i/NP;}
+  var pg=new THREE.BufferGeometry();pg.setAttribute('position',new THREE.BufferAttribute(pp,3));pg.setAttribute('aT',new THREE.BufferAttribute(pt,1));
+  var pathMat=new THREE.ShaderMaterial({
+    transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,
+    uniforms:{uTime:{value:0},uReveal:{value:0},uPx:{value:renderer.getPixelRatio()}},
+    vertexShader:'attribute float aT;uniform float uTime;uniform float uReveal;uniform float uPx;varying float vA;'+
+      'void main(){float vis=1.0-smoothstep(uReveal-0.04,uReveal,aT);float p=0.55+0.45*sin(aT*90.0-uTime*2.5);vA=vis*(0.35+0.65*p);'+
+      'vec4 mv=modelViewMatrix*vec4(position,1.0);gl_PointSize=clamp((2.0+3.0*p)*uPx*(240.0/-mv.z),1.5*uPx,16.0*uPx);gl_Position=projectionMatrix*mv;}',
+    fragmentShader:'varying float vA;void main(){float d=length(gl_PointCoord-0.5);float a=smoothstep(0.5,0.0,d);gl_FragColor=vec4(1.0,0.84,0.5,a*vA);}'
+  });
+  var pathPts=new THREE.Points(pg,pathMat);pathPts.frustumCulled=false;scene.add(pathPts);
+
+  /* Masjid al-Nabawi, simplified */
+  var mos=new THREE.Group();mos.position.set(62,0,-335);mos.scale.setScalar(1.6);scene.add(mos);
+  var stone=new THREE.MeshStandardMaterial({color:0xd8cfbb,roughness:0.85,metalness:0,emissive:0x2a2418,emissiveIntensity:0.5});
+  var gold2=new THREE.MeshStandardMaterial({color:0xd8b26a,roughness:0.3,metalness:0.85,emissive:0x3a2a08,emissiveIntensity:0.6});
+  var domeMat=new THREE.MeshStandardMaterial({color:0x1b9a6c,roughness:0.38,metalness:0.25,emissive:0x0a4a34,emissiveIntensity:0.6});
+  function add(g,m,x,y,z){var o=new THREE.Mesh(g,m);o.position.set(x,y,z);mos.add(o);return o;}
+  add(new THREE.BoxGeometry(60,9,34),stone,0,4.5,0);
+  var cg=new THREE.PlaneGeometry(110,32);cg.rotateX(-Math.PI/2);
+  add(cg,new THREE.MeshStandardMaterial({color:0xcfc6b2,roughness:0.9,emissive:0x1c1a12,emissiveIntensity:0.5}),0,0.06,25);
+  [-31,31].forEach(function(sx){[-16,16].forEach(function(sz2){
+    add(new THREE.CylinderGeometry(1.3,1.7,40,20),stone,sx,20,sz2);
+    add(new THREE.CylinderGeometry(2.4,2.4,0.9,20),stone,sx,31,sz2);
+    add(new THREE.CylinderGeometry(1.1,1.3,8,20),stone,sx,35.5,sz2);
+    add(new THREE.ConeGeometry(1.5,4.5,20),gold2,sx,41.8,sz2);
+    add(new THREE.SphereGeometry(0.5,12,8),gold2,sx,44.5,sz2);
+  });});
+  add(new THREE.CylinderGeometry(5.4,6,4.2,40),stone,12,11.1,0);
+  var dome=add(new THREE.SphereGeometry(6,48,24,0,Math.PI*2,0,Math.PI/2),domeMat,12,13.2,0);dome.scale.set(1,1.1,1);
+  add(new THREE.CylinderGeometry(0.18,0.18,3,10),gold2,12,21.2,0);
+  add(new THREE.SphereGeometry(0.55,12,8),gold2,12,23,0);
+  [-26,-20,-14,-8,-2].forEach(function(sx){[-8.5,8.5].forEach(function(sz2){add(new THREE.SphereGeometry(2.6,24,12,0,Math.PI*2,0,Math.PI/2),stone,sx,9,sz2);});});
+  var madGlow=glowSprite(dotTex,0x34d399,100,0.15,true);madGlow.position.set(81,22,-335);scene.add(madGlow);
+  var mosK=mos.children.map(function(c){return {m:c,s:c.scale.clone(),p:c.position.clone()};});
+
+  /* Isra and Miraj: a ribbon of light rising into the night, and seven faint rings */
+  var mirG=new THREE.Group();scene.add(mirG);
+  var mc=new THREE.CatmullRomCurve3([[0,8,-60],[-16,70,-110],[-34,170,-190],[-18,300,-290],[36,470,-370]].map(function(p){return new THREE.Vector3(p[0],p[1],p[2]);}));
+  var NM=700,mpts=mc.getPoints(NM),mpp=new Float32Array((NM+1)*3),mpt=new Float32Array(NM+1);
+  for(i=0;i<=NM;i++){mpp[i*3]=mpts[i].x;mpp[i*3+1]=mpts[i].y;mpp[i*3+2]=mpts[i].z;mpt[i]=i/NM;}
+  var mpg=new THREE.BufferGeometry();mpg.setAttribute('position',new THREE.BufferAttribute(mpp,3));mpg.setAttribute('aT',new THREE.BufferAttribute(mpt,1));
+  var mirMat=pathMat.clone(),mirPts=new THREE.Points(mpg,mirMat);mirPts.frustumCulled=false;mirG.add(mirPts);
+  var ringMats=[],ri;
+  for(ri=0;ri<7;ri++){
+    var rm=new THREE.MeshBasicMaterial({color:0xcfd9ff,transparent:true,opacity:0,side:THREE.DoubleSide,depthWrite:false,blending:THREE.AdditiveBlending,fog:false});
+    var rg=new THREE.RingGeometry(120+ri*18,121.2+ri*18,96);rg.rotateX(-Math.PI/2);
+    var rmesh=new THREE.Mesh(rg,rm);rmesh.position.set(-30,110+ri*55,-210);mirG.add(rmesh);ringMats.push(rm);
+  }
+  mirG.visible=false;
+
+  /* battlefield stage: four small scenes, one shown at a time */
+  var warG=new THREE.Group();warG.position.set(130,0,-440);scene.add(warG);
+  var wm=function(c){return new THREE.MeshStandardMaterial({color:c,roughness:1,flatShading:true});},wRock=wm(0x7b6e5e),wDark=wm(0x2b241d),wEarth=wm(0x8a7455),W=[];
+  function crowd(cx,cz,r,n,col,sz){var p=new Float32Array(n*3),q,aa,rr,g=new THREE.BufferGeometry();for(q=0;q<n;q++){aa=Math.random()*6.283;rr=Math.sqrt(Math.random())*r;p[q*3]=cx+Math.cos(aa)*rr;p[q*3+1]=0.6;p[q*3+2]=cz+Math.sin(aa)*rr;}g.setAttribute('position',new THREE.BufferAttribute(p,3));return new THREE.Points(g,new THREE.PointsMaterial({map:dotTex,size:sz,color:col,transparent:true,opacity:0.95,depthWrite:false}));}
+  function wmesh(g,m,x,y,z,sx,sy,sz2){var o=new THREE.Mesh(g,m);o.position.set(x,y,z);o.scale.set(sx||1,sy||1,sz2||1);return o;}
+  for(i=0;i<5;i++){W.push(new THREE.Group());warG.add(W[i]);}
+  /* position helpers: flat tinted disc under a side, and a text label */
+  function wdisc(x,z,r,col,op){var m=new THREE.Mesh(new THREE.CircleGeometry(r,40),new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:op,depthWrite:false,side:THREE.DoubleSide}));m.rotation.x=-Math.PI/2;m.position.set(x,0.5,z);return m;}
+  function wlab(g,txt,x,y,z,s){var l=mkLab(txt),w=s||17;l.scale.set(w,w/4,1);l.position.set(x,y,z);g.add(l);}
+  var wMus=0x2fae83,wQur=0xb4553a;
+  /* Badr (simplified): wells between two low ridges; Muslims at the near wells, Quraysh beyond a low sand rise; about 1:3 */
+  [[-12,-6],[-4,8],[10,-2]].forEach(function(p){W[0].add(wmesh(new THREE.CylinderGeometry(2.2,2.2,0.6,16),wDark,p[0],0.3,p[1]));});
+  W[0].add(wmesh(new THREE.IcosahedronGeometry(1,1),wRock,-34,0,-22,14,5,10));W[0].add(wmesh(new THREE.IcosahedronGeometry(1,1),wRock,36,0,-26,16,6,10));
+  W[0].add(wmesh(new THREE.IcosahedronGeometry(1,1),wEarth,8,0,-12,16,2.6,5));
+  W[0].add(wdisc(-14,16,11,wMus,0.24));W[0].add(wdisc(6,-26,16,wQur,0.22));
+  W[0].add(crowd(-14,16,8,62,0xf6f1e4,1.0));W[0].add(crowd(6,-26,13,190,0x3a3028,1.0));
+  wlab(W[0],'মুসলিম বাহিনী',-14,9,16);wlab(W[0],'কুরাইশ বাহিনী',6,9,-26);wlab(W[0],'বদরের কূপ',3,5.5,4);wlab(W[0],'বালির টিলা',8,5,-12,13);
+  /* Uhud (simplified): mountain at the Muslims' back, archers on the small hill at their flank, Quraysh on the plain in front; about 1:4 */
+  W[1].add(wmesh(new THREE.IcosahedronGeometry(1,2),wRock,0,-4,-30,48,36,26));W[1].add(wmesh(new THREE.IcosahedronGeometry(1,1),wRock,-24,-1,6,8,7,8));
+  W[1].add(wdisc(2,4,11,wMus,0.24));W[1].add(wdisc(-2,24,16,wQur,0.22));
+  W[1].add(crowd(2,4,9,38,0xf6f1e4,1.0));W[1].add(crowd(-2,24,14,160,0x3a3028,1.0));
+  var arch=crowd(-24,6,2,14,0x6ee7b7,1.4);arch.position.y=6;W[1].add(arch);
+  wlab(W[1],'উহুদ পাহাড়',0,40,-30,20);wlab(W[1],'মুসলিম বাহিনী',2,11,4);wlab(W[1],'কুরাইশ বাহিনী',-2,11,24);wlab(W[1],'তীরন্দাজদের টিলা',-24,13,6,20);
+  /* Khandaq: trench with banks, defenders on one side */
+  var trN=wmesh(new THREE.BoxGeometry(80,0.3,5),wDark,0,0.1,0),bkA=wmesh(new THREE.BoxGeometry(80,1.3,3),wEarth,0,0.65,4.5),bkB=wmesh(new THREE.BoxGeometry(80,1.3,3),wEarth,0,0.65,-4.5);W[2].add(trN,bkA,bkB);
+  W[2].add(crowd(0,16,14,90,0xf6f1e4,1.0));W[2].add(crowd(0,-20,16,130,0x3a3028,1.0));
+  W[2].add(wdisc(0,16,14,wMus,0.2));W[2].add(wdisc(0,-20,16,wQur,0.2));W[2].add(wmesh(new THREE.IcosahedronGeometry(1,1),wRock,-30,0,32,9,8,8));
+  wlab(W[2],'পরিখা',0,5,0,14);wlab(W[2],'মুসলিম শিবির',0,9,18);wlab(W[2],'কুরাইশ ও মিত্র জোট',0,9,-22,20);wlab(W[2],'সালআ পাহাড়',-30,12,32,15);
+  /* Khandaq: rows of workers walk slowly along the dug stretch carrying earth; diggers bob at the two digging fronts.
+     The visible stretch (uL) follows the trench as it is dug, so the work grows with the scroll. */
+  var kMat=null;
+  (function(){
+    var nR=small?22:34,nD=small?8:12,tot=nR*2+nD*2,P=new Float32Array(tot*3),K=new Float32Array(tot),A=new Float32Array(tot),D=new Float32Array(tot),q=0,r,j;
+    function put(x,y,z,kind,a,d){P[q*3]=x;P[q*3+1]=y;P[q*3+2]=z;K[q]=kind;A[q]=a;D[q]=d;q++;}
+    for(r=0;r<2;r++){for(j=0;j<nR;j++){put(0,0.7,(r?9.4:7.4)+(Math.random()-0.5)*0.5,0,(j+Math.random()*0.35)/nR,r?-1:1);}}
+    for(r=0;r<2;r++){for(j=0;j<nD;j++){put(0,0.65,(Math.random()-0.5)*2.6,1,Math.random(),r?-1:1);}}
+    var g=new THREE.BufferGeometry();
+    g.setAttribute('position',new THREE.BufferAttribute(P,3));g.setAttribute('aK',new THREE.BufferAttribute(K,1));
+    g.setAttribute('aA',new THREE.BufferAttribute(A,1));g.setAttribute('aD',new THREE.BufferAttribute(D,1));
+    kMat=new THREE.ShaderMaterial({
+      transparent:true,depthWrite:false,
+      uniforms:{uT:{value:0},uL:{value:0},uPx:{value:renderer.getPixelRatio()}},
+      vertexShader:'attribute float aK;attribute float aA;attribute float aD;uniform float uT;uniform float uL;uniform float uPx;varying float vA;'+
+        'void main(){float x;float a=1.0;float y=position.y;'+
+        'if(aK<0.5){float f=fract(aA+uT*0.0125*aD);x=(f*2.0-1.0)*40.0;a=1.0-smoothstep(uL-4.0,uL,abs(x));y+=0.12*abs(sin(uT*3.0+aA*40.0));}'+
+        'else{x=aD*(uL-aA*7.0);a=smoothstep(2.0,6.0,uL);y+=0.35*abs(sin(uT*2.4+aA*30.0));}'+
+        'vA=a;vec4 mv=modelViewMatrix*vec4(x,y,position.z,1.0);gl_PointSize=clamp(1.6*uPx*(240.0/-mv.z),1.5*uPx,10.0*uPx);gl_Position=projectionMatrix*mv;}',
+      fragmentShader:'varying float vA;void main(){float d=length(gl_PointCoord-0.5);float al=smoothstep(0.5,0.1,d);gl_FragColor=vec4(0.96,0.95,0.89,al*vA*0.95);}'
+    });
+    var kp=new THREE.Points(g,kMat);kp.frustumCulled=false;W[2].add(kp);
+  })();
+  /* Hudaybiyyah: lone tree, pilgrims in white, a few tents */
+  W[3].add(wmesh(new THREE.CylinderGeometry(0.7,1,9,8),wm(0x4a3626),0,4.5,0));W[3].add(wmesh(new THREE.SphereGeometry(5,12,8),wm(0x3f6b3a),0,10,0,1,0.8,1));
+  W[3].add(crowd(0,0,17,130,0xf6f1e4,1.0));
+  [[-26,6],[-20,-18],[24,-12],[28,10]].forEach(function(p){var t=wmesh(new THREE.ConeGeometry(2.5,2.2,4),wDark,p[0],1.1,p[1]);t.rotation.y=0.78;W[3].add(t);});
+  wlab(W[3],'বাইআতের গাছ',0,17,0,18);wlab(W[3],'ইহরামে সাহাবিগণ',0,5,14,18);
+  /* Taif (simplified): walled town on a hill, Thaqif crowd outside, vineyard shelter on the left, Qarn al-Tha'alib mound on the right */
+  W[4].add(wmesh(new THREE.IcosahedronGeometry(1,2),wRock,0,-3,-38,40,22,16));
+  var tw=new THREE.Mesh(new THREE.CylinderGeometry(14,14,3.2,28,1,true),wEarth);tw.position.set(0,1.6,-14);tw.material.side=THREE.DoubleSide;W[4].add(tw);
+  [[-5,-18],[3,-20],[7,-12],[-7,-10],[0,-14]].forEach(function(q){W[4].add(wmesh(new THREE.BoxGeometry(4,2.6,4),wEarth,q[0],1.3,q[1]));});
+  W[4].add(wdisc(-4,6,9,wQur,0.2));W[4].add(crowd(-4,6,7,50,0x3a3028,1.0));
+  var vy=wm(0x3f6b3a);[[-30,10],[-26,16],[-34,18],[-24,6]].forEach(function(q){W[4].add(wmesh(new THREE.SphereGeometry(3,10,8),vy,q[0],3,q[1],1,0.9,1));});
+  W[4].add(wmesh(new THREE.IcosahedronGeometry(1,1),wRock,34,0,-8,7,8,7));
+  wlab(W[4],'তায়েফ শহর',0,9,-14);wlab(W[4],'সাকিফ গোত্র',-4,6,8,15);wlab(W[4],'আঙুরবাগান',-29,9,12,15);wlab(W[4],'কারনুস সাআলিব',34,12,-8,20);
+  warG.visible=false;
+
+  /* Fath Makkah: ring of small stone stubs around the Kaaba that topple as the page scrolls */
+  var fathG=new THREE.Group();scene.add(fathG);
+  var idolMat=new THREE.MeshStandardMaterial({color:0x2a2622,roughness:1,flatShading:true}),idols=[];
+  for(i=0;i<36;i++){var ia=i/36*Math.PI*2,ir=36+(i%3)*3.5,io=new THREE.Mesh(new THREE.BoxGeometry(1.2,3+(i%4)*0.5,1.2),idolMat);io.position.set(Math.cos(ia)*ir,1.7,-60+Math.sin(ia)*ir);io.userData={dir:ia+Math.PI/2,dl:(i%9)/9*0.5};fathG.add(io);idols.push(io);}
+  var fGlow=glowSprite(dotTex,0xfff1c9,140,0,true);fGlow.position.set(0,12,-60);fathG.add(fGlow);
+  /* dust puffs where each stone falls (stateless: driven only by scroll progress, so it also plays in reverse) */
+  var fDust=null,fRings=[];
+  (function(){
+    var per=small?5:8,cnt=idols.length*per,P=new Float32Array(cnt*3),V=new Float32Array(cnt*3),D=new Float32Array(cnt),S=new Float32Array(cnt),a,b,m,io,ud,oa,sp,sv;
+    for(a=0;a<idols.length;a++){
+      io=idols[a];ud=io.userData;oa=Math.atan2(io.position.z+60,io.position.x);
+      for(b=0;b<per;b++){
+        m=a*per+b;sp=oa+(Math.random()-0.5)*1.4;sv=1.5+Math.random()*3.5;
+        P[m*3]=io.position.x+(Math.random()-0.5)*1.2;P[m*3+1]=0.4+Math.random()*0.6;P[m*3+2]=io.position.z+(Math.random()-0.5)*1.2;
+        V[m*3]=Math.cos(sp)*sv+Math.cos(ud.dir)*1.2;V[m*3+1]=1.2+Math.random()*2.6;V[m*3+2]=Math.sin(sp)*sv+Math.sin(ud.dir)*1.2;
+        D[m]=ud.dl;S[m]=Math.random();
+      }
+    }
+    var g=new THREE.BufferGeometry();
+    g.setAttribute('position',new THREE.BufferAttribute(P,3));g.setAttribute('aV',new THREE.BufferAttribute(V,3));
+    g.setAttribute('aD',new THREE.BufferAttribute(D,1));g.setAttribute('aS',new THREE.BufferAttribute(S,1));
+    var mat=new THREE.ShaderMaterial({
+      transparent:true,depthWrite:false,
+      uniforms:{uFp:{value:0},uPx:{value:renderer.getPixelRatio()}},
+      vertexShader:'attribute vec3 aV;attribute float aD;attribute float aS;uniform float uFp;uniform float uPx;varying float vA;'+
+        'void main(){float st=0.3+aD*0.3;float u=clamp((uFp-st)/0.4,0.0,1.0);float e=1.0-(1.0-u)*(1.0-u);'+
+        'vec3 p=position+vec3(aV.x*e,aV.y*e,aV.z*e);vA=smoothstep(0.0,0.12,u)*(1.0-u)*0.55*(0.6+0.4*aS);'+
+        'vec4 mv=modelViewMatrix*vec4(p,1.0);gl_PointSize=clamp((1.5+4.5*u)*(0.7+0.6*aS)*uPx*(240.0/-mv.z),0.0,36.0*uPx);gl_Position=projectionMatrix*mv;}',
+      fragmentShader:'varying float vA;void main(){float d=length(gl_PointCoord-0.5);float al=smoothstep(0.5,0.05,d);gl_FragColor=vec4(0.80,0.70,0.52,al*vA);}'
+    });
+    fDust=new THREE.Points(g,mat);fDust.frustumCulled=false;fathG.add(fDust);
+    /* two slow rings of light that spread out from the Kaaba as the stones fall */
+    var rg=new THREE.RingGeometry(0.94,1,96);rg.rotateX(-Math.PI/2);
+    for(a=0;a<2;a++){
+      var rm=new THREE.Mesh(rg,new THREE.MeshBasicMaterial({color:0xffe2a0,transparent:true,opacity:0,depthWrite:false,blending:THREE.AdditiveBlending,fog:false,side:THREE.DoubleSide}));
+      rm.position.set(0,0.2,-60);fathG.add(rm);fRings.push(rm);
+    }
+  })();
+  fathG.visible=false;
+
+  /* Arafat: low rocky hill, hair tent, crowd of pilgrims in white */
+  var arafatG=new THREE.Group();scene.add(arafatG);
+  var hg=new THREE.IcosahedronGeometry(1,4),hp=hg.attributes.position,hc=new Float32Array(hp.count*3),hLo=new THREE.Color(0x5f564b),hHi=new THREE.Color(0xa09584);
+  for(i=0;i<hp.count;i++){
+    var qx=hp.getX(i),qy=hp.getY(i),qz=hp.getZ(i),nn=noise(qx*3+2,qz*3+qy*2)*0.55+noise(qx*9,qz*9+qy*6)*0.3,q=1+(nn-0.4)*0.5;
+    qx*=q*30;qz*=q*22;qy=qy>0?qy*q*15:qy*3;hp.setXYZ(i,qx,qy,qz);
+    tmp.copy(hLo).lerp(hHi,clamp(qy/15,0,1)*0.8+nn*0.2);hc[i*3]=tmp.r;hc[i*3+1]=tmp.g;hc[i*3+2]=tmp.b;
+  }
+  hg.setAttribute('color',new THREE.BufferAttribute(hc,3));hg.computeVertexNormals();
+  var hill=new THREE.Mesh(hg,new THREE.MeshStandardMaterial({vertexColors:true,roughness:1,flatShading:true}));hill.position.set(-100,-0.5,-580);arafatG.add(hill);
+  var tent=new THREE.Mesh(new THREE.ConeGeometry(4.2,3.4,4),new THREE.MeshStandardMaterial({color:0x3b2e22,roughness:1,flatShading:true}));tent.rotation.y=Math.PI/4;tent.position.set(-12,1.7,-500);arafatG.add(tent);
+  var NA=small?1600:3200,apos=new Float32Array(NA*3),ax,az,ar0;
+  /* per-pilgrim data: offset from the hill, how far toward the hill's foot they settle, how strongly they are drawn, sway phase, cached ground height */
+  var HX=-100,HZ=-580,aE=new Float32Array(NA),aDX=new Float32Array(NA),aDZ=new Float32Array(NA),aET=new Float32Array(NA),aK=new Float32Array(NA),aP=new Float32Array(NA),aY=new Float32Array(NA),afr=0,adx,adz;
+  for(i=0;i<NA;i++){ar0=Math.sqrt(Math.random());a=Math.random()*Math.PI*2;ax=-62+Math.cos(a)*ar0*70;az=-515+Math.sin(a)*ar0*52;apos[i*3]=ax;apos[i*3+1]=heightAt(ax,az)+0.55;apos[i*3+2]=az;
+    adx=ax-HX;adz=az-HZ;aDX[i]=adx;aDZ[i]=adz;aE[i]=Math.max(0.001,Math.sqrt((adx/30)*(adx/30)+(adz/22)*(adz/22)));
+    aET[i]=1.45+Math.random()*0.95;aK[i]=0.35+Math.random()*0.5;aP[i]=Math.random()*6.283;aY[i]=apos[i*3+1];}
+  /* as the section is scrolled, the crowd is slowly drawn toward the foot of the hill (g: 0..1); a slow tide and small individual sway ride on top */
+  function stepArafat(t,n,fr,g){
+    var arr=ageo.attributes.position.array,k,e0,et,amt,sc2,ph,sw=REDUCE?0:1,tt=REDUCE?0:t;
+    for(k=0;k<n;k++){
+      e0=aE[k];et=aET[k];ph=aP[k];
+      amt=Math.min(1,g*aK[k]*(1+0.18*Math.sin(tt*0.11+ph)));
+      sc2=e0>et?(e0-(e0-et)*amt)/e0:1;
+      arr[k*3]=HX+aDX[k]*sc2+sw*Math.sin(tt*0.35+ph)*0.9;
+      arr[k*3+2]=HZ+aDZ[k]*sc2+sw*Math.cos(tt*0.29+ph*1.3)*0.7;
+      arr[k*3+1]=aY[k]+sw*0.1*Math.sin(tt*1.2+ph*2);
+    }
+    /* keep feet on the ground: refresh 1/16 of the heights each frame */
+    for(k=fr&15;k<n;k+=16){aY[k]=heightAt(arr[k*3],arr[k*3+2])+0.55;}
+    ageo.attributes.position.needsUpdate=true;
+  }
+  var ageo=new THREE.BufferGeometry();ageo.setAttribute('position',new THREE.BufferAttribute(apos,3));
+  var arPts=new THREE.Points(ageo,new THREE.PointsMaterial({map:dotTex,size:1.9,color:0xfff1c9,transparent:true,opacity:0.9,depthWrite:false,blending:THREE.AdditiveBlending}));arPts.frustumCulled=false;arafatG.add(arPts);
+  var aGlow=glowSprite(dotTex,0xffe2a0,150,0,true);aGlow.position.set(-62,14,-515);arafatG.add(aGlow);
+  arafatG.visible=false;
+
+  /* drifting sand near the viewer */
+  var dustGroup=new THREE.Group();scene.add(dustGroup);
+  var ND=small?380:700,dpos=new Float32Array(ND*3),dsp=new Float32Array(ND),dph=new Float32Array(ND);
+  for(i=0;i<ND;i++){dpos[i*3]=(Math.random()-0.5)*90;dpos[i*3+1]=0.3+Math.random()*16;dpos[i*3+2]=-70+Math.random()*90;dsp[i]=1.5+Math.random()*3.5;dph[i]=Math.random()*6.28;}
+  var dgeo=new THREE.BufferGeometry();dgeo.setAttribute('position',new THREE.BufferAttribute(dpos,3));
+  var dust=new THREE.Points(dgeo,new THREE.PointsMaterial({map:dotTex,size:0.55,color:0xf3dcae,transparent:true,opacity:0.5,depthWrite:false,blending:THREE.AdditiveBlending}));
+  dust.frustumCulled=false;dustGroup.add(dust);
+  var dbase=new Float32Array(ND);for(i=0;i<ND;i++){dbase[i]=dpos[i*3+1];}
+
+  /* Arabian peninsula map for the timeline */
+  var TLI=secs.indexOf(document.getElementById('somoyrekha')),MK=22,MY=200,CZ=-300;
+  var arabG=new THREE.Group();arabG.visible=false;scene.add(arabG);
+  var sea=new THREE.Mesh(new THREE.PlaneGeometry(900,900),new THREE.MeshBasicMaterial({color:0x0a1c36,fog:false}));sea.rotation.x=-Math.PI/2;sea.position.set(0,MY-0.2,CZ-100);arabG.add(sea);
+  function land(coast,extra,col){var sh=new THREE.Shape(),all=coast.concat(extra);all.forEach(function(p,i){var x=(p[0]-39)*MK,y=(p[1]-24)*MK;if(i){sh.lineTo(x,y);}else{sh.moveTo(x,y);}});
+    var m=new THREE.Mesh(new THREE.ShapeGeometry(sh),new THREE.MeshBasicMaterial({color:col,fog:false}));m.rotation.x=-Math.PI/2;m.position.set(0,MY,CZ);arabG.add(m);
+    var pp=coast.map(function(p){return new THREE.Vector3((p[0]-39)*MK,MY+0.3,CZ-(p[1]-24)*MK);});
+    arabG.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pp),new THREE.LineBasicMaterial({color:0xd8b26a,transparent:true,opacity:0.6,fog:false})));}
+  land([[34.9,29.5],[35.8,27.5],[37.0,25.8],[38.1,24.1],[39.2,21.6],[40.9,19.3],[42.6,16.9],[43.3,13.3],[45,12.8]],[[45,29.5]],0x3a3324);
+  land([[32.6,29.9],[33.8,27.2],[35.5,24.0],[37.2,21.0],[37.4,18.2],[39.4,15.6],[41.0,14.0],[42.7,12.5],[45,11.0]],[[45,9],[33,9],[33,29.9]],0x2b3a2e);
+  function mkLab(txt){var c=document.createElement('canvas');c.width=512;c.height=128;var x=c.getContext('2d'),tx=new THREE.CanvasTexture(c);
+    function dr(){x.clearRect(0,0,512,128);x.font='600 54px "Noto Serif Bengali",serif';x.textAlign='center';x.textBaseline='middle';x.lineWidth=8;x.strokeStyle='rgba(7,11,20,.95)';x.strokeText(txt,256,64);x.fillStyle='#f1d796';x.fillText(txt,256,64);tx.needsUpdate=true;}
+    dr();if(document.fonts&&document.fonts.load){document.fonts.load('600 54px "Noto Serif Bengali"',txt).then(dr,function(){});}
+    var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:tx,transparent:true,depthWrite:false,fog:false}));sp.scale.set(24,6,1);return sp;}
+  function mkDot(col,sz){return new THREE.Sprite(new THREE.SpriteMaterial({map:dotTex,color:col,transparent:true,depthWrite:false,blending:THREE.AdditiveBlending,fog:false}));}
+  var PL={makka:[39.83,21.42,'মক্কা',-14,6],taif:[40.42,21.27,'তায়েফ',15,7],madina:[39.61,24.47,'মদিনা',0,-7],badr:[38.77,23.75,'বদর',-13,5],khaybar:[39.29,25.70,'খায়বার',0,-7],tabuk:[36.57,28.38,'তাবুক',0,-7],habasha:[38.72,14.13,'আবিসিনিয়া',0,-7]};
+  for(var pn in PL){(function(o){o.w=new THREE.Vector3((o[0]-39)*MK,MY+0.6,CZ-(o[1]-24)*MK);
+    o.halo=mkDot(0xffd9a0);o.halo.position.copy(o.w);o.hs=20;arabG.add(o.halo);
+    o.core=mkDot(0xfff2cc);o.core.position.copy(o.w);o.core.scale.setScalar(5);arabG.add(o.core);
+    o.lab=mkLab(o[2]);o.lab.position.set(o.w.x+o[3],MY+3,o.w.z+o[4]);arabG.add(o.lab);o.a=0.4;})(PL[pn]);}
+  var routeL=new THREE.Line(new THREE.BufferGeometry().setFromPoints([PL.makka.w,PL.madina.w]),new THREE.LineBasicMaterial({color:0xf1d796,transparent:true,opacity:0.25,fog:false}));arabG.add(routeL);
+  var fKey='overview',FA={hijra:['makka','madina']},fPos=new THREE.Vector3(0,MY+380,-120),fLook=new THREE.Vector3(0,MY,-215),fT=new THREE.Vector3(),fL=new THREE.Vector3();
+  window.addEventListener('tlfocus',function(e){fKey=e.detail||'overview';});
+  function fcam(key){if(key==='overview'){fT.set(0,MY+380,-120);fL.set(0,MY,-215);return;}
+    if(key==='hijra'){var a=PL.makka.w,b=PL.madina.w,mx=(a.x+b.x)/2,mz=(a.z+b.z)/2;fT.set(mx,MY+135,mz+92);fL.set(mx,MY,mz-2);return;}
+    var w=(PL[key]||PL.makka).w;fT.set(w.x,MY+82,w.z+60);fL.set(w.x,MY,w.z-3);}
+
+  /* palm groves (Madina oasis) and rock fields (black harra near Madina, stony valley near Makka); instanced, so cheap */
+  wRock.map=rockTex;if(!small){wRock.bumpMap=rockTex;wRock.bumpScale=1.2;}wRock.needsUpdate=true;
+  var pgS=11;function pgR(){pgS=(pgS*16807)%2147483647;return pgS/2147483647;}
+  var pgD=new THREE.Object3D(),pgC=[[-8,-300],[-24,-345],[118,-296],[104,-392],[38,-408],[150,-340]],pgN=small?8:16,pgT=pgC.length*pgN,pgI=0;
+  var pgTr=new THREE.InstancedMesh(new THREE.CylinderGeometry(0.35,0.55,7,6),new THREE.MeshStandardMaterial({color:0x6b5238,roughness:1,flatShading:true}),pgT);
+  var pgCr=new THREE.InstancedMesh(new THREE.SphereGeometry(2.5,7,4),new THREE.MeshStandardMaterial({color:0x3d6b2f,roughness:1,flatShading:true}),pgT);
+  pgC.forEach(function(c){for(var q=0;q<pgN;q++){var a=pgR()*6.283,r=Math.sqrt(pgR())*24,x=c[0]+Math.cos(a)*r,z=c[1]+Math.sin(a)*r,y=heightAt(x,z),s=0.75+pgR()*0.7;pgD.position.set(x,y+3.5*s,z);pgD.rotation.set((pgR()-0.5)*0.12,pgR()*6,(pgR()-0.5)*0.12);pgD.scale.set(s,s,s);pgD.updateMatrix();pgTr.setMatrixAt(pgI,pgD.matrix);pgD.position.set(x,y+7.2*s,z);pgD.rotation.set(0,pgR()*6,0);pgD.scale.set(s*1.5,s*0.55,s*1.5);pgD.updateMatrix();pgCr.setMatrixAt(pgI,pgD.matrix);pgI++;}});
+  pgTr.frustumCulled=false;pgCr.frustumCulled=false;scene.add(pgTr,pgCr);
+  /* wind: trunks and crowns lean and sway in the vertex shader (instanced, so still cheap); strength follows the weather */
+  var swU={t:{value:0},a:{value:0.3}};
+  function swayMat(m,k,base){m.onBeforeCompile=function(sh){sh.uniforms.uWT=swU.t;sh.uniforms.uWA=swU.a;sh.vertexShader='uniform float uWT;uniform float uWA;\n'+sh.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\n#ifdef USE_INSTANCING\nfloat swp=instanceMatrix[3].x*0.07+instanceMatrix[3].z*0.05;\n#else\nfloat swp=0.0;\n#endif\nfloat swh='+(base>0?base.toFixed(1)+'+position.y*0.2':'max(position.y+3.5,0.0)')+';\ntransformed.x+=sin(uWT*1.7+swp)*uWA*swh*'+k+';\ntransformed.z+=cos(uWT*1.3+swp)*uWA*swh*'+(k*0.6)+';');};m.needsUpdate=true;}
+  swayMat(pgTr.material,0.05,0);swayMat(pgCr.material,0.0333,7.0);
+  function pgRocks(cx,cz,r0,r1,n,col,s0,s1){var m=new THREE.InstancedMesh(new THREE.DodecahedronGeometry(1,0),new THREE.MeshStandardMaterial({color:col,roughness:1,flatShading:true,map:rockTex}),n);for(var q=0;q<n;q++){var a=pgR()*6.283,r=r0+Math.sqrt(pgR())*(r1-r0),x=cx+Math.cos(a)*r,z=cz+Math.sin(a)*r,s=s0+pgR()*(s1-s0);pgD.position.set(x,heightAt(x,z)+s*0.25,z);pgD.rotation.set(pgR()*3,pgR()*6,pgR()*3);pgD.scale.set(s,s*(0.45+pgR()*0.35),s*(0.8+pgR()*0.5));pgD.updateMatrix();m.setMatrixAt(q,pgD.matrix);}m.frustumCulled=false;scene.add(m);}
+  pgRocks(62,-335,75,240,small?260:620,0x1f1c1a,0.5,2.6);
+  pgRocks(0,-60,62,190,small?140:320,0x6a5a49,0.5,2.2);
+
+  /* Makka layout around the Kaaba (schematic, distances compressed): Zamzam, Safa, Marwa with the walkway, early mud-brick houses */
+  var mkLabs=[];
+  function mkTag(txt,x,y,z){var s=mkLab(txt);s.scale.set(16,4,1);s.position.set(x,y,z);scene.add(s);mkLabs.push(s);return s;}
+  var zzG=new THREE.Group();zzG.position.set(21,heightAt(21,-47),-47);scene.add(zzG);
+  var zzR=new THREE.Mesh(new THREE.CylinderGeometry(2.4,2.7,1,16,1,true),new THREE.MeshStandardMaterial({color:0x9a8a73,roughness:1,flatShading:true,side:THREE.DoubleSide}));zzR.position.y=0.5;zzG.add(zzR);
+  var zzW=new THREE.Mesh(new THREE.CircleGeometry(2.3,16),new THREE.MeshBasicMaterial({color:0x12363f}));zzW.rotation.x=-Math.PI/2;zzW.position.y=0.8;zzG.add(zzW);
+  var tZz=mkTag('জমজম',21,5,-47);
+  function mound(x,z,sx,sz){var m=new THREE.Mesh(new THREE.DodecahedronGeometry(1,0),new THREE.MeshStandardMaterial({color:0x7b6e5e,roughness:1,flatShading:true,map:rockTex}));m.scale.set(sx,2.6,sz);m.position.set(x,heightAt(x,z)+0.6,z);m.rotation.y=pgR()*3;scene.add(m);}
+  mound(54,-26,6,5);mound(56,-100,6.5,5);
+  var maW=new THREE.Mesh(new THREE.PlaneGeometry(5,62),new THREE.MeshStandardMaterial({color:0x4d4339,roughness:1}));maW.rotation.x=-Math.PI/2;maW.position.set(54,heightAt(54,-63)+0.3,-63);scene.add(maW);
+  var tSf=mkTag('সাফা',54,6,-26),tMr=mkTag('মারওয়া',56,6,-100);
+  var hsN=small?26:56,hsI=new THREE.InstancedMesh(new THREE.BoxGeometry(1,1,1),new THREE.MeshStandardMaterial({color:0xffffff,roughness:1,flatShading:true}),hsN),hsC=new THREE.Color(),hsK=0,hsT=0;
+  while(hsK<hsN&&hsT<4000){hsT++;var ha=pgR()*6.283,hr=52+pgR()*24,hx=Math.cos(ha)*hr,hz=-60+Math.sin(ha)*hr;if(!(hz<-66||hx>34)){continue;}if(hx>38&&hx<68&&hz>-110&&hz<-20){continue;}
+    var hw=4+pgR()*3,hd=4+pgR()*3,hh=2.6+pgR()*1.4;pgD.position.set(hx,heightAt(hx,hz)+hh/2,hz);pgD.rotation.set(0,pgR()*3,0);pgD.scale.set(hw,hh,hd);pgD.updateMatrix();hsI.setMatrixAt(hsK,pgD.matrix);hsC.setHSL(0.09,0.28,0.38+pgR()*0.12);hsI.setColorAt(hsK,hsC);hsK++;}
+  hsI.count=hsK;hsI.frustumCulled=false;scene.add(hsI);
+
+  /* new scenes: qibla, Thawr cave, Hijri moon, Black Stone and cloth */
+  function secP(n){return clamp((window.scrollY+window.innerHeight*0.45-tops[n])/Math.max(1,(tops[n+1]||tops[n]+1000)-tops[n]),0,1);}
+  function lbar(len,w,col){var mA=new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:0,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide,fog:false}),mB=mA.clone(),g=new THREE.Group(),a=new THREE.PlaneGeometry(w,len),b=new THREE.PlaneGeometry(len,12);a.rotateX(-Math.PI/2);a.translate(0,0,-len/2);b.translate(len/2,6,0);b.rotateY(Math.PI/2);g.add(new THREE.Mesh(a,mA),new THREE.Mesh(b,mB));g.o=function(v){mA.opacity=v;mB.opacity=v*0.28;};return g;}
+  var qG=new THREE.Group();qG.position.set(62,1.6,-335);qG.visible=false;scene.add(qG);
+  var qJ=lbar(230,6,0xffd9a0),qK=lbar(230,6,0x7be0bd);qJ.rotation.y=Math.atan2(0.52,0.85);qK.rotation.y=Math.atan2(0.22,-0.975);qG.add(qJ,qK);
+  var qL1=mkLab('বাইতুল মাকদিস'),qL2=mkLab('কাবা');qL1.scale.set(64,16,1);qL2.scale.set(40,10,1);qL1.position.set(-16,16,-462);qL2.position.set(29,16,-189);qL1.visible=qL2.visible=false;scene.add(qL1,qL2);
+  var cvG=new THREE.Group();cvG.position.set(-20,heightAt(-20,-200),-200);cvG.rotation.y=0.5;cvG.visible=false;scene.add(cvG);
+  var cvM=new THREE.Mesh(new THREE.IcosahedronGeometry(1,2),wRock);cvM.scale.set(14,10,13);cvG.add(cvM);
+  var cvO=new THREE.Mesh(new THREE.CircleGeometry(3.6,20),new THREE.MeshBasicMaterial({color:0x030303}));cvO.scale.set(1,1.25,1);cvO.position.set(0,3.6,12.7);cvG.add(cvO);
+  var cvGl=glowSprite(dotTex,0xffb26a,16,0.5,true);cvGl.position.set(0,3.4,12.9);cvG.add(cvGl);
+  var mnG=new THREE.Group();mnG.position.set(100,30,-352);mnG.visible=false;scene.add(mnG);
+  var mnMat=new THREE.ShaderMaterial({uniforms:{uP:{value:0}},vertexShader:'varying vec3 vN;void main(){vN=normalize(normalMatrix*normal);gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0);}',fragmentShader:'uniform float uP;varying vec3 vN;void main(){float a=6.2832*uP;vec3 l=vec3(sin(a),0.0,-cos(a));float d=max(dot(normalize(vN),l),0.0);float lit=smoothstep(0.0,0.12,d);vec3 c=mix(vec3(0.05,0.07,0.13),vec3(1.0,0.96,0.82)*(0.55+0.45*d),lit);gl_FragColor=vec4(c,1.0);}'});
+  mnG.add(new THREE.Mesh(new THREE.SphereGeometry(7,40,24),mnMat));mnG.add(glowSprite(dotTex,0xbfd0ff,46,0.3,false));
+  var mnL=['মুহাররম','সফর','রবিউল আউয়াল','রবিউস সানি','জমাদিউল আউয়াল','জমাদিউস সানি','রজব','শাবান','রমজান','শাওয়াল','যিলকদ','যিলহজ'].map(function(n){var s=mkLab(n);s.scale.set(30,7.5,1);s.position.set(0,-12,0);s.visible=false;mnG.add(s);return s;});
+  var hjG=new THREE.Group();hjG.visible=false;scene.add(hjG);
+  var cloth=new THREE.Mesh(new THREE.PlaneGeometry(9,9),new THREE.MeshStandardMaterial({color:0xe9dfc6,roughness:1,side:THREE.DoubleSide,transparent:true}));cloth.rotation.x=-Math.PI/2;cloth.position.set(9,0.2,-38);hjG.add(cloth);
+  var hSt=new THREE.Mesh(new THREE.SphereGeometry(0.9,16,12),new THREE.MeshStandardMaterial({color:0x14100d,roughness:0.6,emissive:0x1a120a,emissiveIntensity:0.5}));hSt.scale.set(1.2,0.9,0.6);hjG.add(hSt);
+  var hRing=new THREE.Mesh(new THREE.TorusGeometry(1.15,0.18,8,24),new THREE.MeshStandardMaterial({color:0xcfd3d8,roughness:0.3,metalness:0.9}));hRing.position.set(6.6,2.3,-52.2);hRing.rotation.y=Math.PI/4;hRing.visible=false;hjG.add(hRing);
+  /* timeline diorama on the map: small Kaaba, cloth and Black Stone, played when the rebuilding event is open */
+  var dioG=new THREE.Group(),dK=new THREE.Mesh(new THREE.BoxGeometry(7,9,7.6),new THREE.MeshStandardMaterial({color:0x1b1916,roughness:0.8}));dK.position.y=4.5;dioG.add(dK);
+  var dBd=new THREE.Mesh(new THREE.BoxGeometry(7.1,0.8,7.7),goldMat);dBd.position.y=7.4;dioG.add(dBd);
+  var dCl=new THREE.Mesh(new THREE.PlaneGeometry(12,12),new THREE.MeshStandardMaterial({color:0xe9dfc6,roughness:1,side:THREE.DoubleSide,transparent:true}));dCl.rotation.x=-Math.PI/2;dCl.position.set(8,0.15,7);dioG.add(dCl);
+  var dSt=new THREE.Mesh(new THREE.SphereGeometry(0.75,14,10),new THREE.MeshStandardMaterial({color:0x14100d,roughness:0.6,emissive:0x2a1c0c,emissiveIntensity:0.8}));dSt.scale.set(1.2,0.9,0.6);dioG.add(dSt);
+  var dRg=new THREE.Mesh(new THREE.TorusGeometry(1,0.16,8,20),new THREE.MeshStandardMaterial({color:0xcfd3d8,roughness:0.3,metalness:0.9}));dRg.position.set(3.55,2.4,3.85);dRg.rotation.y=Math.PI/4;dioG.add(dRg);
+  dioG.position.set(PL.makka.w.x-3,MY+0.4,PL.makka.w.z-16);dioG.visible=false;scene.add(dioG);var kLi=null,ka=0;
+  /* Hijrah route on the map: Thawr cave, Umm Ma'bad's tent, Quba light up in turn while a dot travels */
+  var hjR=new THREE.Group();arabG.add(hjR);
+  function mp(lon,lat){return new THREE.Vector3((lon-39)*MK,MY+0.8,CZ-(lat-24)*MK);}
+  var hjPts=[mp(39.83,21.42),mp(39.84,21.26),mp(39.45,21.62),mp(39.30,22.20),mp(39.05,23.00),mp(39.35,23.85),mp(39.62,24.33),mp(39.61,24.47)];
+  var hjCv=new THREE.CatmullRomCurve3(hjPts),hjGeo=new THREE.BufferGeometry().setFromPoints(hjCv.getPoints(120)),hjLine=new THREE.Line(hjGeo,new THREE.LineBasicMaterial({color:0xf1d796,transparent:true,opacity:0.9,fog:false}));hjLine.frustumCulled=false;hjR.add(hjLine);
+  var hjW=[[0.12,39.84,21.26,'সাওর গুহা',8,11],[0.5,39.30,22.20,'উম্মে মাবাদের তাঁবু',-20,0],[0.86,39.62,24.33,'কুবা',14,5]].map(function(r){var d={t:r[0],p:mp(r[1],r[2]),o:[r[4],r[5]],halo:mkDot(0xffd9a0),core:mkDot(0xfff2cc),lab:mkLab(r[3]),a:0};d.halo.position.copy(d.p);d.core.position.copy(d.p);d.core.scale.setScalar(3.5);hjR.add(d.halo,d.core,d.lab);return d;});
+  var hjMv=mkDot(0xfff6d8);hjMv.scale.setScalar(9);hjR.add(hjMv);hjR.visible=false;var hv=0;
+  /* the travelling dot: eases out of Makkah, rests at Thawr cave, rides on past Umm Ma'bad, rests at Quba, then on to Madina.
+     pairs are [time 0..1, distance along the route]; two equal distances in a row are a rest */
+  var HJ=[[0,0],[0.09,0.12],[0.23,0.12],[0.793,0.86],[0.893,0.86],[1,1]];
+  function hijraK(v){var k,x,y,u;if(v<=0){return 0;}for(k=1;k<HJ.length;k++){if(v<=HJ[k][0]){x=HJ[k-1];y=HJ[k];u=(v-x[0])/(y[0]-x[0]);return x[1]+(y[1]-x[1])*sstep(0,1,u);}}return 1;}
+  function hijraRest(v){return sstep(0.09,0.12,v)*(1-sstep(0.2,0.23,v))+sstep(0.793,0.82,v)*(1-sstep(0.87,0.893,v));}
+  /* caravan trade routes: Makka-Syria (via Badr and Tabuk) and Makka-Yemen (via Taif); schematic */
+  var trG=new THREE.Group();arabG.add(trG);
+  function trRoute(pts,col,labs){var cv=new THREE.CatmullRomCurve3(pts.map(function(p){return mp(p[0],p[1]);})),ln=new THREE.Line(new THREE.BufferGeometry().setFromPoints(cv.getPoints(90)),new THREE.LineBasicMaterial({color:col,transparent:true,opacity:0.3,fog:false}));ln.frustumCulled=false;trG.add(ln);
+    var n=36,arr=new Float32Array(n*3),g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.BufferAttribute(arr,3));var pt=new THREE.Points(g,new THREE.PointsMaterial({map:dotTex,color:col,size:1.8,transparent:true,opacity:0.4,depthWrite:false,blending:THREE.AdditiveBlending,fog:false}));pt.frustumCulled=false;trG.add(pt);
+    var L2=labs.map(function(l){var s=mkLab(l[0]);s.userData.b=mp(l[1],l[2]);s.userData.o=l[3];trG.add(s);return s;});return {cv:cv,ln:ln,pt:pt,arr:arr,n:n,labs:L2,a:0.3};}
+  var trSy=trRoute([[39.83,21.42],[39.3,22.2],[38.9,23.0],[38.77,23.75],[38.3,24.8],[37.93,26.6],[36.57,28.38],[36.0,30.0]],0xffc870,[['শামের (সিরিয়ার) পথ',36.1,29.6,[18,0]]]);
+  var trYe=trRoute([[39.83,21.42],[40.42,21.27],[41.6,20.0],[42.9,18.6],[44.13,17.49],[44.2,15.35]],0x7be0bd,[['ইয়েমেনের পথ',44.2,15.35,[-22,6]]]);
+
+  /* caravans: small camel silhouettes walk along the two trade routes (the dotted trail stays as the dust of the caravan) */
+  var camelTex=canvasTex(256,function(g,s){g.translate(0,36);g.fillStyle='#fff';
+    g.beginPath();g.ellipse(112,92,58,26,0,0,6.283);g.fill();
+    g.beginPath();g.ellipse(106,62,22,22,0,0,6.283);g.fill();
+    g.beginPath();g.moveTo(150,80);g.quadraticCurveTo(178,70,184,40);g.lineTo(200,44);g.quadraticCurveTo(196,84,160,106);g.closePath();g.fill();
+    g.beginPath();g.ellipse(206,38,20,10,-0.25,0,6.283);g.fill();
+    [[66,104],[84,108],[132,108],[150,104]].forEach(function(l){g.fillRect(l[0]-4,l[1],9,50);});
+    g.fillRect(50,80,7,30);});
+  function mkCamels(R,col){R.camels=[];for(var q=0;q<5;q++){var sp=new THREE.Sprite(new THREE.SpriteMaterial({map:camelTex,color:col,transparent:true,depthWrite:false,fog:false,opacity:0}));sp.scale.set(8,8,1);sp.frustumCulled=false;trG.add(sp);R.camels.push(sp);}}
+  mkCamels(trSy,0xffd08a);mkCamels(trYe,0x9be8cb);
+
+  /* weather: soft clouds drift around the viewer; a sandstorm thickens fog and dust; the palms sway harder */
+  var wc=0,ws=0,cc=new THREE.Color(),stormCol=new THREE.Color();
+  var cloudTex=canvasTex(256,function(g,s){var q,x,y,rad,r;for(q=0;q<9;q++){x=50+((q*53)%160);y=96+((q*37)%60);rad=40+((q*29)%34);r=g.createRadialGradient(x,y,0,x,y,rad);r.addColorStop(0,'rgba(255,255,255,.55)');r.addColorStop(1,'rgba(255,255,255,0)');g.fillStyle=r;g.fillRect(0,0,s,s);}});
+  var cloudG=new THREE.Group(),clouds=[],cq,cN=small?7:13;scene.add(cloudG);
+  for(cq=0;cq<cN;cq++){var cs=new THREE.Sprite(new THREE.SpriteMaterial({map:cloudTex,transparent:true,depthWrite:false,fog:false,opacity:0}));cs.scale.set(380+pgR()*160,190+pgR()*70,1);cs.frustumCulled=false;cs.visible=false;cloudG.add(cs);clouds.push({s:cs,ang:pgR()*6.283,r:620+pgR()*480,y:150+pgR()*150,sp:0.6+pgR()*0.8,d:pgR()});}
+
+  /* Madina oasis: green patches under the palm groves and a few stone wells, for green against the dark rock */
+  var oaMat=new THREE.MeshStandardMaterial({color:0x2f6b3a,roughness:1,transparent:true,opacity:0.55,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-2,polygonOffsetUnits:-2});
+  pgC.forEach(function(c){var d=new THREE.Mesh(new THREE.CircleGeometry(26,28),oaMat);d.rotation.x=-Math.PI/2;d.position.set(c[0],heightAt(c[0],c[1])+0.35,c[1]);scene.add(d);});
+  var wlMat=new THREE.MeshStandardMaterial({color:0x8a7b66,roughness:1,flatShading:true,side:THREE.DoubleSide}),wlWood=new THREE.MeshStandardMaterial({color:0x5a4330,roughness:1,flatShading:true});
+  [[-6,-318],[96,-306],[46,-396]].forEach(function(c){var y0=heightAt(c[0],c[1]),g=new THREE.Group(),ring=new THREE.Mesh(new THREE.CylinderGeometry(1.7,1.8,1.1,14,1,true),wlMat),wt=new THREE.Mesh(new THREE.CircleGeometry(1.6,14),new THREE.MeshBasicMaterial({color:0x12363f})),q,post;
+    ring.position.y=0.55;wt.rotation.x=-Math.PI/2;wt.position.y=0.7;g.add(ring,wt);
+    for(q=0;q<2;q++){post=new THREE.Mesh(new THREE.CylinderGeometry(0.1,0.12,3.6,6),wlWood);post.position.set(q?1.5:-1.5,1.8,0);post.rotation.z=q?0.18:-0.18;g.add(post);}
+    var bar=new THREE.Mesh(new THREE.CylinderGeometry(0.09,0.09,3.4,6),wlWood);bar.rotation.z=Math.PI/2;bar.position.y=3.5;g.add(bar);
+    g.position.set(c[0],y0,c[1]);scene.add(g);});
+  mkTag('কূপ',-6,7,-318);mkTag('কূপ',96,7,-306);mkTag('খেজুরবাগান',-8,16,-300);mkTag('খেজুরবাগান',118,16,-296);
+
+  /* scroll keyframes */
+  function mk(o){var d={zen:0,hor:0,fog:0.004,stars:1,moon:1,sun:0,sunY:0.02,amb:0.4,key:0.9,keyCol:0x86a0e0,beam:0,mad:0,side:0};for(var k in o){d[k]=o[k];}return d;}
+  var K=[
+    mk({zen:0x03050d,hor:0x111b36,side:-1}),
+    mk({zen:0x03050d,hor:0x14223f,side:-1}),
+    mk({zen:0x010208,hor:0x0b132a,fog:0.0046,stars:1.35,moon:0.7,side:1}),
+    mk({zen:0x070b1c,hor:0x232c52,fog:0.004,side:-1}),
+    mk({zen:0x1a1c40,hor:0xb26f45,fog:0.0034,stars:0.35,moon:0.35,sun:0.5,sunY:0.03,amb:0.5,key:1.0,keyCol:0xffb978,side:1}),
+    mk({zen:0x02030a,hor:0x0b1530,fog:0.0044,stars:1.25,moon:0.8,beam:1,side:-1}),
+    mk({zen:0x010208,hor:0x0a1226,fog:0.0042,stars:1.6,moon:0.5,side:1}),
+    mk({zen:0x08122a,hor:0x215062,fog:0.004,stars:0.9,moon:0.5,beam:0.15,mad:0.1,keyCol:0x9ab8e0,side:1}),
+    mk({zen:0x2b3b6e,hor:0xeaa56a,fog:0.0032,stars:0.18,moon:0,sun:1,sunY:0.08,amb:0.62,key:1.15,keyCol:0xffc58a,mad:0.8,side:-1}),
+    mk({zen:0x3e6aa6,hor:0xe9c895,fog:0.0036,stars:0,moon:0,sun:1,sunY:0.3,amb:0.72,key:1.2,keyCol:0xffdca8,mad:0.3,side:1}),
+    mk({zen:0x3a68a8,hor:0xf2cf9a,fog:0.0034,stars:0,moon:0,sun:1,sunY:0.18,amb:0.7,key:1.2,keyCol:0xffd9a0,mad:0.1,side:-1}),
+    mk({zen:0x4a7fc0,hor:0xf0d8a8,fog:0.0034,stars:0,moon:0,sun:1,sunY:0.36,amb:0.72,key:1.25,keyCol:0xffdca0,mad:0.15,side:1}),
+    mk({zen:0x3d6ca8,hor:0xf3d49c,fog:0.003,stars:0,moon:0,sun:1,sunY:0.25,amb:0.7,key:1.25,keyCol:0xffe0b0,mad:1,side:-1}),
+    mk({zen:0x3d6ca8,hor:0xf3d49c,fog:0.003,stars:0,moon:0,sun:1,sunY:0.25,amb:0.7,key:1.25,keyCol:0xffe0b0,mad:1,side:-1}),
+    mk({zen:0x3d6ca8,hor:0xf3d49c,fog:0.003,stars:0,moon:0,sun:1,sunY:0.25,amb:0.7,key:1.25,keyCol:0xffe0b0,mad:1,side:1}),
+    mk({zen:0x3d6ca8,hor:0xf3d49c,fog:0.003,stars:0,moon:0,sun:1,sunY:0.22,amb:0.7,key:1.25,keyCol:0xffe0b0,mad:1,side:-1}),
+    mk({zen:0x3d6ca8,hor:0xf3d49c,fog:0.003,stars:0,moon:0,sun:1,sunY:0.22,amb:0.7,key:1.25,keyCol:0xffe0b0,mad:1,side:1}),
+    mk({zen:0x3d6ca8,hor:0xf3d49c,fog:0.003,stars:0,moon:0,sun:1,sunY:0.22,amb:0.7,key:1.25,keyCol:0xffe0b0,mad:1,side:-1}),
+    mk({zen:0x3d6ca8,hor:0xf3d49c,fog:0.003,stars:0,moon:0,sun:1,sunY:0.22,amb:0.7,key:1.25,keyCol:0xffe0b0,mad:1,side:1}),
+    mk({zen:0x3d6ca8,hor:0xf3d49c,fog:0.003,stars:0,moon:0,sun:1,sunY:0.3,amb:0.7,key:1.25,keyCol:0xffe0b0,mad:1,side:0}),
+    mk({zen:0x3d6ca8,hor:0xf3d49c,fog:0.003,stars:0,moon:0,sun:1,sunY:0.22,amb:0.7,key:1.25,keyCol:0xffe0b0,mad:1,side:-1}),
+    mk({zen:0x4f8cc8,hor:0xdbe8ee,fog:0.0028,stars:0,moon:0,sun:1,sunY:0.5,amb:0.75,key:1.3,keyCol:0xfff0d8,mad:1,side:1})
+  ];
+  /* manual sky override (button): index 1 dawn, 2 day, 3 dusk, 4 night; 0 follows the chapter */
+  var TOD=[null,
+    mk({zen:0x2b3b6e,hor:0xeaa56a,fog:0.0032,stars:0.18,moon:0,sun:1,sunY:0.08,amb:0.62,key:1.15,keyCol:0xffc58a}),
+    mk({zen:0x3d6ca8,hor:0xf3d49c,fog:0.003,stars:0,moon:0,sun:1,sunY:0.25,amb:0.7,key:1.25,keyCol:0xffe0b0}),
+    mk({zen:0x1a1c40,hor:0xb26f45,fog:0.0034,stars:0.35,moon:0.35,sun:0.5,sunY:0.03,amb:0.5,key:1.0,keyCol:0xffb978}),
+    mk({zen:0x010208,hor:0x0b132a,fog:0.0046,stars:1.35,moon:0.7})];
+
+  var P=[
+    {p:[0,3.2,48],l:[-6,12,-120]},
+    {p:[-4,3.4,40],l:[6,16,-120]},
+    {p:[0,2.8,34],l:[0,70,-40]},
+    {p:[30,6.5,-18],l:[0,5.5,-60]},
+    {p:[-26,5,-30],l:[0,6,-60]},
+    {p:[-42,10,-100],l:[-110,42,-165]},
+    {p:[0,3.4,-18],l:[-6,95,-200]},
+    {p:[-34,6,-150],l:[22,4,-235]},
+    {p:[30,10,-262],l:[72,16,-335]},
+    {p:[152,16,-358],l:[130,4,-445]},
+    {p:[-26,8,-6],l:[0,6,-60]},
+    {p:[-18,19,-430],l:[-68,4,-530]},
+    {p:[112,26,-270],l:[70,16,-335]},
+    {p:[60,13,-295],l:[67,13,-335]},
+    {p:[40,12,-290],l:[68,14,-335]},
+    {p:[98,14,-300],l:[66,12,-335]},
+    {p:[70,12,-300],l:[68,14,-335]},
+    {p:[56,13,-292],l:[67,13,-335]},
+    {p:[84,12,-298],l:[68,13,-335]},
+    {p:[20,30,-20],l:[0,6,-200]},
+    {p:[62,13,-296],l:[67,13,-335]},
+    {p:[66,62,-215],l:[68,4,-335]}
+  ];
+
+  var cZ=new THREE.Color(),cZ2=new THREE.Color(),cH=new THREE.Color(),cH2=new THREE.Color(),cK=new THREE.Color(),cK2=new THREE.Color(),white=new THREE.Color(0xffffff),cG=new THREE.Color();
+  var tgtPos=new THREE.Vector3(),tgtLook=new THREE.Vector3(),curPos=new THREE.Vector3(),curLook=new THREE.Vector3(),lightDir=new THREE.Vector3();
+  var moonL=new THREE.Vector3(-0.35,0.6,0.55),sunL=new THREE.Vector3(0.65,0.4,0.55);
+  var mouse={x:0,y:0,tx:0,ty:0},side=0,first=true,last=performance.now()*0.001;
+  window.addEventListener('pointermove',function(e){mouse.tx=(e.clientX/window.innerWidth-0.5)*2;mouse.ty=(e.clientY/window.innerHeight-0.5)*2;},{passive:true});
+
+  function resize(){
+    var w=window.innerWidth,h=window.innerHeight;
+    renderer.setSize(w,h,false);camera.aspect=w/h;camera.fov=(w/h<0.8)?68:52;camera.updateProjectionMatrix();
+  }
+  window.addEventListener('resize',resize);resize();
+
+  function frame(now){
+    requestAnimationFrame(frame);
+    if(S3.off){return;}if(Q.lite){if(now-(S3.lr||0)<32){return;}S3.lr=now;}
+    var t=now*0.001,dt=Math.min(0.06,Math.max(0.001,t-last));last=t;
+    var tf=sceneF().f;arabG.visible=TLI>=0&&Math.abs(tf-TLI)<1.4;
+    if(arabG.visible){fcam(fKey);var fk=REDUCE?1:1-Math.exp(-dt*2.2);fPos.lerp(fT,fk);fLook.lerp(fL,fk);P[TLI].p=[fPos.x,fPos.y,fPos.z];P[TLI].l=[fLook.x,fLook.y,fLook.z];
+      var act=FA[fKey]||[fKey];
+      for(var pk in PL){var o=PL[pk],on=act.indexOf(pk)>=0;o.a+=((on?1:0.4)-o.a)*Math.min(1,dt*4);var pu=on&&!REDUCE?1+0.25*Math.sin(t*3.2):1;
+        o.halo.material.opacity=0.85*o.a;o.core.material.opacity=o.a;o.halo.scale.setScalar(o.hs*pu*(0.8+0.4*o.a)*(1+0.35*(o.a>0.7?1:0)));o.core.scale.setScalar(5*(0.9+0.5*o.a));o.lab.material.opacity=0.5+0.5*o.a;var kd=Math.max(1,camera.position.distanceTo(o.w)*0.0068);o.lab.scale.set(24*kd,6*kd,1);o.lab.position.set(o.w.x+o[3]*kd,MY+3,o.w.z+o[4]*kd);}
+      routeL.material.opacity+=((fKey==='hijra'?0.9:0.25)-routeL.material.opacity)*Math.min(1,dt*4);}
+    var sc=sceneF(),ia=sc.i,tt=sc.t,ib=Math.min(ia+1,K.length-1),a=K[ia],b=K[ib],pa=P[ia],pb=P[ib];
+    var ov=S3.tod>0?TOD[S3.tod]:null;
+    function L(k){if(ov&&k!=='beam'&&k!=='side'&&k!=='mad'){return ov[k];}return a[k]+(b[k]-a[k])*tt;}
+
+    /* camera path */
+    tgtPos.set(pa.p[0]+(pb.p[0]-pa.p[0])*tt,pa.p[1]+(pb.p[1]-pa.p[1])*tt,pa.p[2]+(pb.p[2]-pa.p[2])*tt);
+    tgtLook.set(pa.l[0]+(pb.l[0]-pa.l[0])*tt,pa.l[1]+(pb.l[1]-pa.l[1])*tt,pa.l[2]+(pb.l[2]-pa.l[2])*tt);
+    if(first||REDUCE){curPos.copy(tgtPos);curLook.copy(tgtLook);first=false;}
+    else{var k=1-Math.exp(-dt*5.5);curPos.lerp(tgtPos,k);curLook.lerp(tgtLook,k);}
+    mouse.x+=(mouse.tx-mouse.x)*0.05;mouse.y+=(mouse.ty-mouse.y)*0.05;
+    camera.position.copy(curPos);
+    if(!REDUCE){camera.position.x+=mouse.x*2.0;camera.position.y+=-mouse.y*0.9+Math.sin(t*0.7)*0.08;}
+    S3.cy+=(S3.ty-S3.cy)*0.12;S3.cx+=(S3.tx-S3.cx)*0.12;
+    if(Math.abs(S3.cy)+Math.abs(S3.cx)>0.002){var vx=camera.position.x-curLook.x,vy=camera.position.y-curLook.y,vz=camera.position.z-curLook.z,cs=Math.cos(S3.cy),sn=Math.sin(S3.cy),nx=vx*cs+vz*sn;vz=-vx*sn+vz*cs;vx=nx;var rh=Math.hypot(vx,vz)||1,ln=Math.hypot(rh,vy),el=clamp(Math.atan2(vy,rh)+S3.cx,0.1,1.45);vy=Math.sin(el)*ln;var rr=Math.cos(el)*ln;vx*=rr/rh;vz*=rr/rh;camera.position.set(curLook.x+vx,curLook.y+vy,curLook.z+vz);}
+    var minY=heightAt(camera.position.x,camera.position.z)+2.4;
+    if(camera.position.y<minY){camera.position.y=minY;}
+    camera.lookAt(curLook);
+    var wide=window.innerWidth>=900;
+    side+=((wide?L('side'):0)-side)*Math.min(1,dt*4);
+    camera.setViewOffset(window.innerWidth,window.innerHeight,side*window.innerWidth*0.14,0,window.innerWidth,window.innerHeight);
+
+    /* sky and atmosphere */
+    if(ov){cZ.setHex(ov.zen);cH.setHex(ov.hor);}else{cZ.setHex(a.zen).lerp(cZ2.setHex(b.zen),tt);cH.setHex(a.hor).lerp(cH2.setHex(b.hor),tt);}
+    var wxT=S3.wx|0,wk=REDUCE?1:Math.min(1,dt*1.2);wc+=((wxT===1?1:(wxT===2?0.7:0))-wc)*wk;ws+=((wxT===2?1:0)-ws)*wk;
+    stormCol.setHex(0xb08f5e).multiplyScalar(0.22+0.78*clamp(L('sun')+0.08,0,1));
+    if(ws>0.001){cH.lerp(stormCol,0.8*ws);cZ.lerp(stormCol,0.6*ws);}
+    swU.t.value=REDUCE?0:t;swU.a.value=REDUCE?0:0.3+0.5*wc+1.6*ws;
+    var sunAmt=L('sun');
+    sunDir.set(0.52,L('sunY'),-0.85).normalize();
+    skyMat.uniforms.uZen.value.copy(cZ);skyMat.uniforms.uHor.value.copy(cH);
+    skyMat.uniforms.uSunDir.value.copy(sunDir);skyMat.uniforms.uSun.value=sunAmt;
+    skyMat.uniforms.uGlow.value.setHex(0xff9a55).lerp(cG.setHex(0xffe3b0),clamp(L('sunY')*2.2,0,1));
+    scene.fog.color.copy(cH);scene.fog.density=L('fog')+0.011*ws+0.0006*wc;
+    sky.position.copy(camera.position);
+    stars.rotation.y=sc.f*0.08+t*0.003;
+    starMat.uniforms.uTime.value=t;starMat.uniforms.uAlpha.value=L('stars')*(1-0.9*ws)*(1-0.45*wc);
+    var mvis=(1-0.9*ws)*(1-0.4*wc);moonDisk.material.opacity=clamp(L('moon'),0,1)*mvis;moonGlow.material.opacity=0.5*clamp(L('moon'),0,1)*mvis;
+    sunDisk.position.copy(sunDir).multiplyScalar(1300);sunGlow.position.copy(sunDir).multiplyScalar(1299);
+    sunDisk.material.opacity=sunAmt*(1-0.7*ws);sunGlow.material.opacity=0.7*sunAmt*(1-0.5*ws);
+    cloudG.position.copy(camera.position);cc.setHex(0x56608a).lerp(white,clamp(sunAmt*0.9+0.08,0,1)).lerp(stormCol,0.7*ws);
+    clouds.forEach(function(c){if(!REDUCE){c.ang+=dt*0.003*c.sp*(1+3*ws);}c.s.position.set(Math.cos(c.ang)*c.r,c.y,Math.sin(c.ang)*c.r);c.s.material.color.copy(cc);c.s.material.opacity=(0.18+0.5*c.d)*wc;c.s.visible=wc>0.01;});
+
+    /* lights */
+    hemi.color.copy(cH).lerp(white,0.3);hemi.intensity=L('amb');
+    if(ov){cK.setHex(ov.keyCol);}else{cK.setHex(a.keyCol).lerp(cK2.setHex(b.keyCol),tt);}key.color.copy(cK);key.intensity=L('key')*(1-0.35*ws);
+    lightDir.lerpVectors(moonL,sunL,clamp(sunAmt,0,1)).normalize();key.position.copy(lightDir).multiplyScalar(300);
+    kaabaLight.intensity=1.4*(1-0.8*clamp(sunAmt,0,1));kGlow.material.opacity=0.35*(1-0.7*clamp(sunAmt,0,1));
+    var mad=L('mad');madLight.intensity=mad*1.8;domeMat.emissiveIntensity=0.5+mad*0.6;madGlow.material.opacity=0.12+mad*0.3;
+
+    /* Hira beam and Hijrah path */
+    var bi=L('beam');beamMat.uniforms.uInt.value=bi;beamMat.uniforms.uTime.value=t;halo.material.opacity=0.5*bi;emat.opacity=0.9*bi;
+    pathMat.uniforms.uTime.value=t;pathMat.uniforms.uReveal.value=sstep(6.0,7.9,sc.f);
+    mirMat.uniforms.uTime.value=t;mirMat.uniforms.uReveal.value=sstep(5.6,6.7,sc.f);
+    var mw=clamp(1-Math.abs(sc.f-6),0,1);mirG.visible=mw>0.01;ringMats.forEach(function(m){m.opacity=0.16*mw;});
+
+    var aw=clamp(1-Math.abs(sc.f-11),0,1);arafatG.visible=aw>0.01;var arW=1-sstep(0.18,0.36,L('sunY'));arPts.material.color.setRGB(1,0.945-0.125*arW,0.788-0.22*arW);aGlow.material.opacity=0.32*aw*(1+0.4*arW);
+    warG.visible=clamp(1-Math.abs(sc.f-9),0,1)>0.01;W.forEach(function(g,k){g.visible=(k===warSel);});
+    var fw=clamp(1-Math.abs(sc.f-10),0,1),fp=clamp(sc.f-10,0,1);fathG.visible=fw>0.01;var fl=fw*sstep(0.3,1,fp),fb=REDUCE?1:0.93+0.07*Math.sin(t*0.9);fGlow.material.opacity=(0.1+0.3*fw*sstep(0.25,0.9,fp))*fb;kaabaLight.intensity+=1.1*fl*fb;kGlow.material.opacity+=0.22*fl*fb;if(fDust){fDust.material.uniforms.uFp.value=fp;fRings.forEach(function(rm,k){var wv=k?sstep(0.4,1,fp):sstep(0.15,0.95,fp),R=18+36*wv;rm.scale.set(R,1,R);rm.material.opacity=fw*0.32*Math.sin(Math.PI*wv);});}
+    idols.forEach(function(o){var q=sstep(0.1+o.userData.dl*0.4,0.55+o.userData.dl*0.4,fp);o.rotation.z=q*1.45*Math.cos(o.userData.dir);o.rotation.x=q*1.45*Math.sin(o.userData.dir);o.position.y=1.7-q*0.9;});
+
+    /* new scenes: per-frame updates */
+    var nf=sc.f;
+    var dg=warSel===2?sstep(0.1,0.8,secP(9)):1;trN.scale.set(Math.max(0.001,dg),1,Math.max(0.2,dg));bkA.scale.set(Math.max(0.001,dg),Math.max(0.05,dg),1);bkB.scale.copy(bkA.scale);if(kMat){kMat.uniforms.uL.value=40*dg;kMat.uniforms.uT.value=REDUCE?0:t;}
+    var mg2=sstep(7.6,8.45,nf),h0=sstep(0,0.45,mg2);
+    mosK.forEach(function(e,k){var q;if(k===0){var hs=0.5+0.5*h0;e.m.scale.set(e.s.x*(0.4+0.6*h0),e.s.y*hs,e.s.z*(0.4+0.6*h0));e.m.position.y=e.p.y*hs;return;}
+      q=k===1?sstep(0.15,0.55,mg2):k<22?sstep(0.5,0.85,mg2):k<26?sstep(0.8,1,mg2):sstep(0.6,0.9,mg2);q=Math.max(q,0.001);e.m.scale.set(e.s.x*q,e.s.y*q,e.s.z*q);if(k>1){e.m.position.y=e.p.y*q;}});
+    var qv=sstep(7.4,7.9,nf)*(1-sstep(9.0,9.4,nf)),qp=sstep(8.5,8.95,nf);
+    qG.visible=qL1.visible=qL2.visible=qv>0.01;qJ.o(0.9*(1-qp)*qv);qK.o((0.18+0.82*qp)*qv*(0.88+0.12*Math.sin(t*3)));qL1.material.opacity=(1-qp)*qv;qL2.material.opacity=(0.3+0.7*qp)*qv;
+    var cvv=sstep(6.4,6.9,nf)*(1-sstep(7.5,7.9,nf));cvG.visible=cvv>0.01;cvGl.material.opacity=0.55*cvv*(0.85+0.15*Math.sin(t*2.4));
+    mnG.visible=nf>19.6&&nf<21.4;
+    if(mnG.visible){var gp=secP(20),mi=Math.min(11,Math.floor(gp*12));mnMat.uniforms.uP.value=Math.min(1,gp*12-mi)*0.97;mnL.forEach(function(s,k){s.visible=k===mi;});}
+    var hp=sstep(0.2,0.8,secP(4)),hco=1-sstep(0.85,1,hp);hjG.visible=nf>3.55;
+    hSt.position.set(9+(6.6-9)*hp,0.9+1.4*hp+Math.sin(hp*Math.PI)*3,-38+(-52.2+38)*hp);cloth.material.opacity=hco;cloth.visible=hco>0.01;hRing.visible=hp>0.9;
+    var nA=Math.floor(NA*(0.15+0.85*sstep(0.1,0.85,secP(11))));ageo.setDrawRange(0,nA);if(arafatG.visible){stepArafat(t,nA,afr++,sstep(0.15,0.95,secP(11)));}arPts.material.opacity=0.8+0.15*Math.sin(t*2);
+    if(!kLi){var kh=document.getElementById('tlh15');kLi=kh?kh.closest('.tl-i'):null;}
+    var kOn=!!(kLi&&kLi.classList.contains('open')&&arabG.visible);ka=REDUCE?(kOn?1:0):(kOn?Math.min(1,ka+dt/5):Math.max(0,ka-dt/1.2));
+    dioG.visible=ka>0.01;
+    mkLabs.forEach(function(s){var dd=camera.position.distanceTo(s.position),o5=clamp((190-dd)/60,0,1);s.material.opacity=o5;s.visible=o5>0.02;});
+    if(dioG.visible){var dp=sstep(0,0.12,ka),dm=sstep(0.2,0.8,ka);dioG.scale.setScalar(0.4+0.6*dp);dSt.position.set(8+(3.6-8)*dm,0.9+1.5*dm+Math.sin(dm*Math.PI)*3.5,7+(3.9-7)*dm);dCl.material.opacity=1-sstep(0.85,1,ka);dRg.visible=dm>0.95;}
+    var hOn=fKey==='hijra'&&arabG.visible;hv=REDUCE?(hOn?1:0):(hOn?Math.min(1,hv+dt/15):Math.max(0,hv-dt/1.2));
+    hjR.visible=hv>0.005;
+    if(hjR.visible){var hk=hijraK(hv),hrs=REDUCE?0:hijraRest(hv);hjGeo.setDrawRange(0,Math.max(2,Math.floor(121*hk)));hjMv.position.copy(hjCv.getPoint(hk));hjMv.material.opacity=hk<1?0.95:0;hjMv.scale.setScalar(8+2*Math.sin(t*6)*(1-hrs)+4*hrs*(0.5+0.5*Math.sin(t*2.2)));
+      var kd2=Math.max(1,camera.position.distanceTo(hjPts[3])*0.0068);
+      hjW.forEach(function(d){var on=hk>=d.t-0.001;d.a+=((on?1:0.18)-d.a)*Math.min(1,dt*5);var pu2=on?1+0.25*Math.sin(t*3.2):1;d.halo.material.opacity=0.85*d.a;d.core.material.opacity=d.a;d.halo.scale.setScalar(12*pu2);d.lab.material.opacity=0.2+0.8*d.a;d.lab.scale.set(24*kd2,6*kd2,1);d.lab.position.set(d.p.x+d.o[0]*kd2,MY+3,d.p.z+d.o[1]*kd2);});}
+    if(arabG.visible){var rsy=(fKey==='badr'||fKey==='tabuk')?1:0,rye=(fKey==='taif'||fKey==='makka')?1:0;
+      [[trSy,rsy],[trYe,rye]].forEach(function(r){var R=r[0],o3=(t*0.05)%1,k3,p3;R.a+=((0.3+0.7*r[1])-R.a)*Math.min(1,dt*4);R.ln.material.opacity=0.2+0.5*R.a;R.pt.material.opacity=0.35+0.6*R.a;
+        for(k3=0;k3<R.n;k3++){p3=R.cv.getPoint((k3/R.n+o3)%1);R.arr[k3*3]=p3.x;R.arr[k3*3+1]=p3.y;R.arr[k3*3+2]=p3.z;}R.pt.geometry.attributes.position.needsUpdate=true;
+        R.camels.forEach(function(c,q){var u=((REDUCE?0.1:t*0.012)+q*0.03)%1,cp=R.cv.getPoint(u),dr=R.cv.getTangent(u).x<0?-1:1;c.position.set(cp.x,cp.y+2.6+(REDUCE?0:Math.abs(Math.sin(t*3+q*1.7))*0.3),cp.z);c.scale.set(8*dr,8,1);c.material.opacity=0.25+0.7*R.a;});
+        R.labs.forEach(function(s){var b=s.userData.b,o4=s.userData.o,kd3=Math.max(1,camera.position.distanceTo(b)*0.0068);s.material.opacity=0.3+0.7*R.a;s.scale.set(34*kd3,8.5*kd3,1);s.position.set(b.x+o4[0]*kd3,MY+3,b.z+o4[1]*kd3);});});}
+
+    /* ambient motion */
+    if(!REDUCE){
+      tawaf.rotation.y-=dt*0.06;
+      var ar=dgeo.attributes.position.array,j;
+      for(j=0;j<ND;j++){
+        ar[j*3]+=dsp[j]*dt*(1+7*ws);if(ar[j*3]>45){ar[j*3]-=90;}
+        ar[j*3+1]=dbase[j]+Math.sin(t*0.6+dph[j])*0.5;
+      }
+      dgeo.attributes.position.needsUpdate=true;
+      if(bi>0.01){
+        var er2=egeo.attributes.position.array,yy,rad2;
+        for(j=0;j<NE;j++){
+          yy=er2[j*3+1]+ev[j]*dt;if(yy>250){yy=0;}
+          rad2=(3+(yy/300)*7)*er[j];
+          er2[j*3]=Math.cos(ea[j])*rad2;er2[j*3+1]=yy;er2[j*3+2]=Math.sin(ea[j])*rad2;
+        }
+        egeo.attributes.position.needsUpdate=true;
+      }
+    }
+    dustGroup.position.copy(camera.position);dust.material.size=0.55+0.9*ws;dust.material.opacity=0.5+0.4*ws;
+    renderer.render(scene,camera);
+  }
+  var rc=new THREE.Raycaster(),pv=new THREE.Vector2(),PK=[[kaaba,'kaaba'],[mos,'mosque'],[mount,'hera'],[zzG,'zamzam'],[tZz,'zamzam'],[maW,'safa'],[tSf,'safa'],[tMr,'safa']];
+  function vis(o){while(o){if(!o.visible){return false;}o=o.parent;}return true;}
+  S3.pick=function(cx,cy){if(hjR.visible){var hb=null,hdd=40,hq=new THREE.Vector3(),hkk=['thawr','ummabad','quba'];hjW.forEach(function(d,ix){hq.copy(d.p).project(camera);var hsx=(hq.x+1)/2*window.innerWidth,hsy=(1-hq.y)/2*window.innerHeight,hd2=Math.hypot(hsx-cx,hsy-cy);if(hq.z<1&&hd2<hdd){hdd=hd2;hb=hkk[ix];}});if(hb){return hb;}}if(arabG.visible){var bk=null,bdd=44,pp=new THREE.Vector3(),mk;for(mk in PL){pp.copy(PL[mk].w).project(camera);var sx=(pp.x+1)/2*window.innerWidth,sy=(1-pp.y)/2*window.innerHeight,dd=Math.hypot(sx-cx,sy-cy);if(pp.z<1&&dd<bdd){bdd=dd;bk=mk;}}if(bk){return 'map:'+bk;}}pv.set(cx/window.innerWidth*2-1,-(cy/window.innerHeight)*2+1);rc.setFromCamera(pv,camera);var best=null,bd=1e9;PK.forEach(function(p){if(!vis(p[0])){return;}var h=rc.intersectObject(p[0],true)[0];if(h&&h.distance<bd){bd=h.distance;best=p[1];}});return best;};
+  requestAnimationFrame(frame);
+  return true;
+}
+
+var Q=(function(){var o={};try{o=JSON.parse(localStorage.getItem('sirat-q')||'{}')||{};}catch(e){}var w=navigator.deviceMemory,c=navigator.hardwareConcurrency;if(o.lite===undefined){o.lite=!!((w&&w<=2)||(c&&c<=3));}return o;})();
+window.__s3={tod:(Q.tod>0&&Q.tod<5)?(Q.tod|0):0,wx:(Q.wx>0&&Q.wx<3)?(Q.wx|0):0,off:!!Q.off,lite:!!Q.lite,explore:false,cy:0,cx:0,ty:0,tx:0,init:false};
+var ok=false;
+try{ok=!Q.off&&initScene();}catch(err){ok=false;if(window.console){console.error(err);}}
+if(!ok){document.documentElement.classList.add('nogl');}
+window.__s3.init=!!ok;
+})();
+</script>
+
+<script>
+(function(){var tl=document.getElementById('tl');if(!tl)return;document.documentElement.classList.add('tl-js');
+var R=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,it=[].slice.call(tl.querySelectorAll('.tl-i')),dirty=0,tm,tk=0;
+function so(li,o){li.classList.toggle('open',o);li.querySelector('.tl-h').setAttribute('aria-expanded',o?'true':'false');dirty=1}
+function fill(){var l=null;it.forEach(function(x){if(x.classList.contains('open'))l=x});var h=0;if(l){h=l.querySelector('.tl-node').getBoundingClientRect().top-tl.getBoundingClientRect().top+6}tl.style.setProperty('--fill',Math.max(0,h)+'px')}
+function settle(){fill();clearTimeout(tm);tm=setTimeout(function(){fill();if(dirty){dirty=0;window.dispatchEvent(new Event('resize'))}},750)}
+var cur='';function foc(l){if(l&&l!==cur){cur=l;window.dispatchEvent(new CustomEvent('tlfocus',{detail:l}))}}
+function near(){var sr=tl.getBoundingClientRect();if(sr.bottom<0||sr.top>innerHeight)return;var best=null,bd=1e9;it.forEach(function(li){if(!li.classList.contains('open'))return;var d=Math.abs(li.querySelector('.tl-h').getBoundingClientRect().top-innerHeight*.45);if(d<bd){bd=d;best=li}});if(best)foc(best.dataset.loc)}
+function chk(){tk=0;var ln=innerHeight*.74;it.forEach(function(li){if(li.classList.contains('open')||li._m)return;var r=li.querySelector('.tl-h').getBoundingClientRect();if(r.top<ln&&r.bottom>0)so(li,true)});near();settle()}
+it.forEach(function(li){li.querySelector('.tl-h').addEventListener('click',function(){var wo=li.classList.contains('open');li._m=1;so(li,!wo);if(!wo)foc(li.dataset.loc);settle()})});
+tl.addEventListener('transitionend',fill);
+var hb=document.getElementById('tlHl');hb.addEventListener('click',function(){var on=hb.getAttribute('aria-pressed')!=='true';hb.setAttribute('aria-pressed',on?'true':'false');tl.classList.toggle('hl',on);if(on){it.forEach(function(li){if(li.classList.contains('dis')&&li.getBoundingClientRect().bottom>0)so(li,true)})}settle()});
+addEventListener('scroll',function(){if(!tk){tk=1;requestAnimationFrame(chk)}},{passive:true});
+addEventListener('load',chk);
+if(R){it.forEach(function(li){so(li,true)});dirty=0}
+chk();
+})();
+</script>
+<script>
+(function(){
+var S3=window.__s3||{},root=document.documentElement,$=function(i){return document.getElementById(i);},bE=$('cExp'),bL=$('cLite'),b3=$('c3d'),bT=$('cTime'),bW=$('cWx'),card=$('icard');
+if(!bE||!card){return;}
+function save(o){try{var c=JSON.parse(localStorage.getItem('sirat-q')||'{}')||{};for(var k in o){c[k]=o[k];}localStorage.setItem('sirat-q',JSON.stringify(c));}catch(e){}}
+var INFO={
+ hint:['ঘুরিয়ে দেখুন','<p>আঙুল বা মাউস টেনে দৃশ্য ঘোরান। যে দৃশ্য এখন পর্দায় আছে, তাতে কাবা, জমজম, সাফা-মারওয়া, হেরা পাহাড়, মসজিদ বা মানচিত্রের আলোর বিন্দুতে (হিজরতের পথের সাওর গুহা, উম্মে মাবাদের তাঁবু ও কুবাসহ) চাপ দিলে তথ্য খুলবে। এই অবস্থায় পেজ স্ক্রল হয় না, স্ক্রলের জন্য “পেজে ফিরুন” চাপুন।</p>',''],
+ kaaba:['কাবা','<p>মক্কার মসজিদুল হারামের মাঝখানের ঘনকাকৃতি ঘর। কুরআনে ইবরাহিম (আ.) ও ইসমাইল (আ.)-এর কাবার ভিত তোলার কথা আছে।</p><p>নবুয়তের কিছু আগে কুরাইশ কাবা পুনর্নির্মাণ করে। হাজরে আসওয়াদ বসানো নিয়ে বিবাদ হলে নবী (সা.) পাথরটি চাদরে রেখে গোত্রপ্রধানদের দিয়ে তোলান এবং নিজ হাতে স্থাপন করেন। মক্কা বিজয়ের দিন কাবা মূর্তিমুক্ত হয়।</p>','কুরআন ২:১২৭; ইবনে হিশামের সীরাত'],
+ hera:['হেরা গুহা (জাবালুন নুর)','<p>মক্কার উত্তর-পূর্বে জাবালুন নুর পাহাড়ের গুহা। নবুয়তের আগে নবী (সা.) এখানে নির্জনে ইবাদত করতেন। এখানেই প্রথম ওহি আসে: “পড়ো”, সূরা আলাকের প্রথম আয়াতগুলো।</p><p>৩ডি-তে পাহাড়ের আকার ও দূরত্ব কল্পিত।</p>','সহিহ বুখারি ৩'],
+ mosque:['মসজিদে নববী','<p>হিজরতের পর মদিনায় নবী (সা.) নিজেও কাজ করে মসজিদ বানান। প্রথম মসজিদ ছিল সরল: কাঁচা ইটের দেয়াল, খেজুর গাছের কাণ্ডের খুঁটি, খেজুর পাতার ছাউনি। পরে বহুবার সম্প্রসারিত হয়েছে।</p><p>সবুজ গম্বুজ অনেক পরের যুগের সংযোজন, নবীর যুগে ছিল না। ৩ডি-র মসজিদ কল্পিত নকশা।</p>','ইবনে হিশামের সীরাত; সহিহ বুখারি, মসজিদ নির্মাণের বর্ণনা']
+};
+INFO.zamzam=['জমজম','<p>প্রচলিত বর্ণনা অনুযায়ী ইবরাহিম (আ.) স্ত্রী হাজেরা (আ.) ও শিশু ইসমাইল (আ.)-কে মক্কার নির্জন উপত্যকায় রেখে যান। পানির খোঁজে হাজেরা (আ.) সাফা ও মারওয়ার মাঝে ছোটাছুটি করেন, তারপর শিশুর পায়ের কাছে পানি উৎসারিত হয়। সেই কূপই জমজম।</p><p>বিদায় হজে নবী (সা.) জমজমের পানি পান করেন। ৩ডি-তে কূপের অবস্থান ও আকার কল্পিত।</p>','সহিহ বুখারি ৩৩৬৪ (ইবনে আব্বাস রা.); সহিহ মুসলিম ১২১৮ (জাবির রা.)'];
+INFO.safa=['সাফা ও মারওয়া','<p>কাবার কাছের দুটি ছোট পাহাড়। কুরআনে এ দুটিকে আল্লাহর নিদর্শন বলা হয়েছে। হজ ও ওমরার সায়ি এই দুই পাহাড়ের মাঝে সাতবার যাওয়া-আসা, যা হাজেরা (আ.)-এর পানির খোঁজে ছোটার স্মৃতির সঙ্গে জড়িয়ে বলা হয়।</p><p>বিদায় হজে নবী (সা.) সাফা থেকে সায়ি শুরু করেন এবং ওই আয়াত তিলাওয়াত করেন। আজকের সায়ির পথ ঢাকা ও বাঁধানো, ৩ডি-র নকশা কল্পিত।</p>','কুরআন ২:১৫৮; সহিহ মুসলিম ১২১৮'];
+INFO.thawr=['সাওর গুহা','<p>মক্কার দক্ষিণে সাওর পাহাড়ের গুহা। কুরাইশের খোঁজ চলার মধ্যে নবী (সা.) ও আবু বকর (রা.) এখানে তিন রাত আশ্রয় নেন। আবু বকর (রা.) শত্রুর পায়ের কাছে দাঁড়ানোর আশঙ্কা করলে নবী (সা.) তাঁকে আশ্বস্ত করেন। কুরআনে এই গুহার ঘটনার উল্লেখ আছে।</p>','কুরআন ৯:৪০; সহিহ বুখারি ৩৬৫৩, ৩৯০৫'];
+INFO.ummabad=['উম্মে মাবাদের তাঁবু','<p>মক্কা-মদিনার পথের পাশের বেদুইন তাঁবু। সীরাতের বর্ণনায় আছে, যাত্রীরা সেখানে খাবার ও দুধের খোঁজ করেন। এই ঘটনার বিস্তারিত বর্ণনার সনদ নিয়ে আলোচনা আছে, তাই মোটা ঘটনাটুকুই বলা হলো। মানচিত্রে অবস্থান আনুমানিক।</p>','সীরাতসূত্রে বর্ণিত; সনদ নিয়ে মতভেদ আছে'];
+INFO.quba=['কুবা','<p>মদিনার প্রান্তের বসতি। হিজরতের পথে নবী (সা.) প্রথমে এখানে পৌঁছান, রবিউল আউয়ালের এক সোমবার (তারিখে মতভেদ আছে)। এখানে মসজিদে কুবা নির্মিত হয়।</p>','সীরাতসূত্রে বর্ণিত; তারিখে মতভেদ আছে'];
+INFO.makka=['মক্কা','<p>প্রসিদ্ধ মতে আনুমানিক ৫৭০ খ্রিস্টাব্দে এখানে নবীজির (সা.) জন্ম। নবুয়তের পর প্রায় তেরো বছর এখানে দাওয়াত দেন। কুরাইশের বাধার মুখে হিজরত করেন। ৮ হিজরিতে শহর বিজয় হয়।</p>','ইবনে হিশামের সীরাত'];
+INFO.madina=['মদিনা (ইয়াসরিব)','<p>হিজরতের গন্তব্য। এখানে মসজিদে নববী গড়ে ওঠে এবং মুসলিম সমাজ সংগঠিত হয়। ১১ হিজরিতে এখানেই নবীজি (সা.) ইন্তেকাল করেন ও দাফন হন।</p>','ইবনে হিশামের সীরাত'];
+INFO.taif=['তায়েফ','<p>নবুয়তের দশম বছরে আনুমানিক, আবু তালিব ও খাদিজা (রা.)-র মৃত্যুর পর নবীজি (সা.) দাওয়াত নিয়ে তায়েফে যান। সাকিফ গোত্র তাঁকে প্রত্যাখ্যান করে ও দুর্ব্যবহার করে। তিনি তাদের ওপর আজাব চাননি, তাদের বংশধরদের হেদায়াতের আশা করেন।</p>','সহিহ বুখারি ৩২৩১; ইবনে হিশামের সীরাত'];
+INFO.khaybar=['খায়বার','<p>মদিনার উত্তরে প্রায় দেড়শ কিলোমিটার দূরের দুর্গঘেরা বসতি। হুদাইবিয়ার পর ৭ হিজরির শুরুতে এখানে অভিযান হয় এবং কয়েকটি দুর্গ জয় হয়।</p>','ইবনে হিশামের সীরাত; সহিহ বুখারি, খায়বার যুদ্ধ অধ্যায়'];
+INFO.tabuk=['তাবুক','<p>৯ হিজরির রজবে প্রচণ্ড গরমের মধ্যে রোমান সীমান্তের দিকে এই অভিযান। বড় কোনো সংঘর্ষ হয়নি। এই অভিযান থেকে পিছিয়ে থাকা তিন সাহাবির ঘটনা সূরা তাওবায় উল্লেখ আছে।</p><p>তাবুক শামের পথের উত্তর অংশে, রোমান সীমান্তের দিকে।</p>','ইবনে হিশামের সীরাত; সহিহ বুখারি, কা\'ব ইবনে মালিক (রা.)-এর বর্ণনা'];
+INFO.habasha=['আবিসিনিয়া (হাবশা)','<p>লোহিত সাগরের ওপারে। নবুয়তের পঞ্চম বছরে আনুমানিক, কুরাইশের নির্যাতনে একদল সাহাবি এখানে হিজরত করেন। বাদশাহ নাজাশি তাঁদের আশ্রয় দেন।</p>','ইবনে হিশামের সীরাত'];
+INFO.badr=['বদর','<p>মদিনার দক্ষিণ-পশ্চিমে কূপ-এলাকা। ২ হিজরিতে (প্রসিদ্ধ মত ১৭ রমজান) কুরাইশের সঙ্গে মুসলিমদের প্রথম বড় সম্মুখ যুদ্ধ। মুসলিমরা সংখ্যায় ও সরঞ্জামে অনেক কম ছিলেন।</p><p>মক্কা থেকে শামের (সিরিয়ার) বাণিজ্য-পথ বদরের কূপ-এলাকার কাছ দিয়ে যেত। কুরাইশের কাফিলার ওই পথেই আসার কথা ছিল। মানচিত্রের পথটি আনুমানিক।</p>','ইবনে হিশামের সীরাত'];
+function show(k){var d=INFO[k];if(!d){return;}card.innerHTML='<button type="button" class="x" aria-label="বন্ধ করুন">×</button><h3>'+d[0]+'</h3>'+d[1]+(d[2]?'<span class="src">সূত্র: '+d[2]+'</span>':'');card.hidden=false;card.querySelector('.x').onclick=function(){card.hidden=true;};}
+function expl(on){S3.explore=on;root.classList.toggle('exp',on);bE.setAttribute('aria-pressed',on?'true':'false');bE.textContent=on?'পেজে ফিরুন':'৩ডি ঘুরিয়ে দেখুন';if(on){show('hint');}else{S3.ty=0;S3.tx=0;card.hidden=true;}}
+function apply(){root.classList.toggle('gloff',!!S3.off);root.classList.toggle('nogl',!!S3.off||!S3.init);b3.setAttribute('aria-pressed',S3.off?'true':'false');bL.setAttribute('aria-pressed',S3.lite?'true':'false');if(S3.off&&S3.explore){expl(false);}}
+bE.addEventListener('click',function(){expl(!S3.explore);});
+bL.addEventListener('click',function(){save({lite:!S3.lite});location.reload();});
+b3.addEventListener('click',function(){var off=!S3.off;save({off:off});if(!off&&!S3.init){location.reload();return;}S3.off=off;apply();});
+if(!S3.init&&!S3.off){bE.hidden=true;bL.hidden=true;b3.hidden=true;bT.hidden=true;bW.hidden=true;}
+var TODN=['আকাশ: স্বয়ংক্রিয়','আকাশ: ভোর','আকাশ: দিন','আকাশ: সন্ধ্যা','আকাশ: রাত'],WXN=['আবহাওয়া: পরিষ্কার','আবহাওয়া: মেঘ','আবহাওয়া: বালুঝড়'];
+function skyLab(){bT.textContent=TODN[S3.tod|0];bT.setAttribute('aria-pressed',S3.tod?'true':'false');bW.textContent=WXN[S3.wx|0];bW.setAttribute('aria-pressed',S3.wx?'true':'false');}
+bT.addEventListener('click',function(){S3.tod=((S3.tod|0)+1)%5;save({tod:S3.tod});skyLab();});
+bW.addEventListener('click',function(){S3.wx=((S3.wx|0)+1)%3;save({wx:S3.wx});skyLab();});
+skyLab();
+apply();
+var st=null;
+addEventListener('pointerdown',function(e){if(!S3.explore||e.target.closest('.ctl,.icard')){return;}st={x:e.clientX,y:e.clientY,t:Date.now(),mv:0};});
+addEventListener('pointermove',function(e){if(!st||!S3.explore){return;}var dx=e.clientX-st.x,dy=e.clientY-st.y;st.mv+=Math.abs(dx)+Math.abs(dy);st.x=e.clientX;st.y=e.clientY;S3.ty=Math.max(-1.8,Math.min(1.8,S3.ty-dx*0.006));S3.tx=Math.max(-0.7,Math.min(0.7,S3.tx+dy*0.004));});
+addEventListener('pointerup',function(e){if(!st){return;}var s=st;st=null;if(s.mv<8&&Date.now()-s.t<500&&S3.pick){var k=S3.pick(e.clientX,e.clientY);if(k){if(k.indexOf('map:')===0){var mk=k.slice(4);show(mk);window.dispatchEvent(new CustomEvent('tlfocus',{detail:mk}));}else{show(k);}}}});
+addEventListener('pointercancel',function(){st=null;});
+addEventListener('keydown',function(e){if(e.key==='Escape'){if(!card.hidden){card.hidden=true;}else if(S3.explore){expl(false);}}});
+})();
+</script>
+</body></html>
