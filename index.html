@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GPS Speedometer</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050505;--card:#1b1b1b;--card2:#262626;--ac:#00ffff;--tx:#fff;--mut:#8a8a8a;--red:#d94545;--ok:#4dff88;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html,body{height:100%;margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans Bengali",sans-serif}
+body{display:flex;justify-content:center}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.app{width:100%;max-width:520px;height:100%;display:flex;flex-direction:column;padding:10px 14px 0;gap:10px}
+.seg{font-family:"Orbitron","Share Tech Mono",monospace}
+.top{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.ibtn{width:42px;height:42px;border-radius:50%;background:var(--card);border:1px solid #333;display:grid;place-items:center;flex:none}
+.ibtn svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.timer{background:var(--card2);border-radius:12px;padding:8px 20px;font-size:28px;letter-spacing:1px}
+.timer small{font-size:14px;margin-left:6px}
+.stat{display:flex;justify-content:center;gap:18px;font-size:13px;color:#ddd;background:var(--card);border-radius:10px;padding:7px 10px}
+.stat b{color:var(--ac);font-weight:600}
+.view{flex:1;min-height:0;position:relative;display:flex;flex-direction:column}
+.pane{display:none;flex:1;min-height:0;flex-direction:column;align-items:center;justify-content:center}
+.pane.on{display:flex}
+.gauge{width:100%;max-height:100%;aspect-ratio:1/0.9}
+.gauge text{fill:var(--ac);font-size:14px;font-family:system-ui,sans-serif}
+.read{text-align:center;margin-top:-6px}
+.read .v{font-family:"Orbitron","Share Tech Mono",monospace;font-size:64px;color:var(--ac);line-height:1}
+.read .u{font-size:16px;margin-left:4px;color:#ddd}
+.read .l{font-weight:600;margin-top:4px}
+.big{font-family:"Orbitron","Share Tech Mono",monospace;font-size:min(34vw,170px);color:var(--ac);line-height:1;letter-spacing:2px}
+.big .z{color:#3a3a3a}
+.big-u{font-family:"Orbitron","Share Tech Mono",monospace;color:#fff;font-size:18px;align-self:flex-end;margin-right:12%}
+#map{width:100%;flex:1;min-height:0;border-radius:12px;background:#e8e4da;display:block}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.card{background:var(--card);border-radius:12px;padding:10px 4px;text-align:center}
+.card .t{font-weight:600;font-size:14px}
+.card .n{font-family:"Orbitron","Share Tech Mono",monospace;color:var(--ac);font-size:26px;margin-top:6px}
+.card .n small{font-size:12px;color:#ddd;margin-left:3px}
+.card.max.warn{background:var(--red)}.card.max.warn .n{color:#fff}
+.geo{display:flex;justify-content:space-around;font-size:12px;color:var(--mut)}
+.geo b{color:var(--ac);font-weight:600}
+.start{background:var(--ac);color:#000;border-radius:16px;height:58px;font-size:22px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:12px}
+.start.run{background:#f2b705}
+.tabs{display:flex;justify-content:space-around;padding:4px 0 8px}
+.tab{display:flex;align-items:center;gap:8px;padding:8px 10px;font-weight:700;font-size:17px;border-bottom:3px solid transparent;color:#fff}
+.tab svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.tab.on{color:var(--ac);border-color:var(--ac)}
+.view{isolation:isolate}
+.loc{position:absolute;right:12px;bottom:12px;z-index:1001;width:44px;height:44px;border-radius:50%;background:#fff;color:#1a73e8;font-size:24px;box-shadow:0 1px 6px #0006}
+.msg{font-size:12px;text-align:center;color:#f2b705;min-height:16px}
+/* settings */
+.sheet{position:fixed;inset:0;background:#000;z-index:5;display:none;overflow:auto;padding:calc(12px + env(safe-area-inset-top,0px)) 14px calc(20px + env(safe-area-inset-bottom,0px))}
+.sheet.on{display:block}
+.sheet .in{max-width:520px;margin:0 auto}
+.sheet h1{font-size:22px;text-align:center;margin:6px 0 14px}
+.box{background:var(--card);border-radius:14px;padding:14px;margin-bottom:12px}
+.box h2{font-size:17px;margin:0 0 10px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{flex:1 1 28%;padding:12px 4px;border-radius:22px;background:var(--card2);color:#aaa;font-weight:600}
+.opt.on{background:var(--ac);color:#000}
+.row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;font-size:15px}
+.row select,.row input[type=number]{background:var(--card2);color:var(--ac);border:0;border-radius:20px;padding:10px 14px;font-size:15px;width:130px}
+.sw{position:relative;width:48px;height:26px;background:#3a3a3a;border-radius:13px;flex:none}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:left .15s}
+.sw.on{background:#0aa}.sw.on::after{left:25px;background:var(--ac)}
+.cols{display:flex;gap:10px;flex-wrap:wrap}
+.dot{width:42px;height:42px;border-radius:50%;border:3px solid #333;padding:0}
+.dot.on{border-color:#fff}
+@media (prefers-reduced-motion:reduce){.sw::after{transition:none}}
+@media (orientation:landscape) and (max-height:520px){
+ .app{max-width:none;display:grid;grid-template-columns:1fr 330px;grid-template-rows:auto 1fr auto;gap:8px 14px}
+ .top{grid-column:1/3}.view{grid-column:1;grid-row:2/4}.side{grid-column:2;grid-row:2;display:flex;flex-direction:column;gap:8px;justify-content:center}
+ .tabs{grid-column:1;grid-row:3}.stat{display:none}
+ .cards{grid-template-columns:1fr 1fr}.big{font-size:min(24vw,40vh)}
+}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <div class="top">
+    <button class="ibtn" id="reset" aria-label="Reset"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.5-5.8M20 4v5h-5"/></svg></button>
+    <div class="timer seg" id="timer">0:00:00<small>s</small></div>
+    <button class="ibtn" id="gear" aria-label="Settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
+  </div>
+  <div class="stat" id="stat"><span>🔋 <b id="bat">--</b></span><span>🛰 GPS <b id="gps">off</b></span><span>± <b id="acc">--</b></span></div>
+
+  <div class="view">
+    <div class="pane on" id="p-analog">
+      <svg class="gauge" id="gauge" viewBox="0 -12 400 370" aria-label="Speedometer">
+        <path id="trk" d="M 93.93 286.07 A 150 150 0 1 1 306.07 286.07" fill="none" stroke="#3d3d3d" stroke-width="16" stroke-linecap="round"/>
+        <path id="arc" d="M 93.93 286.07 A 150 150 0 1 1 306.07 286.07" fill="none" stroke="var(--ac)" stroke-width="16" stroke-linecap="round" pathLength="100" stroke-dasharray="0 100"/>
+        <g id="ticks"></g>
+        <g id="needle"><polygon points="196,200 204,200 200,70" fill="#fff"/></g>
+        <circle cx="200" cy="180" r="22" fill="#fff"/><circle cx="200" cy="180" r="11" fill="#111"/><circle cx="200" cy="180" r="5" fill="#fff"/>
+      </svg>
+      <div class="read"><span class="v" id="v1">0</span><span class="u" id="u1">km/h</span><div class="l">Current Speed</div></div>
+    </div>
+    <div class="pane" id="p-digital">
+      <div class="big" id="v2"><span class="z">0</span>00</div>
+      <div class="big-u seg" id="u2">KM/H</div>
+    </div>
+    <div class="pane" id="p-map">
+      <div id="map"></div><button class="loc" id="loc" aria-label="Center on my location">◎</button>
+    </div>
+  </div>
+
+  <div class="geo"><span>Alt <b id="alt">--</b></span><span>Lat <b id="lat">--</b></span><span>Lon <b id="lon">--</b></span></div>
+  <div class="side">
+    <div class="cards">
+      <div class="card max" id="cmax"><div class="t">Max Speed</div><div class="n"><span id="mx">0</span><small class="su">km/h</small></div></div>
+      <div class="card"><div class="t">Distance</div><div class="n"><span id="ds">0.0</span><small class="du">km</small></div></div>
+      <div class="card"><div class="t">Avg Speed</div><div class="n"><span id="av">0</span><small class="su">km/h</small></div></div>
+    </div>
+    <div class="msg" id="msg"></div>
+    <button class="start" id="go"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8z"/></svg><span>Start</span></button>
+  </div>
+  <div class="tabs">
+    <button class="tab on" data-t="analog"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 12l4-5"/></svg>Analog</button>
+    <button class="tab" data-t="digital"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M7 9v6h4M15 9v6"/></svg>Digital</button>
+    <button class="tab" data-t="map"><svg viewBox="0 0 24 24"><path d="M12 22s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>Map</button>
+  </div>
+</div>
+
+<div class="sheet" id="sheet"><div class="in">
+  <button class="ibtn" id="back" aria-label="Back"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+  <h1>Settings</h1>
+  <div class="box"><h2>Speed Units</h2><div class="opts" id="o-unit"><button class="opt" data-v="mph">Mph</button><button class="opt" data-v="kmh">Km/h</button><button class="opt" data-v="kn">Knot</button></div></div>
+  <div class="box"><h2>Select Your Mode</h2><div class="opts" id="o-mode"><button class="opt" data-v="car">Car/Bike</button><button class="opt" data-v="bike">Bicycle</button><button class="opt" data-v="walk">Walk</button><button class="opt" data-v="bus">Bus</button><button class="opt" data-v="train">Train</button></div></div>
+  <div class="box">
+    <div class="row"><span>Max Speed Limit Warn (km/h)</span><input type="number" id="limit" min="5" max="400" step="5"></div>
+    <div class="row"><span>Speed Alarm (beep)</span><button class="sw" id="s-alarm" aria-label="Speed alarm"></button></div>
+    <div class="row"><span>Keep screen on</span><button class="sw" id="s-wake" aria-label="Keep screen on"></button></div>
+    <div class="row"><span>Demo mode (no GPS)</span><button class="sw" id="s-demo" aria-label="Demo mode"></button></div>
+  </div>
+  <div class="box"><h2>Display Color</h2><div class="cols" id="colors"></div></div>
+</div></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script>
+(function(){
+"use strict";
+var $=function(i){return document.getElementById(i)};
+var UNITS={kmh:{f:3.6,s:"km/h",d:1,du:"km"},mph:{f:2.23694,s:"mph",d:0.000621371,du:"mi"},kn:{f:1.94384,s:"knot",d:0.000539957,du:"nmi"}};
+var MODEMAX={car:220,bike:60,walk:20,bus:140,train:300};
+var COLORS=["#00ffff","#b57cff","#ffd400","#ff5a5a","#4dff88","#ffffff","#66ccff"];
+var S={unit:"kmh",mode:"car",limit:100,alarm:false,wake:false,demo:false,color:0,tab:"analog"};
+try{var sv=JSON.parse(localStorage.getItem("gpsSpeedo")||"null");if(sv)for(var k in sv)S[k]=sv[k]}catch(e){}
+function save(){try{localStorage.setItem("gpsSpeedo",JSON.stringify(S))}catch(e){}}
+
+var st={run:false,watch:null,sim:null,elapsed:0,t0:0,dist:0,max:0,speed:0,last:null,track:[],lastBeep:0,wl:null};
+
+/* ---------- gauge ---------- */
+function gaugeMax(){var m=MODEMAX[S.mode]*UNITS[S.unit].f/3.6,steps=[1,2,5,10,20,25,50],i=0;
+ while(m/steps[i]>12&&i<steps.length-1)i++;var s=steps[i];return{max:Math.ceil(m/s)*s,step:s}}
+var G=gaugeMax();
+function pt(a,r){var t=a*Math.PI/180;return[200+r*Math.cos(t),180+r*Math.sin(t)]}
+function buildTicks(){G=gaugeMax();var g=$("ticks"),h="";
+ for(var v=0;v<=G.max;v+=G.step){var a=135+270*v/G.max,p1=pt(a,170),p2=pt(a,182),p3=pt(a,128);
+  h+='<line x1="'+p1[0]+'" y1="'+p1[1]+'" x2="'+p2[0]+'" y2="'+p2[1]+'" stroke="#fff" stroke-width="4" stroke-linecap="round"/>';
+  h+='<text x="'+p3[0]+'" y="'+(p3[1]+5)+'" text-anchor="middle">'+v+'</text>'}
+ g.innerHTML=h}
+
+/* ---------- helpers ---------- */
+function fmtTime(ms){var s=Math.floor(ms/1000),h=Math.floor(s/3600),m=Math.floor(s%3600/60);s%=60;
+ return h+":"+(m<10?"0":"")+m+":"+(s<10?"0":"")+s}
+function hav(a,b){var R=6371000,r=Math.PI/180,dl=(b.lat-a.lat)*r,dn=(b.lon-a.lon)*r,
+ x=Math.sin(dl/2)*Math.sin(dl/2)+Math.cos(a.lat*r)*Math.cos(b.lat*r)*Math.sin(dn/2)*Math.sin(dn/2);
+ return 2*R*Math.asin(Math.sqrt(x))}
+function curElapsed(){return st.elapsed+(st.run?Date.now()-st.t0:0)}
+
+/* ---------- render ---------- */
+function render(){
+ var U=UNITS[S.unit],sp=st.speed*U.f,mx=st.max*U.f,el=curElapsed()/1000,av=el>0?(st.dist/el)*U.f:0;
+ var r=Math.round(sp);
+ $("v1").textContent=r;$("u1").textContent=U.s;
+ var s3=String(Math.min(r,999));while(s3.length<3)s3="0"+s3;
+ var lead=s3.match(/^0*/)[0];
+ $("v2").innerHTML='<span class="z">'+lead+'</span>'+s3.slice(lead.length);
+ $("u2").textContent=U.s.toUpperCase();
+ var pct=Math.min(1,sp/G.max);
+ $("arc").setAttribute("stroke-dasharray",(pct*100)+" 100");
+ $("needle").setAttribute("transform","rotate("+(-135+270*pct)+" 200 180)");
+ $("mx").textContent=Math.round(mx);$("av").textContent=Math.round(av);
+ $("ds").textContent=(st.dist*U.d).toFixed(1);
+ document.querySelectorAll(".su").forEach(function(e){e.textContent=U.s});
+ document.querySelectorAll(".du").forEach(function(e){e.textContent=U.du});
+ $("timer").innerHTML=fmtTime(curElapsed())+"<small>s</small>";
+ $("cmax").classList.toggle("warn",st.max*3.6>S.limit);
+ drawMap()}
+
+var lm=null,line=null,mS=null,mC=null,follow=true,mapHidden=true,lastLen=-1,lastSeen=null;
+function dotIcon(c){return L.divIcon({className:"",iconSize:[20,20],iconAnchor:[10,10],
+ html:'<div style="width:20px;height:20px;border-radius:50%;background:'+c+';border:3px solid #fff;box-shadow:0 0 5px #0009"></div>'})}
+function initMap(){
+ if(lm||!window.L)return;
+ lm=L.map("map").setView([23.8103,90.4125],15);
+ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"&copy; OpenStreetMap contributors"}).addTo(lm);
+ line=L.polyline([],{color:"#2f7bf6",weight:6,opacity:.9}).addTo(lm);
+ lm.on("dragstart",function(){follow=false});
+ $("loc").onclick=function(){follow=true;if(st.last)lm.setView([st.last.lat,st.last.lon],Math.max(lm.getZoom(),16))}}
+function drawMap(){
+ if(S.tab!=="map"){mapHidden=true;return}
+ initMap();if(!lm){return}
+ if(mapHidden){mapHidden=false;lm.invalidateSize();lastLen=-1}
+ var T=st.track,cur=st.last;
+ if(T.length===lastLen&&cur===lastSeen)return;
+ lastLen=T.length;lastSeen=cur;
+ line.setLatLngs(T.map(function(p){return[p.lat,p.lon]}));
+ if(mS){lm.removeLayer(mS);mS=null}
+ if(T.length){mS=L.marker([T[0].lat,T[0].lon],{icon:dotIcon("#4cc93a")}).addTo(lm)}
+ if(cur){var ll=[cur.lat,cur.lon];
+  if(!mC)mC=L.marker(ll,{icon:dotIcon("#f0443a")}).addTo(lm);else mC.setLatLng(ll);
+  if(follow)lm.setView(ll,Math.max(lm.getZoom(),16))}
+ else if(mC){lm.removeLayer(mC);mC=null}}
+
+/* ---------- GPS handling ---------- */
+function onPos(p){
+ var now=p.ts||Date.now(),cur={lat:p.lat,lon:p.lon,t:now},sp=p.speed;
+ $("gps").textContent="on";$("acc").textContent=p.acc!=null?Math.round(p.acc)+" m":"--";
+ $("lat").textContent=p.lat.toFixed(4);$("lon").textContent=p.lon.toFixed(4);
+ $("alt").textContent=p.alt!=null?Math.round(p.alt)+" m":"--";
+ var d=0;
+ if(st.last){d=hav(st.last,cur);var dt=(now-st.last.t)/1000;
+  if(sp==null&&dt>0)sp=d/dt;
+  if(p.acc!=null&&p.acc>60){return}
+  if(d<Math.max(2,(p.acc||0)*0.3)&&(sp==null||sp<0.6)){sp=0;d=0}}
+ if(sp==null)sp=0;
+ st.speed=sp;
+ if(st.run){st.dist+=d;if(sp>st.max)st.max=sp;
+  if(!st.track.length||d>0)st.track.push(cur);
+  alarm()}
+ st.last=cur;render()}
+
+function alarm(){
+ var sp=st.speed*3.6;if(!S.alarm||sp<=S.limit||Date.now()-st.lastBeep<1500)return;
+ st.lastBeep=Date.now();
+ try{var a=new (window.AudioContext||window.webkitAudioContext)(),o=a.createOscillator();
+  o.frequency.value=880;o.connect(a.destination);o.start();setTimeout(function(){o.stop();a.close()},250)}catch(e){}}
+
+function startGPS(){
+ if(S.demo){startDemo();return}
+ if(!navigator.geolocation){msg("Geolocation is not supported. Turn on Demo mode in Settings.");return}
+ if(st.watch!=null)return;
+ $("gps").textContent="searching";msg("");
+ st.watch=navigator.geolocation.watchPosition(function(g){
+  var c=g.coords;onPos({lat:c.latitude,lon:c.longitude,speed:c.speed,alt:c.altitude,acc:c.accuracy,ts:g.timestamp})
+ },function(e){
+  $("gps").textContent="off";
+  msg(e.code===1?"Location permission denied. Allow location access, or use Demo mode.":"Cannot get GPS signal. Move outdoors or use Demo mode.");
+  stopGPS()},{enableHighAccuracy:true,maximumAge:0,timeout:20000})}
+function stopGPS(){
+ if(st.watch!=null){navigator.geolocation.clearWatch(st.watch);st.watch=null}
+ if(st.sim){clearInterval(st.sim);st.sim=null}}
+
+/* demo: simulated drive */
+function startDemo(){
+ if(st.sim)return;
+ var lat=23.8103,lon=90.4125,hd=0.8,v=8;
+ st.sim=setInterval(function(){
+  v=Math.max(0,Math.min(40,v+(Math.random()-0.42)*4));hd+=(Math.random()-0.5)*0.5;
+  lat+=Math.cos(hd)*v/111320;lon+=Math.sin(hd)*v/(111320*Math.cos(lat*Math.PI/180));
+  onPos({lat:lat,lon:lon,speed:v,alt:12+Math.random(),acc:5,ts:Date.now()})},1000)}
+
+function msg(t){$("msg").textContent=t}
+
+/* ---------- controls ---------- */
+function setRun(on){
+ var b=$("go");
+ if(on){st.run=true;st.t0=Date.now();startGPS();wake(true);
+  b.classList.add("run");b.lastElementChild.textContent="Pause";b.firstElementChild.innerHTML='<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>'}
+ else{if(st.run)st.elapsed+=Date.now()-st.t0;st.run=false;wake(false);
+  b.classList.remove("run");b.lastElementChild.textContent=st.elapsed?"Resume":"Start";b.firstElementChild.innerHTML='<path d="M6 4l14 8-14 8z"/>'}
+ render()}
+$("go").onclick=function(){setRun(!st.run)};
+$("reset").onclick=function(){
+ var was=st.run;stopGPS();setRun(false);
+ st.elapsed=0;st.dist=0;st.max=0;st.speed=0;st.last=null;st.track=[];
+ $("gps").textContent="off";$("go").lastElementChild.textContent="Start";msg("");render()};
+
+function wake(on){
+ try{if(on&&S.wake&&navigator.wakeLock){navigator.wakeLock.request("screen").then(function(l){st.wl=l}).catch(function(){})}
+  else if(st.wl){st.wl.release();st.wl=null}}catch(e){}}
+
+document.querySelectorAll(".tab").forEach(function(b){b.onclick=function(){
+ S.tab=b.dataset.t;save();
+ document.querySelectorAll(".tab").forEach(function(x){x.classList.toggle("on",x===b)});
+ ["analog","digital","map"].forEach(function(n){$("p-"+n).classList.toggle("on",n===S.tab)});render()}});
+
+/* ---------- settings ---------- */
+function applyColor(){document.documentElement.style.setProperty("--ac",COLORS[S.color])}
+function syncUI(){
+ document.querySelectorAll("#o-unit .opt").forEach(function(b){b.classList.toggle("on",b.dataset.v===S.unit)});
+ document.querySelectorAll("#o-mode .opt").forEach(function(b){b.classList.toggle("on",b.dataset.v===S.mode)});
+ $("s-alarm").classList.toggle("on",S.alarm);$("s-wake").classList.toggle("on",S.wake);$("s-demo").classList.toggle("on",S.demo);
+ document.querySelectorAll(".dot").forEach(function(d,i){d.classList.toggle("on",i===S.color)});
+ $("limit").value=S.limit}
+$("gear").onclick=function(){$("sheet").classList.add("on")};
+$("back").onclick=function(){$("sheet").classList.remove("on");save();buildTicks();render()};
+document.querySelectorAll("#o-unit .opt").forEach(function(b){b.onclick=function(){S.unit=b.dataset.v;syncUI();buildTicks();render();save()}});
+document.querySelectorAll("#o-mode .opt").forEach(function(b){b.onclick=function(){S.mode=b.dataset.v;syncUI();buildTicks();render();save()}});
+$("limit").onchange=function(){var n=parseFloat(this.value);if(n>0)S.limit=n;save();render()};
+$("s-alarm").onclick=function(){S.alarm=!S.alarm;syncUI();save()};
+$("s-wake").onclick=function(){S.wake=!S.wake;syncUI();save();wake(st.run)};
+$("s-demo").onclick=function(){S.demo=!S.demo;stopGPS();st.last=null;if(st.run)startGPS();syncUI();save()};
+COLORS.forEach(function(c,i){var d=document.createElement("button");d.className="dot";d.style.background=c;d.setAttribute("aria-label","Color "+(i+1));
+ d.onclick=function(){S.color=i;applyColor();syncUI();save()};$("colors").appendChild(d)});
+
+/* battery */
+try{if(navigator.getBattery)navigator.getBattery().then(function(b){var f=function(){$("bat").textContent=Math.round(b.level*100)+"%"};f();b.onlevelchange=f})}catch(e){}
+$("bat").textContent="--";
+
+setInterval(function(){if(st.run)render()},1000);
+window.addEventListener("resize",render);
+document.querySelectorAll(".tab").forEach(function(b){if(b.dataset.t===S.tab)b.click()});
+applyColor();syncUI();buildTicks();render();
+})();
+</script>
+</body>
+</html>
