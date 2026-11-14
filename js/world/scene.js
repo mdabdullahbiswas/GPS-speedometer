@@ -297,12 +297,12 @@ function initScene(){
   wlab(W[3],'বাইআতের গাছ',0,17,0,18);wlab(W[3],'ইহরামে সাহাবিগণ',0,5,14,18);
   /* Taif (simplified): walled town on a hill, Thaqif crowd outside, vineyard shelter on the left, Qarn al-Tha'alib mound on the right */
   W[4].add(wmesh(new THREE.IcosahedronGeometry(1,2),wRock,0,-3,-38,40,22,16));
-  var tHouse=brickMat(0xd9cfc4);var tBrk=brickMat(0xd9cfc4,[28,1]);tBrk.side=THREE.DoubleSide;var tw=new THREE.Mesh(new THREE.CylinderGeometry(14,14,3.2,28,1,true),tBrk);tw.position.set(0,1.6,-14);W[4].add(tw);
-  [[-5,-18],[3,-20],[7,-12],[-7,-10],[0,-14]].forEach(function(q){W[4].add(wmesh(new THREE.BoxGeometry(4,2.6,4),tHouse,q[0],1.3,q[1]));});
+  var tHouse=brickMat(0xd9cfc4);var tBrk=brickMat(0xd9cfc4,[28,1]);tBrk.side=THREE.DoubleSide;var tw=new THREE.Mesh(new THREE.CylinderGeometry(14,14,3.2,28,1,true),tBrk);tw.position.set(0,1.6,-14);W[4].add(tw);var tOld=[tw];
+  [[-5,-18],[3,-20],[7,-12],[-7,-10],[0,-14]].forEach(function(q){var hb=wmesh(new THREE.BoxGeometry(4,2.6,4),tHouse,q[0],1.3,q[1]);W[4].add(hb);tOld.push(hb);});
   W[4].add(wdisc(-4,6,9,wQur,0.2));W[4].add(crowd(-4,6,7,50,0x3a3028,1.0));
   var vy=wm(0x3f6b3a);[[-30,10],[-26,16],[-34,18],[-24,6]].forEach(function(q){W[4].add(wmesh(new THREE.SphereGeometry(3,10,8),vy,q[0],3,q[1],1,0.9,1));});
   W[4].add(wmesh(new THREE.IcosahedronGeometry(1,1),wRock,34,0,-8,7,8,7));
-  wlab(W[4],'তায়েফ শহর',0,9,-14);wlab(W[4],'সাকিফ গোত্র',-4,6,8,15);wlab(W[4],'আঙুরবাগান',-29,9,12,15);wlab(W[4],'কারনুস সাআলিব',34,12,-8,20);
+  wlab(W[4],'তায়েফ শহর',0,14,-14);wlab(W[4],'সাকিফ গোত্র',-4,6,8,15);wlab(W[4],'আঙুরবাগান',-29,9,12,15);wlab(W[4],'কারনুস সাআলিব',34,12,-8,20);
   warG.visible=false;
 
   /* Fath Makkah: ring of small stone stubs around the Kaaba that topple as the page scrolls */
@@ -707,6 +707,11 @@ function initScene(){
   ctx.rockSites={hira:{mesh:mount,opts:{vertexColors:true,roughness:1},tile:26,sc:[1,1,1]},thawr:{mesh:cvM,opts:{color:0xcdbfae,roughness:1},tile:9,sc:[14,10,13]}};
   /* হুদাইবিয়ার বাইআতের গাছ (js/parts/baiat-tree.js) */
   ctx.treeSites={hudaybiyyah:{group:W[3],old:hudTree,x:0,z:0,scale:1}};
+  /* তায়েফের প্রাচীরঘেরা শহর: পুরোনো সরল চোঙ-দেয়াল ও বাক্স-ঘরের তালিকা (js/parts/taif-walled-town.js এগুলো লুকিয়ে আসল ৩ডি শহর বসায়) */
+  ctx.taifSite={group:W[4],old:tOld};
+  /* মানচিত্রের স্থানাঙ্ক ও খেজুর-মডেল (js/parts/khaybar-forts.js) */
+  ctx.mapGeo={PL:PL,MY:MY,CZ:CZ,MK:MK,arab:arabG};
+  ctx.palm={meta:PALM.meta,geo:palmGeo,mats:palmMats};
   ctx.caravan={arab:arabG,group:trG,routes:[trSy,trYe]};   /* কাফেলার ৩ডি উট (js/parts/camel-caravan.js) এটি ব্যবহার করে */
   SIRAT.ctx=ctx;
   PARTS.forEach(function(p){
