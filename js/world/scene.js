@@ -248,7 +248,8 @@ function initScene(){
   function wlab(g,txt,x,y,z,s){var l=mkLab(txt),w=s||17;l.scale.set(w,w/4,1);l.position.set(x,y,z);g.add(l);}
   var wMus=0x2fae83,wQur=0xb4553a;
   /* Badr (simplified): wells between two low ridges; Muslims at the near wells, Quraysh beyond a low sand rise; about 1:3 */
-  [[-12,-6],[-4,8],[10,-2]].forEach(function(p){W[0].add(wmesh(new THREE.CylinderGeometry(2.2,2.2,0.6,16),wDark,p[0],0.3,p[1]));});
+  var badrWells=[];
+  [[-12,-6],[-4,8],[10,-2]].forEach(function(p){var wl=wmesh(new THREE.CylinderGeometry(2.2,2.2,0.6,16),wDark,p[0],0.3,p[1]);W[0].add(wl);badrWells.push(wl);});
   W[0].add(wmesh(new THREE.IcosahedronGeometry(1,1),wRock,-34,0,-22,14,5,10));W[0].add(wmesh(new THREE.IcosahedronGeometry(1,1),wRock,36,0,-26,16,6,10));
   W[0].add(wmesh(new THREE.IcosahedronGeometry(1,1),wEarth,8,0,-12,16,2.6,5));
   W[0].add(wdisc(-14,16,11,wMus,0.24));W[0].add(wdisc(6,-26,16,wQur,0.22));
@@ -700,6 +701,10 @@ function initScene(){
     }};
   /* হুদাইবিয়া ও আরাফাতের তাঁবু: কোণ-আকৃতির সাময়িক তাঁবুর জায়গায় আসল ৩ডি তাঁবু বসে (js/parts/tent-camp.js) */
   ctx.tentSites=[{group:W[3],cones:hudTents,scale:1.0},{group:arafatG,cones:[tent],scale:1.4}];
+  /* বদরের কূপ ও জমজম: সাধারণ চোঙের জায়গায় পাথরের দেয়ালের আসল কূপ বসে (js/parts/stone-wells.js) */
+  ctx.wellSites={badr:{group:W[0],old:badrWells},zamzam:{group:zzG,old:[zzR]}};
+  /* হেরা পাহাড় ও সাওর গুহার পাথরের মার্বেল-টেক্সচার (js/parts/marble-rock.js) */
+  ctx.rockSites={hira:{mesh:mount,opts:{vertexColors:true,roughness:1},tile:26,sc:[1,1,1]},thawr:{mesh:cvM,opts:{color:0xcdbfae,roughness:1},tile:9,sc:[14,10,13]}};
   ctx.caravan={arab:arabG,group:trG,routes:[trSy,trYe]};   /* কাফেলার ৩ডি উট (js/parts/camel-caravan.js) এটি ব্যবহার করে */
   SIRAT.ctx=ctx;
   PARTS.forEach(function(p){
