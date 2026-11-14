@@ -290,7 +290,7 @@ function initScene(){
     var kp=new THREE.Points(g,kMat);kp.frustumCulled=false;W[2].add(kp);
   })();
   /* Hudaybiyyah: lone tree, pilgrims in white, a few tents */
-  W[3].add(wmesh(new THREE.CylinderGeometry(0.7,1,9,8),wm(0x4a3626),0,4.5,0));W[3].add(wmesh(new THREE.SphereGeometry(5,12,8),wm(0x3f6b3a),0,10,0,1,0.8,1));
+  var hudTree=[wmesh(new THREE.CylinderGeometry(0.7,1,9,8),wm(0x4a3626),0,4.5,0),wmesh(new THREE.SphereGeometry(5,12,8),wm(0x3f6b3a),0,10,0,1,0.8,1)];hudTree.forEach(function(o){W[3].add(o);});
   W[3].add(crowd(0,0,17,130,0xf6f1e4,1.0));
   var hudTents=[];
   [[-26,6],[-20,-18],[24,-12],[28,10]].forEach(function(p){var t=wmesh(new THREE.ConeGeometry(2.5,2.2,4),wDark,p[0],1.1,p[1]);t.rotation.y=0.78;W[3].add(t);hudTents.push(t);});
@@ -705,6 +705,8 @@ function initScene(){
   ctx.wellSites={badr:{group:W[0],old:badrWells},zamzam:{group:zzG,old:[zzR]}};
   /* হেরা পাহাড় ও সাওর গুহার পাথরের মার্বেল-টেক্সচার (js/parts/marble-rock.js) */
   ctx.rockSites={hira:{mesh:mount,opts:{vertexColors:true,roughness:1},tile:26,sc:[1,1,1]},thawr:{mesh:cvM,opts:{color:0xcdbfae,roughness:1},tile:9,sc:[14,10,13]}};
+  /* হুদাইবিয়ার বাইআতের গাছ (js/parts/baiat-tree.js) */
+  ctx.treeSites={hudaybiyyah:{group:W[3],old:hudTree,x:0,z:0,scale:1}};
   ctx.caravan={arab:arabG,group:trG,routes:[trSy,trYe]};   /* কাফেলার ৩ডি উট (js/parts/camel-caravan.js) এটি ব্যবহার করে */
   SIRAT.ctx=ctx;
   PARTS.forEach(function(p){
