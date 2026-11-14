@@ -20,7 +20,7 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid 
 .top{display:flex;align-items:center;justify-content:space-between;gap:8px}
 .ibtn{width:42px;height:42px;border-radius:50%;background:var(--card);border:1px solid #333;display:grid;place-items:center;flex:none}
 .ibtn svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.timer{background:var(--card2);border-radius:12px;padding:8px 20px;font-size:28px;letter-spacing:1px}
+.timer{background:var(--card2);border-radius:12px;padding:8px 14px;font-size:26px;letter-spacing:1px}
 .timer small{font-size:14px;margin-left:6px}
 .stat{display:flex;justify-content:center;gap:18px;font-size:13px;color:#ddd;background:var(--card);border-radius:10px;padding:7px 10px}
 .stat b{color:var(--ac);font-weight:600}
@@ -47,6 +47,17 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid 
 .geo b{color:var(--ac);font-weight:600}
 .start{background:var(--ac);color:#000;border-radius:16px;height:58px;font-size:22px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:12px}
 .start.run{background:#f2b705}
+.ctl{display:flex;gap:10px}.ctl .start{flex:1}
+.stop{background:var(--red);color:#fff;border-radius:16px;height:58px;padding:0 20px;font-size:18px;font-weight:700;display:flex;align-items:center;gap:8px}
+.stop:disabled{opacity:.35;cursor:default}
+.trip{padding:12px}.th{display:flex;justify-content:space-between;align-items:center}
+.del{color:#aaa;width:32px;height:32px;font-size:16px}
+.tm{color:#aaa;font-size:13px;margin:2px 0 8px}
+.trip svg{width:100%;height:90px;background:#1f1f1f;border-radius:10px;display:block}
+.ts{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px;text-align:center}
+.ts span{display:block;font-size:12px;color:#aaa}
+.ts b{font-family:"Orbitron","Share Tech Mono",monospace;color:var(--ac);font-size:16px;font-weight:700}
+.empty{text-align:center;color:#aaa;line-height:1.5}
 .tabs{display:flex;justify-content:space-around;padding:4px 0 8px}
 .tab{display:flex;align-items:center;gap:8px;padding:8px 10px;font-weight:700;font-size:17px;border-bottom:3px solid transparent;color:#fff}
 .tab svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
@@ -86,6 +97,7 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid 
   <div class="top">
     <button class="ibtn" id="reset" aria-label="Reset"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.5-5.8M20 4v5h-5"/></svg></button>
     <div class="timer seg" id="timer">0:00:00<small>s</small></div>
+    <button class="ibtn" id="hbtn" aria-label="History"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></button>
     <button class="ibtn" id="gear" aria-label="Settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
   </div>
   <div class="stat" id="stat"><span>🔋 <b id="bat">--</b></span><span>🛰 GPS <b id="gps">off</b></span><span>± <b id="acc">--</b></span></div>
@@ -118,7 +130,7 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid 
       <div class="card"><div class="t">Avg Speed</div><div class="n"><span id="av">0</span><small class="su">km/h</small></div></div>
     </div>
     <div class="msg" id="msg"></div>
-    <button class="start" id="go"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8z"/></svg><span>Start</span></button>
+    <div class="ctl"><button class="start" id="go"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l14 8-14 8z"/></svg><span>Start</span></button><button class="stop" id="stop" aria-label="Stop and save trip" disabled><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><rect x="5" y="5" width="14" height="14" rx="2"/></svg><span>Stop</span></button></div>
   </div>
   <div class="tabs">
     <button class="tab on" data-t="analog"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 12l4-5"/></svg>Analog</button>
@@ -139,6 +151,13 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid 
     <div class="row"><span>Demo mode (no GPS)</span><button class="sw" id="s-demo" aria-label="Demo mode"></button></div>
   </div>
   <div class="box"><h2>Display Color</h2><div class="cols" id="colors"></div></div>
+</div></div>
+
+<div class="sheet" id="hist"><div class="in">
+  <button class="ibtn" id="hback" aria-label="Back"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+  <h1>History</h1>
+  <div id="hlist"></div>
+  <button class="opt" id="hclear" style="width:100%;flex:none">Clear all history</button>
 </div></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
@@ -192,6 +211,7 @@ function render(){
  document.querySelectorAll(".du").forEach(function(e){e.textContent=U.du});
  $("timer").innerHTML=fmtTime(curElapsed())+"<small>s</small>";
  $("cmax").classList.toggle("warn",st.max*3.6>S.limit);
+ $("stop").disabled=!(st.run||st.elapsed>0||st.dist>0);
  drawMap()}
 
 var lm=null,line=null,mS=null,mC=null,follow=true,mapHidden=true,lastLen=-1,lastSeen=null;
@@ -310,6 +330,49 @@ $("s-wake").onclick=function(){S.wake=!S.wake;syncUI();save();wake(st.run)};
 $("s-demo").onclick=function(){S.demo=!S.demo;stopGPS();st.last=null;if(st.run)startGPS();syncUI();save()};
 COLORS.forEach(function(c,i){var d=document.createElement("button");d.className="dot";d.style.background=c;d.setAttribute("aria-label","Color "+(i+1));
  d.onclick=function(){S.color=i;applyColor();syncUI();save()};$("colors").appendChild(d)});
+
+/* ---------- history ---------- */
+var MODELBL={car:"Car/Bike",bike:"Bicycle",walk:"Walk",bus:"Bus",train:"Train"};
+function loadTrips(){try{return JSON.parse(localStorage.getItem("gpsTrips")||"[]")}catch(e){return[]}}
+function saveTrips(a){try{localStorage.setItem("gpsTrips",JSON.stringify(a))}catch(e){msg("Could not save history. Browser storage is full or blocked.")}}
+function thin(T,n){var o=[],k=T.length>n?(T.length-1)/(n-1):1,c=Math.min(n,T.length);
+ for(var i=0;i<c;i++){var p=T[Math.round(i*k)];o.push([+p.lat.toFixed(5),+p.lon.toFixed(5)])}return o}
+function routeSvg(P){
+ if(!P||P.length<2)return"";
+ var la=P.map(function(p){return p[0]}),lo=P.map(function(p){return p[1]}),
+ a0=Math.min.apply(0,la),a1=Math.max.apply(0,la),o0=Math.min.apply(0,lo),o1=Math.max.apply(0,lo),
+ cl=Math.cos((a0+a1)/2*Math.PI/180),dx=Math.max((o1-o0)*cl,1e-5),dy=Math.max(a1-a0,1e-5),
+ W=300,H=90,pd=10,k=Math.min((W-2*pd)/dx,(H-2*pd)/dy),ox=(W-dx*k)/2,oy=(H-dy*k)/2;
+ function X(p){return(ox+(p[1]-o0)*cl*k).toFixed(1)}function Y(p){return(H-oy-(p[0]-a0)*k).toFixed(1)}
+ var pts=P.map(function(p){return X(p)+","+Y(p)}).join(" "),a=P[0],b=P[P.length-1];
+ return'<svg viewBox="0 0 300 90" aria-hidden="true"><polyline points="'+pts+'" fill="none" stroke="#2f7bf6" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><circle cx="'+X(a)+'" cy="'+Y(a)+'" r="5" fill="#4cc93a"/><circle cx="'+X(b)+'" cy="'+Y(b)+'" r="5" fill="#f0443a"/></svg>'}
+function renderHist(){
+ var trips=loadTrips(),U=UNITS[S.unit],h="";
+ $("hclear").style.display=trips.length?"":"none";$("hclear").textContent="Clear all history";
+ if(!trips.length)h='<div class="box empty">No trips yet.<br>Press Start, then Stop to save a trip here.</div>';
+ trips.forEach(function(t){
+  var avg=t.ms>0?t.dist/(t.ms/1000):0,d=new Date(t.end).toLocaleString([],{day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});
+  h+='<div class="box trip"><div class="th"><b>'+d+'</b><button class="del" data-id="'+t.id+'" aria-label="Delete trip">\u2715</button></div>'
+   +'<div class="tm">'+(MODELBL[t.mode]||"Trip")+", "+fmtTime(t.ms)+'</div>'+routeSvg(t.pts)
+   +'<div class="ts"><div><span>Distance</span><b>'+(t.dist*U.d).toFixed(1)+" "+U.du+'</b></div><div><span>Max Speed</span><b>'+Math.round(t.max*U.f)+" "+U.s+'</b></div><div><span>Avg Speed</span><b>'+Math.round(avg*U.f)+" "+U.s+'</b></div></div></div>'});
+ $("hlist").innerHTML=h}
+function openHist(){renderHist();$("hist").classList.add("on")}
+function stopTrip(){
+ var ms=curElapsed();if(!ms&&!st.dist)return;
+ setRun(false);stopGPS();
+ var ok=st.dist>=20||ms>=10000;
+ if(ok){var tr=loadTrips();
+  tr.unshift({id:Date.now(),end:Date.now(),ms:ms,dist:st.dist,max:st.max,mode:S.mode,pts:thin(st.track,150)});
+  saveTrips(tr.slice(0,50))}
+ $("reset").onclick();
+ if(ok)openHist();else msg("Trip was too short to save.")}
+$("stop").onclick=stopTrip;
+$("hbtn").onclick=openHist;
+$("hback").onclick=function(){$("hist").classList.remove("on")};
+$("hlist").onclick=function(e){var b=e.target.closest?e.target.closest(".del"):null;if(!b)return;
+ var id=Number(b.dataset.id);saveTrips(loadTrips().filter(function(t){return t.id!==id}));renderHist()};
+$("hclear").onclick=function(){if(this.textContent!=="Tap again to clear all"){this.textContent="Tap again to clear all";return}
+ saveTrips([]);renderHist()};
 
 /* battery */
 try{if(navigator.getBattery)navigator.getBattery().then(function(b){var f=function(){$("bat").textContent=Math.round(b.level*100)+"%"};f();b.onlevelchange=f})}catch(e){}
