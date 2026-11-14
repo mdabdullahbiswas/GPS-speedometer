@@ -1500,10 +1500,10 @@ function initScene(){
   dioG.position.set(PL.makka.w.x-3,MY+0.4,PL.makka.w.z-16);dioG.visible=false;scene.add(dioG);var kLi=null,ka=0;
   /* Hijrah route on the map: Thawr cave, Umm Ma'bad's tent, Quba light up in turn while a dot travels */
   var hjR=new THREE.Group();arabG.add(hjR);
-  function mp(lon,lat){return new THREE.Vector3((lon-39)*MK,MY+0.8,CZ-(lat-24)*MK);}
-  var hjPts=[mp(39.83,21.42),mp(39.84,21.26),mp(39.45,21.62),mp(39.30,22.20),mp(39.05,23.00),mp(39.35,23.85),mp(39.62,24.33),mp(39.61,24.47)];
+  function geoPt(lon,lat){return new THREE.Vector3((lon-39)*MK,MY+0.8,CZ-(lat-24)*MK);}
+  var hjPts=[geoPt(39.83,21.42),geoPt(39.84,21.26),geoPt(39.45,21.62),geoPt(39.30,22.20),geoPt(39.05,23.00),geoPt(39.35,23.85),geoPt(39.62,24.33),geoPt(39.61,24.47)];
   var hjCv=new THREE.CatmullRomCurve3(hjPts),hjGeo=new THREE.BufferGeometry().setFromPoints(hjCv.getPoints(120)),hjLine=new THREE.Line(hjGeo,new THREE.LineBasicMaterial({color:0xf1d796,transparent:true,opacity:0.9,fog:false}));hjLine.frustumCulled=false;hjR.add(hjLine);
-  var hjW=[[0.12,39.84,21.26,'সাওর গুহা',8,11],[0.5,39.30,22.20,'উম্মে মাবাদের তাঁবু',-20,0],[0.86,39.62,24.33,'কুবা',14,5]].map(function(r){var d={t:r[0],p:mp(r[1],r[2]),o:[r[4],r[5]],halo:mkDot(0xffd9a0),core:mkDot(0xfff2cc),lab:mkLab(r[3]),a:0};d.halo.position.copy(d.p);d.core.position.copy(d.p);d.core.scale.setScalar(3.5);hjR.add(d.halo,d.core,d.lab);return d;});
+  var hjW=[[0.12,39.84,21.26,'সাওর গুহা',8,11],[0.5,39.30,22.20,'উম্মে মাবাদের তাঁবু',-20,0],[0.86,39.62,24.33,'কুবা',14,5]].map(function(r){var d={t:r[0],p:geoPt(r[1],r[2]),o:[r[4],r[5]],halo:mkDot(0xffd9a0),core:mkDot(0xfff2cc),lab:mkLab(r[3]),a:0};d.halo.position.copy(d.p);d.core.position.copy(d.p);d.core.scale.setScalar(3.5);hjR.add(d.halo,d.core,d.lab);return d;});
   var hjMv=mkDot(0xfff6d8);hjMv.scale.setScalar(9);hjR.add(hjMv);hjR.visible=false;var hv=0;
   /* the travelling dot: eases out of Makkah, rests at Thawr cave, rides on past Umm Ma'bad, rests at Quba, then on to Madina.
      pairs are [time 0..1, distance along the route]; two equal distances in a row are a rest */
@@ -1512,9 +1512,9 @@ function initScene(){
   function hijraRest(v){return sstep(0.09,0.12,v)*(1-sstep(0.2,0.23,v))+sstep(0.793,0.82,v)*(1-sstep(0.87,0.893,v));}
   /* caravan trade routes: Makka-Syria (via Badr and Tabuk) and Makka-Yemen (via Taif); schematic */
   var trG=new THREE.Group();arabG.add(trG);
-  function trRoute(pts,col,labs){var cv=new THREE.CatmullRomCurve3(pts.map(function(p){return mp(p[0],p[1]);})),ln=new THREE.Line(new THREE.BufferGeometry().setFromPoints(cv.getPoints(90)),new THREE.LineBasicMaterial({color:col,transparent:true,opacity:0.3,fog:false}));ln.frustumCulled=false;trG.add(ln);
+  function trRoute(pts,col,labs){var cv=new THREE.CatmullRomCurve3(pts.map(function(p){return geoPt(p[0],p[1]);})),ln=new THREE.Line(new THREE.BufferGeometry().setFromPoints(cv.getPoints(90)),new THREE.LineBasicMaterial({color:col,transparent:true,opacity:0.3,fog:false}));ln.frustumCulled=false;trG.add(ln);
     var n=36,arr=new Float32Array(n*3),g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.BufferAttribute(arr,3));var pt=new THREE.Points(g,new THREE.PointsMaterial({map:dotTex,color:col,size:1.8,transparent:true,opacity:0.4,depthWrite:false,blending:THREE.AdditiveBlending,fog:false}));pt.frustumCulled=false;trG.add(pt);
-    var L2=labs.map(function(l){var s=mkLab(l[0]);s.userData.b=mp(l[1],l[2]);s.userData.o=l[3];trG.add(s);return s;});return {cv:cv,ln:ln,pt:pt,arr:arr,n:n,labs:L2,a:0.3};}
+    var L2=labs.map(function(l){var s=mkLab(l[0]);s.userData.b=geoPt(l[1],l[2]);s.userData.o=l[3];trG.add(s);return s;});return {cv:cv,ln:ln,pt:pt,arr:arr,n:n,labs:L2,a:0.3};}
   var trSy=trRoute([[39.83,21.42],[39.3,22.2],[38.9,23.0],[38.77,23.75],[38.3,24.8],[37.93,26.6],[36.57,28.38],[36.0,30.0]],0xffc870,[['শামের (সিরিয়ার) পথ',36.1,29.6,[18,0]]]);
   var trYe=trRoute([[39.83,21.42],[40.42,21.27],[41.6,20.0],[42.9,18.6],[44.13,17.49],[44.2,15.35]],0x7be0bd,[['ইয়েমেনের পথ',44.2,15.35,[-22,6]]]);
 
