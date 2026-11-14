@@ -697,6 +697,7 @@ function initScene(){
       if(!THREE.GLTFLoader){if(window.console){console.warn('GLTFLoader লোড হয়নি — README.md-এর "GLB মডেল" অংশ দেখুন');}if(fail){fail(new Error('no GLTFLoader'));}return;}
       new THREE.GLTFLoader().load(url,function(g){done(g.scene,g);},undefined,function(e){if(window.console){console.error('GLB লোড ব্যর্থ: '+url,e);}if(fail){fail(e);}});
     }};
+  ctx.caravan={arab:arabG,group:trG,routes:[trSy,trYe]};   /* কাফেলার ৩ডি উট (js/parts/camel-caravan.js) এটি ব্যবহার করে */
   SIRAT.ctx=ctx;
   PARTS.forEach(function(p){
     try{if(p.init){p.init(ctx);}}
