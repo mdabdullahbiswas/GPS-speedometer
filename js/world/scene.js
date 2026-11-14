@@ -291,7 +291,8 @@ function initScene(){
   /* Hudaybiyyah: lone tree, pilgrims in white, a few tents */
   W[3].add(wmesh(new THREE.CylinderGeometry(0.7,1,9,8),wm(0x4a3626),0,4.5,0));W[3].add(wmesh(new THREE.SphereGeometry(5,12,8),wm(0x3f6b3a),0,10,0,1,0.8,1));
   W[3].add(crowd(0,0,17,130,0xf6f1e4,1.0));
-  [[-26,6],[-20,-18],[24,-12],[28,10]].forEach(function(p){var t=wmesh(new THREE.ConeGeometry(2.5,2.2,4),wDark,p[0],1.1,p[1]);t.rotation.y=0.78;W[3].add(t);});
+  var hudTents=[];
+  [[-26,6],[-20,-18],[24,-12],[28,10]].forEach(function(p){var t=wmesh(new THREE.ConeGeometry(2.5,2.2,4),wDark,p[0],1.1,p[1]);t.rotation.y=0.78;W[3].add(t);hudTents.push(t);});
   wlab(W[3],'বাইআতের গাছ',0,17,0,18);wlab(W[3],'ইহরামে সাহাবিগণ',0,5,14,18);
   /* Taif (simplified): walled town on a hill, Thaqif crowd outside, vineyard shelter on the left, Qarn al-Tha'alib mound on the right */
   W[4].add(wmesh(new THREE.IcosahedronGeometry(1,2),wRock,0,-3,-38,40,22,16));
@@ -697,6 +698,8 @@ function initScene(){
       if(!THREE.GLTFLoader){if(window.console){console.warn('GLTFLoader লোড হয়নি — README.md-এর "GLB মডেল" অংশ দেখুন');}if(fail){fail(new Error('no GLTFLoader'));}return;}
       new THREE.GLTFLoader().load(url,function(g){done(g.scene,g);},undefined,function(e){if(window.console){console.error('GLB লোড ব্যর্থ: '+url,e);}if(fail){fail(e);}});
     }};
+  /* হুদাইবিয়া ও আরাফাতের তাঁবু: কোণ-আকৃতির সাময়িক তাঁবুর জায়গায় আসল ৩ডি তাঁবু বসে (js/parts/tent-camp.js) */
+  ctx.tentSites=[{group:W[3],cones:hudTents,scale:1.0},{group:arafatG,cones:[tent],scale:1.4}];
   ctx.caravan={arab:arabG,group:trG,routes:[trSy,trYe]};   /* কাফেলার ৩ডি উট (js/parts/camel-caravan.js) এটি ব্যবহার করে */
   SIRAT.ctx=ctx;
   PARTS.forEach(function(p){
