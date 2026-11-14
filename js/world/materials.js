@@ -59,14 +59,16 @@ SIRAT.makeMaterials=function(THREE,small,canvasTex){
   var clfTex=sandMap(SIRAT.assets.clfTex,1,1);
   var clfNorm=small?null:sandMap(SIRAT.assets.clfNorm,1,1);
   var clfRough=small?null:sandMap(SIRAT.assets.clfRough,1,1);
-  function cliffMat(o,tile,sc){
+  function cliffMat(o,tile,sc,T){
+    /* T (ঐচ্ছিক) = {d,n,r}: অন্য টেক্সচার-সেট; না দিলে cliff_side ব্যবহার হয় */
+    var tD=T?T.d:clfTex,tN=T?T.n:clfNorm,tR=T?T.r:clfRough;
     var m=new THREE.MeshStandardMaterial(o);
     m.onBeforeCompile=function(sh){
-      sh.uniforms.cDiff={value:clfTex};sh.uniforms.cNorm={value:clfNorm};sh.uniforms.cRough={value:clfRough};
+      sh.uniforms.cDiff={value:tD};sh.uniforms.cNorm={value:tN};sh.uniforms.cRough={value:tR};
       sh.uniforms.cS={value:1/tile};sh.uniforms.cSc={value:new THREE.Vector3(sc[0],sc[1],sc[2])};
       sh.vertexShader=sh.vertexShader.replace('#include <common>','#include <common>\nuniform vec3 cSc;varying vec3 vOP;varying vec3 vON;varying vec3 vT1;varying vec3 vT2;varying vec3 vT3;')
         .replace('#include <begin_vertex>','#include <begin_vertex>\nvOP=position*cSc;vON=normal;vT1=normalMatrix*vec3(1.0,0.0,0.0);vT2=normalMatrix*vec3(0.0,1.0,0.0);vT3=normalMatrix*vec3(0.0,0.0,1.0);');
-      var hasN=!!clfNorm,hasR=!!clfRough;
+      var hasN=!!tN,hasR=!!tR;
       var fs=sh.fragmentShader.replace('#include <common>','#include <common>\nuniform sampler2D cDiff;uniform sampler2D cNorm;uniform sampler2D cRough;uniform float cS;varying vec3 vOP;varying vec3 vON;varying vec3 vT1;varying vec3 vT2;varying vec3 vT3;')
         .replace('#include <map_fragment>','#include <map_fragment>\nvec3 cN0=normalize(vON);vec3 cW=pow(abs(cN0),vec3(4.0));cW/=(cW.x+cW.y+cW.z);\ndiffuseColor.rgb*=texture2D(cDiff,vOP.zy*cS).rgb*cW.x+texture2D(cDiff,vOP.xz*cS).rgb*cW.y+texture2D(cDiff,vOP.xy*cS).rgb*cW.z;')
         .replace('#include <roughnessmap_fragment>',hasR?'float roughnessFactor=roughness*(texture2D(cRough,vOP.zy*cS).g*cW.x+texture2D(cRough,vOP.xz*cS).g*cW.y+texture2D(cRough,vOP.xy*cS).g*cW.z);':'#include <roughnessmap_fragment>');
